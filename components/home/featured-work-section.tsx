@@ -48,7 +48,7 @@ export function FeaturedWorkSection() {
 
       {/* Bottom CTA */}
       <motion.div
-        className="flex flex-col items-start justify-between gap-6 rounded-xl border px-6 py-6 sm:flex-row sm:items-center"
+        className="flex flex-col items-start justify-between gap-6 rounded-xl border p-4 sm:flex-row sm:items-center sm:p-6"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
@@ -64,7 +64,7 @@ export function FeaturedWorkSection() {
           </p>
         </div>
 
-        <div className="flex items-center gap-6 sm:gap-8">
+        <div className="flex w-full items-center justify-between sm:w-auto sm:gap-8">
           <div className="text-center">
             <p className="text-2xl font-bold">{projects.length}</p>
             <p className="text-xs text-muted-foreground">Projects</p>
