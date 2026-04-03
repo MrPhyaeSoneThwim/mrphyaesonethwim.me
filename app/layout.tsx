@@ -4,6 +4,7 @@ import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
+import { Toaster } from "@/components/ui/sonner"
 import { cn } from "@/lib/utils"
 import Head from "next/head"
 
@@ -41,6 +42,7 @@ export default function RootLayout({
           <Header />
           <main className="mx-auto w-full max-w-5xl px-4 sm:px-6">{children}</main>
           <Footer />
+          <Toaster />
         </ThemeProvider>
       </body>
     </html>

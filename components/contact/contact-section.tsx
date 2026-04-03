@@ -15,6 +15,19 @@ import { Textarea } from "@/components/ui/textarea"
 import { Label } from "@/components/ui/label"
 import { Button } from "@/components/ui/button"
 import { ArrowRightIcon, SendHorizonalIcon } from "lucide-react"
+import { useForm, Controller } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import { z } from "zod"
+import { toast } from "sonner"
+
+const contactSchema = z.object({
+  name: z.string().optional(),
+  email: z.string().email("Enter a valid email address."),
+  subject: z.string().min(1, "Subject is required."),
+  message: z.string().min(10, "Message must be at least 10 characters."),
+})
+
+type ContactFormValues = z.infer<typeof contactSchema>
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 20 },
@@ -58,11 +71,42 @@ const contactLinks = [
 ]
 
 export function ContactSection() {
+  const {
+    control,
+    handleSubmit,
+    reset,
+    formState: { isSubmitting },
+  } = useForm<ContactFormValues>({
+    resolver: zodResolver(contactSchema),
+    defaultValues: { name: "", email: "", subject: "", message: "" },
+  })
+
+  async function onSubmit(data: ContactFormValues) {
+    const res = await fetch("/api/contact", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(data),
+    })
+
+    if (res.ok) {
+      toast.success("Message sent!", {
+        description: "I'll get back to you within one business day.",
+      })
+      reset()
+    } else {
+      const { error } = await res.json().catch(() => ({ error: undefined }))
+      toast.error("Failed to send message.", {
+        description:
+          error ?? "Please try again or reach out directly via email.",
+      })
+    }
+  }
+
   return (
     <section className="py-8 md:py-14 lg:py-16">
       <div className="grid grid-cols-1 gap-6 md:gap-12 lg:grid-cols-2 lg:gap-16">
         {/* Left column */}
-        <div className="flex flex-col justify-between gap-8">
+        <div className="flex flex-col gap-8">
           <motion.div
             className="flex flex-col gap-4 md:gap-8"
             variants={stagger}
@@ -173,7 +217,7 @@ export function ContactSection() {
 
         {/* Right column — form */}
         <motion.div
-          className="rounded-2xl border bg-muted/30 p-4 md:p-6"
+          className="rounded-xl border bg-muted/30 p-4 md:p-6"
           initial={{ opacity: 0, y: 24 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: 0.15 }}
@@ -192,7 +236,7 @@ export function ContactSection() {
             variants={stagger}
             initial="hidden"
             animate="show"
-            onSubmit={(e) => e.preventDefault()}
+            onSubmit={handleSubmit(onSubmit)}
           >
             {/* Name */}
             <motion.div variants={fadeUp} className="flex flex-col gap-1.5">
@@ -202,50 +246,99 @@ export function ContactSection() {
                   (optional)
                 </span>
               </Label>
-              <Input
-                id="name"
-                placeholder="Your name"
-                className="h-9 bg-background text-sm md:h-10 md:text-base"
+              <Controller
+                name="name"
+                control={control}
+                render={({ field }) => (
+                  <Input
+                    {...field}
+                    id="name"
+                    placeholder="Your name"
+                    className="h-9 bg-background text-sm md:h-10 md:text-base"
+                  />
+                )}
               />
             </motion.div>
 
             {/* Email */}
             <motion.div variants={fadeUp} className="flex flex-col gap-1.5">
-              <Label htmlFor="email" className="text-sm font-medium">
-                Email
-              </Label>
-              <Input
-                id="email"
-                type="email"
-                placeholder="you@example.com"
-                className="h-9 bg-background text-sm md:h-10 md:text-base"
-                required
+              <Controller
+                name="email"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <>
+                    <Label htmlFor="email" className="text-sm font-medium">
+                      Email
+                    </Label>
+                    <Input
+                      {...field}
+                      id="email"
+                      type="email"
+                      placeholder="you@example.com"
+                      aria-invalid={fieldState.invalid}
+                      className="h-9 bg-background text-sm md:h-10 md:text-base"
+                    />
+                    {fieldState.error && (
+                      <p className="text-xs text-destructive">
+                        {fieldState.error.message}
+                      </p>
+                    )}
+                  </>
+                )}
               />
             </motion.div>
 
             {/* Subject */}
             <motion.div variants={fadeUp} className="flex flex-col gap-1.5">
-              <Label htmlFor="subject" className="text-sm font-medium">
-                Subject
-              </Label>
-              <Input
-                id="subject"
-                placeholder="What's this about?"
-                className="h-9 bg-background text-sm md:h-10 md:text-base"
-                required
+              <Controller
+                name="subject"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <>
+                    <Label htmlFor="subject" className="text-sm font-medium">
+                      Subject
+                    </Label>
+                    <Input
+                      {...field}
+                      id="subject"
+                      placeholder="What's this about?"
+                      aria-invalid={fieldState.invalid}
+                      className="h-9 bg-background text-sm md:h-10 md:text-base"
+                    />
+                    {fieldState.error && (
+                      <p className="text-xs text-destructive">
+                        {fieldState.error.message}
+                      </p>
+                    )}
+                  </>
+                )}
               />
             </motion.div>
 
             {/* Message */}
             <motion.div variants={fadeUp} className="flex flex-col gap-1.5">
-              <Label htmlFor="message" className="text-sm font-medium">
-                Message
-              </Label>
-              <Textarea
-                id="message"
-                placeholder="Tell me about your project or opportunity..."
-                className="min-h-28 resize-none rounded-lg bg-background text-sm md:min-h-36 md:text-base"
-                required
+              <Controller
+                name="message"
+                control={control}
+                render={({ field, fieldState }) => (
+                  <>
+                    <Label htmlFor="message" className="text-sm font-medium">
+                      Message
+                    </Label>
+                    <Textarea
+                      {...field}
+                      id="message"
+                      placeholder="Tell me about your project or opportunity..."
+                      aria-invalid={fieldState.invalid}
+                      className="min-h-28 resize-none rounded-lg bg-background text-sm md:min-h-36 md:text-base"
+                    />
+                    {fieldState.error && (
+                      <p className="text-xs text-destructive">
+                        {fieldState.error.message}
+                      </p>
+                    )}
+                  </>
+                )}
               />
             </motion.div>
 
@@ -253,9 +346,10 @@ export function ContactSection() {
             <motion.div variants={fadeUp} className="flex flex-col gap-2">
               <Button
                 type="submit"
+                disabled={isSubmitting}
                 className="w-full gap-2 md:h-11 md:text-base"
               >
-                Send message
+                {isSubmitting ? "Sending…" : "Send message"}
                 <SendHorizonalIcon className="size-4" />
               </Button>
               <p className="text-center text-xs text-muted-foreground">
