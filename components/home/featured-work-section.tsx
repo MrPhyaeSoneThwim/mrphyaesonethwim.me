@@ -32,15 +32,15 @@ export function FeaturedWorkSection() {
       >
         <div>
           <Badge variant="outline" className="mb-3">
-            Case Study
+            Featured Work
           </Badge>
           <h2 className="font-heading text-3xl font-bold tracking-tight">
-            Designing for Real-World Impact
+            Built for Scale, Shipped to Production
           </h2>
         </div>
         <p className="self-end text-sm leading-relaxed text-muted-foreground md:text-base">
-          A problem-first approach translating user needs into scalable,
-          thoughtful solutions that deliver measurable value.
+          From government surveillance platforms to fintech apps, real systems
+          built for real users at scale.
         </p>
       </motion.div>
 
@@ -59,7 +59,8 @@ export function FeaturedWorkSection() {
             There&apos;s more to explore
           </p>
           <p className="mt-0.5 text-sm text-muted-foreground">
-            {projects.length} projects across mobile, web, and design systems
+            {projects.length} projects across mobile, web, and enterprise
+            platforms
           </p>
         </div>
 

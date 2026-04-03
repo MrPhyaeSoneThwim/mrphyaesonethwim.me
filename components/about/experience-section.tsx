@@ -24,9 +24,8 @@ export function ExperienceSection() {
           </h2>
         </div>
         <p className="self-end text-sm leading-relaxed text-muted-foreground md:text-base">
-          Across fintech, enterprise, and government platforms, shipping
-          software that holds up in production and makes a measurable
-          difference.
+          Across fintech, enterprise, and government. Shipping production
+          software that performs, scales, and stays maintainable.
         </p>
       </motion.div>
 

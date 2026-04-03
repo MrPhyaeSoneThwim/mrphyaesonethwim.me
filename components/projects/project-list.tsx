@@ -134,7 +134,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                       target="_blank"
                       rel="noopener noreferrer"
                     >
-                      View Case Study
+                      View Project
                       <ArrowUpRightIcon size={14} />
                     </a>
                   </Button>

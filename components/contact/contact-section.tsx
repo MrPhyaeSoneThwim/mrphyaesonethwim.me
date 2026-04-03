@@ -59,7 +59,7 @@ const contactLinks = [
   {
     icon: GithubLogoIcon,
     label: "GITHUB",
-    value: "github.com/phyaesone",
+    value: "github.com/MrPhyaeSoneThwim",
     href: "https://github.com/MrPhyaeSoneThwim",
   },
   {

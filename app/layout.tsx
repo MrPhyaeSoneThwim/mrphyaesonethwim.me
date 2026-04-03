@@ -15,12 +15,17 @@ export const metadata: Metadata = {
     template: "%s — Phyae Sone Thwim",
   },
   description:
-    "Senior Full Stack Engineer building scalable systems across fintech, enterprise, and real-time platforms.",
+    "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 4,000+ live cameras.",
   keywords: [
     // identity
-    "Full Stack Engineer",
-    "Senior Software Engineer",
     "Phyae Sone Thwim",
+    "Full Stack Engineer",
+    "Senior Full Stack Engineer",
+    "Senior Software Engineer",
+    "Frontend Engineer",
+    "Mobile Developer",
+    "React Native Developer",
+    "Full Stack Developer",
     // frontend & mobile
     "React",
     "Next.js",
@@ -32,7 +37,9 @@ export const metadata: Metadata = {
     "Tailwind CSS",
     "NativeWind",
     "Expo",
-    // backend systems
+    "Expo Application Services",
+    "EAS",
+    // backend & cms
     "Node.js",
     "NestJS",
     "Express.js",
@@ -44,16 +51,39 @@ export const metadata: Metadata = {
     "MySQL",
     "Firebase",
     "TypeORM",
-    // engineering & infrastructure
+    "Strapi CMS",
+    // cloud & infrastructure
+    "AWS",
+    "AWS Amplify",
     "Docker",
     "GitHub Actions",
+    "Nginx",
+    "Cloudflare",
     "CI/CD",
+    "Nx Monorepo",
+    "Lerna",
+    // testing
+    "Jest",
+    "Cypress",
+    "Detox",
+    // engineering practices
     "Microservices",
     "System Design",
     "WebSockets",
+    "RBAC",
+    // domains & industries
+    "Fintech",
+    "Government Enterprise",
+    "KYC Compliance",
+    "Real-Time Systems",
+    "Surveillance Platform",
+    "SME Platform",
+    "Web3",
+    "Solana",
   ],
   authors: [{ name: "Phyae Sone Thwim" }],
   creator: "Phyae Sone Thwim",
+  category: "Technology",
   openGraph: {
     type: "website",
     locale: "en_US",
@@ -61,13 +91,22 @@ export const metadata: Metadata = {
     siteName: "Phyae Sone Thwim",
     title: "Phyae Sone Thwim — Senior Full Stack Engineer",
     description:
-      "Senior Full Stack Engineer building scalable systems across fintech, enterprise, and real-time platforms.",
+      "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 4,000+ live cameras.",
+    images: [
+      {
+        url: "/og-image.png",
+        width: 1200,
+        height: 630,
+        alt: "Phyae Sone Thwim — Senior Full Stack Engineer",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Phyae Sone Thwim — Senior Full Stack Engineer",
     description:
-      "Senior Full Stack Engineer building scalable systems across fintech, enterprise, and real-time platforms.",
+      "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 4,000+ live cameras.",
+    images: ["/og-image.png"],
   },
   robots: {
     index: true,
@@ -99,12 +138,17 @@ export default function RootLayout({
       )}
     >
       <head>
-        <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css"
+        />
       </head>
       <body>
         <ThemeProvider>
           <Header />
-          <main className="mx-auto w-full max-w-5xl px-4 sm:px-6">{children}</main>
+          <main className="mx-auto w-full max-w-5xl px-4 sm:px-6">
+            {children}
+          </main>
           <Footer />
           <Toaster />
         </ThemeProvider>

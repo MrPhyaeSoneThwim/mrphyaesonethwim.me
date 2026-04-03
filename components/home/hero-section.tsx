@@ -79,8 +79,8 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-md text-sm leading-relaxed text-muted-foreground"
           >
-            I build scalable systems across real-time and fintech platforms,
-            focused on performance, clean architecture, and real-world impact.
+            6+ years building production-grade web and mobile applications
+            across fintech, enterprise, and government platforms.
           </motion.p>
 
           <motion.div
@@ -188,7 +188,7 @@ export function HeroSection() {
                     <div className="mb-1 flex items-center gap-1.5">
                       <VideoCameraIcon className="size-3 shrink-0 text-muted-foreground" />
                       <span className="truncate text-[10px] text-muted-foreground">
-                        Camera Streams
+                        Live Cameras Monitored
                       </span>
                     </div>
                     <p className="font-heading text-base leading-tight font-bold sm:text-lg">
@@ -220,7 +220,7 @@ export function HeroSection() {
                     </p>
                   </motion.div>
 
-                  {/* ~50% — bottom-left */}
+                  {/* $37K+ — bottom-left */}
                   <motion.div
                     className="absolute bottom-[2%] -left-[28%] z-20 hidden w-[52%] rounded-lg border bg-background/95 p-2 shadow-sm backdrop-blur-sm md:block xl:p-3"
                     initial={{ opacity: 0, x: -12 }}
@@ -230,14 +230,14 @@ export function HeroSection() {
                     <div className="mb-1 flex items-center gap-1.5">
                       <TrendUpIcon className="size-3 shrink-0 text-green-500" />
                       <span className="truncate text-[10px] text-muted-foreground">
-                        Performance
+                        Pilot Revenue
                       </span>
                     </div>
                     <p className="font-heading text-base leading-tight font-bold sm:text-lg">
-                      ~50%
+                      $37K+
                     </p>
                     <p className="mt-0.5 text-[10px] text-muted-foreground">
-                      Improvement
+                      On initial release
                     </p>
                   </motion.div>
 

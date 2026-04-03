@@ -93,7 +93,7 @@ export function IntroSection() {
             About Me
           </Badge>
           <h2 className="font-heading text-3xl font-bold tracking-tight">
-            Engineering with Purpose.
+            Engineering with Purpose
           </h2>
         </div>
         <p className="self-end text-sm leading-relaxed text-muted-foreground md:text-base">
@@ -229,28 +229,31 @@ export function IntroSection() {
           >
             <motion.p variants={paragraphItem}>
               <span className="font-semibold text-foreground">
-                Engineering isn&apos;t just my job. It&apos;s how I think.
+                Engineering is how I think, not just what I do.
               </span>{" "}
-              I started building software to solve real problems and found that
-              the craft itself, from architecture to tradeoffs to the details,
-              is what drives me.
+              I design and build production systems with a focus on
+              architecture, tradeoffs, and long-term maintainability. The goal
+              is not just to ship, but to build systems that hold up under
+              real-world conditions.
             </motion.p>
 
             <motion.p variants={paragraphItem}>
               <span className="font-semibold text-foreground">
-                My approach is rooted in clarity and ownership.
+                I take ownership from idea to production.
               </span>{" "}
-              I focus on understanding the why behind every feature, designing
-              systems that last, and shipping software that teams are proud to
-              maintain.
+              I define architecture, align with stakeholders, and stay
+              accountable after release. That means making decisions, pushing
+              back when needed, and ensuring what we build actually works in
+              production.
             </motion.p>
 
             <motion.p variants={paragraphItem}>
               <span className="font-semibold text-foreground">
-                I&apos;m deliberate about the details because they compound.
+                I build software that lasts.
               </span>{" "}
-              Clean code, thoughtful APIs, and reliable deployments all add up
-              to products that hold up in production.
+              Clear abstractions, consistent APIs, and reliable systems prevent
+              complexity from growing over time. I focus on building foundations
+              teams can scale on, not just features that ship once.
             </motion.p>
           </motion.div>
 

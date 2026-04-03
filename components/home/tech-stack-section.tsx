@@ -47,7 +47,7 @@ const categories: Category[] = [
     icon: DeviceMobileIcon,
     title: "Pixel-Perfect, Cross-Platform",
     description:
-      "Responsive web apps and cross-platform mobile, built for consistent quality across every screen and device.",
+      "Production-grade web and mobile applications built for performance, consistency, and real-world usage across platforms and devices.",
     skills: [
       { label: "React", icon: "devicon-react-original colored" },
       { label: "React Native", icon: "devicon-react-original colored" },
@@ -64,7 +64,7 @@ const categories: Category[] = [
     icon: HardDrivesIcon,
     title: "APIs That Scale Under Pressure",
     description:
-      "Production backends handling thousands of concurrent users, from REST and GraphQL to real-time data pipelines.",
+      "Scalable backend systems powering real-time and high-load applications, from API design to data pipelines and distributed architecture.",
     skills: [
       { label: "Node.js", icon: "devicon-nodejs-plain colored" },
       { label: "Express.js", icon: "devicon-express-original colored" },
@@ -85,7 +85,7 @@ const categories: Category[] = [
     icon: GearIcon,
     title: "Ship Fast. Break Nothing.",
     description:
-      "CI/CD pipelines, containerised deployments, and automated testing so every release is confident and production-ready.",
+      "End-to-end engineering practices covering CI/CD, testing, and system design to ensure reliable, maintainable, and production-ready systems.",
     skills: [
       { label: "Docker", icon: "devicon-docker-plain colored" },
       { label: "GitHub Actions", icon: "devicon-github-original colored" },

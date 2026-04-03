@@ -1,6 +1,10 @@
 "use client"
 
-import { BriefcaseBusinessIcon, Building2Icon, InfinityIcon } from "lucide-react"
+import {
+  BriefcaseBusinessIcon,
+  Building2Icon,
+  InfinityIcon,
+} from "lucide-react"
 import { type ComponentProps, useCallback, useRef } from "react"
 import { motion } from "motion/react"
 
@@ -74,7 +78,10 @@ function formatDate(date: string): string {
   return date
 }
 
-export function WorkExperience({ className, experiences }: WorkExperienceProps) {
+export function WorkExperience({
+  className,
+  experiences,
+}: WorkExperienceProps) {
   return (
     <div className={cn("bg-background text-foreground", className)}>
       {experiences.map((experience, i) => (
@@ -96,7 +103,11 @@ export function ExperienceItem({ experience, index = 0 }: ExperienceItemProps) {
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: "-40px" }}
-      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1], delay: index * 0.07 }}
+      transition={{
+        duration: 0.45,
+        ease: [0.22, 1, 0.36, 1],
+        delay: index * 0.07,
+      }}
     >
       <div className="not-prose -ml-1 flex items-center gap-3">
         <div className="flex size-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-muted bg-muted">
@@ -138,7 +149,11 @@ export function ExperienceItem({ experience, index = 0 }: ExperienceItemProps) {
 
       <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
         {experience.positions.map((position, pi) => (
-          <ExperiencePositionItem key={position.id} position={position} index={pi} />
+          <ExperiencePositionItem
+            key={position.id}
+            position={position}
+            index={pi}
+          />
         ))}
       </div>
     </motion.div>
@@ -150,7 +165,10 @@ export type ExperiencePositionItemProps = {
   index?: number
 }
 
-export function ExperiencePositionItem({ position, index = 0 }: ExperiencePositionItemProps) {
+export function ExperiencePositionItem({
+  position,
+  index = 0,
+}: ExperiencePositionItemProps) {
   const chevronsIconRef = useRef<ChevronsUpDownIconHandle>(null)
 
   const handleOpenChange = useCallback((open: boolean) => {
@@ -168,7 +186,11 @@ export function ExperiencePositionItem({ position, index = 0 }: ExperiencePositi
       initial={{ opacity: 0, x: -12 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-30px" }}
-      transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
+      transition={{
+        duration: 0.4,
+        ease: [0.22, 1, 0.36, 1],
+        delay: index * 0.08,
+      }}
     >
       <Collapsible
         defaultOpen={position.isExpanded}
@@ -244,7 +266,7 @@ export function ExperiencePositionItem({ position, index = 0 }: ExperiencePositi
                 {position.description.map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 font-mono text-xs text-muted-foreground"
+                    className="flex items-start gap-2 font-mono text-xs text-muted-foreground md:text-sm"
                   >
                     <span className="mt-1.5 size-1 shrink-0 rounded-full bg-muted-foreground" />
                     {item}
