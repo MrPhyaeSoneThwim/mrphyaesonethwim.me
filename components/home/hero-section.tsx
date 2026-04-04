@@ -319,11 +319,11 @@ export function HeroSection() {
                 <div className="flex items-center gap-1.5">
                   <TrendUpIcon className="size-3 shrink-0 text-green-500" />
                   <span className="text-[10px] text-muted-foreground">
-                    Performance
+                    Pilot Revenue
                   </span>
                 </div>
-                <p className="font-heading text-lg font-bold">~50%</p>
-                <p className="text-[10px] text-muted-foreground">Improvement</p>
+                <p className="font-heading text-lg font-bold">$37K+</p>
+                <p className="text-[10px] text-muted-foreground">On initial release</p>
               </motion.div>
               <motion.div
                 className="flex flex-1 flex-col gap-1 p-4"
