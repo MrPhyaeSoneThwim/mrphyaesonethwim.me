@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button"
 import { projects } from "@/lib/constant"
 import { ProjectList } from "@/components/projects/project-list"
 
-const featured = projects.filter((p) => p.featured)
+const featured = projects.filter((p) => p.industrySectors.includes("Featured"))
 
 const fadeUp: Variants = {
   hidden: { opacity: 0, y: 24 },

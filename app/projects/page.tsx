@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { ProjectList } from "@/components/projects/project-list"
+import { ProjectFilter } from "@/components/projects/project-filter"
 import { ProjectsHeader } from "@/components/projects/projects-header"
 import { projects } from "@/lib/constant"
 
@@ -20,7 +20,7 @@ export default function ProjectsPage() {
     <div className="py-8 md:py-14 lg:py-16">
       <ProjectsHeader />
 
-      <ProjectList projects={projects} />
+      <ProjectFilter projects={projects} />
     </div>
   )
 }

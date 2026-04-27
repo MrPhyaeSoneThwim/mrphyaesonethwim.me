@@ -1,4 +1,4 @@
-# Portfolio — Phyae Sone Thwim
+# Portfolio - Phyae Sone Thwim
 
 Personal portfolio site built with Next.js, Tailwind CSS, and Shadcn/ui.
 

@@ -12,6 +12,7 @@ const navLinks = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
+  { label: "Contact", href: "/contact" },
 ]
 
 const mobileLinks = [
@@ -86,12 +87,9 @@ export function Header() {
           ))}
         </div>
 
-        {/* Right: Theme toggle + Let's talk */}
-        <div className="hidden items-center gap-1.5 pr-1 md:flex">
+        {/* Right: Theme toggle */}
+        <div className="hidden items-center pr-1 md:flex">
           <ThemeToggle />
-          <Button size="sm" asChild className="gap-1.5 rounded-full">
-            <Link href="/contact">Let&apos;s contact</Link>
-          </Button>
         </div>
 
         {/* Mobile: Theme toggle + Hamburger */}

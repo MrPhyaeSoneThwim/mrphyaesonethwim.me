@@ -1,9 +1,9 @@
 "use client"
-import React from "react"
 import Link from "next/link"
 import Image from "next/image"
-import { AnimatePresence, motion } from "motion/react"
+import { motion } from "motion/react"
 import { Button } from "@/components/ui/button"
+import TypingText from "@/components/ui/typing-text"
 import {
   VideoCameraIcon,
   UsersIcon,
@@ -19,15 +19,6 @@ const roles = [
 ]
 
 export function HeroSection() {
-  const [currentRole, setCurrentRole] = React.useState(0)
-
-  React.useEffect(() => {
-    const interval = setInterval(() => {
-      setCurrentRole((prev) => (prev + 1) % roles.length)
-    }, 2500)
-    return () => clearInterval(interval)
-  }, [])
-
   return (
     <section className="py-8 md:py-14 lg:py-16">
       <div className="grid grid-cols-1 items-center gap-10 md:gap-12 lg:grid-cols-2 lg:gap-16">
@@ -57,19 +48,15 @@ export function HeroSection() {
             <h1 className="font-heading text-4xl font-bold tracking-tight text-secondary-foreground sm:text-5xl md:text-6xl">
               Phyae Sone Thwim
             </h1>
-            <div className="mt-2 overflow-hidden">
-              <AnimatePresence mode="wait">
-                <motion.p
-                  key={currentRole}
-                  initial={{ y: -16, opacity: 0 }}
-                  animate={{ y: 0, opacity: 1 }}
-                  exit={{ y: 16, opacity: 0 }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="text-lg font-semibold text-primary sm:text-xl md:text-2xl"
-                >
-                  {roles[currentRole]}
-                </motion.p>
-              </AnimatePresence>
+            <div className="mt-2">
+              <TypingText
+                text={roles}
+                as="p"
+                typingSpeed={55}
+                deletingSpeed={30}
+                pauseDuration={1800}
+                className="text-lg font-semibold text-primary sm:text-xl md:text-2xl"
+              />
             </div>
           </motion.div>
 
@@ -180,18 +167,18 @@ export function HeroSection() {
 
                   {/* 4,000+ — top-left */}
                   <motion.div
-                    className="absolute top-[2%] -left-[28%] z-20 hidden w-[54%] rounded-lg border bg-background/95 p-2 shadow-sm backdrop-blur-sm md:block xl:p-3"
+                    className="absolute top-[2%] -left-[18%] z-20 hidden w-[36%] rounded-lg border bg-background/95 p-3 shadow-sm backdrop-blur-sm md:block"
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.5 }}
                   >
                     <div className="mb-1 flex items-center gap-1.5">
                       <VideoCameraIcon className="size-3 shrink-0 text-muted-foreground" />
-                      <span className="truncate text-[10px] text-muted-foreground">
-                        Live Cameras Monitored
+                      <span className="text-[10px] text-muted-foreground">
+                        Camera Streams
                       </span>
                     </div>
-                    <p className="font-heading text-base leading-tight font-bold sm:text-lg">
+                    <p className="font-heading text-sm leading-tight font-bold">
                       4,000+
                     </p>
                     <p className="mt-0.5 text-[10px] text-muted-foreground">
@@ -201,18 +188,18 @@ export function HeroSection() {
 
                   {/* 6,000+ — top-right */}
                   <motion.div
-                    className="absolute top-[0%] -right-[28%] z-20 hidden w-[52%] rounded-lg border bg-background/95 p-2 shadow-sm backdrop-blur-sm md:block xl:p-3"
+                    className="absolute top-[0%] -right-[18%] z-20 hidden w-[36%] rounded-lg border bg-background/95 p-3 shadow-sm backdrop-blur-sm md:block"
                     initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.6 }}
                   >
                     <div className="mb-1 flex items-center gap-1.5">
                       <UsersIcon className="size-3 shrink-0 text-muted-foreground" />
-                      <span className="truncate text-[10px] text-muted-foreground">
+                      <span className="text-[10px] text-muted-foreground">
                         Agents Served
                       </span>
                     </div>
-                    <p className="font-heading text-base leading-tight font-bold sm:text-lg">
+                    <p className="font-heading text-sm leading-tight font-bold">
                       6,000+
                     </p>
                     <p className="mt-0.5 text-[10px] text-muted-foreground">
@@ -222,18 +209,18 @@ export function HeroSection() {
 
                   {/* $37K+ — bottom-left */}
                   <motion.div
-                    className="absolute bottom-[2%] -left-[28%] z-20 hidden w-[52%] rounded-lg border bg-background/95 p-2 shadow-sm backdrop-blur-sm md:block xl:p-3"
+                    className="absolute bottom-[2%] -left-[18%] z-20 hidden w-[36%] rounded-lg border bg-background/95 p-3 shadow-sm backdrop-blur-sm md:block"
                     initial={{ opacity: 0, x: -12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.7 }}
                   >
                     <div className="mb-1 flex items-center gap-1.5">
                       <TrendUpIcon className="size-3 shrink-0 text-green-500" />
-                      <span className="truncate text-[10px] text-muted-foreground">
-                        Pilot Revenue
+                      <span className="text-[10px] text-muted-foreground">
+                        Revenue
                       </span>
                     </div>
-                    <p className="font-heading text-base leading-tight font-bold sm:text-lg">
+                    <p className="font-heading text-sm leading-tight font-bold">
                       $37K+
                     </p>
                     <p className="mt-0.5 text-[10px] text-muted-foreground">
@@ -243,18 +230,18 @@ export function HeroSection() {
 
                   {/* 800+ — bottom-right */}
                   <motion.div
-                    className="absolute -right-[28%] bottom-[0%] z-20 hidden w-[54%] rounded-lg border bg-background/95 p-2 shadow-sm backdrop-blur-sm md:block xl:p-3"
+                    className="absolute -right-[18%] bottom-[0%] z-20 hidden w-[36%] rounded-lg border bg-background/95 p-3 shadow-sm backdrop-blur-sm md:block"
                     initial={{ opacity: 0, x: 12 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.5, delay: 0.8 }}
                   >
                     <div className="mb-1 flex items-center gap-1.5">
                       <BuildingsIcon className="size-3 shrink-0 text-muted-foreground" />
-                      <span className="truncate text-[10px] text-muted-foreground">
+                      <span className="text-[10px] text-muted-foreground">
                         SMEs Supported
                       </span>
                     </div>
-                    <p className="font-heading text-base leading-tight font-bold sm:text-lg">
+                    <p className="font-heading text-sm leading-tight font-bold">
                       800+
                     </p>
                     <p className="mt-0.5 text-[10px] text-muted-foreground">
@@ -319,11 +306,13 @@ export function HeroSection() {
                 <div className="flex items-center gap-1.5">
                   <TrendUpIcon className="size-3 shrink-0 text-green-500" />
                   <span className="text-[10px] text-muted-foreground">
-                    Pilot Revenue
+                    Revenue
                   </span>
                 </div>
                 <p className="font-heading text-lg font-bold">$37K+</p>
-                <p className="text-[10px] text-muted-foreground">On initial release</p>
+                <p className="text-[10px] text-muted-foreground">
+                  On initial release
+                </p>
               </motion.div>
               <motion.div
                 className="flex flex-1 flex-col gap-1 p-4"

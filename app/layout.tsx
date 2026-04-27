@@ -1,5 +1,5 @@
 import type { Metadata } from "next"
-import { Geist_Mono, Space_Grotesk, Inter } from "next/font/google"
+import { Geist_Mono, Instrument_Serif, Space_Grotesk, Inter } from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -11,8 +11,8 @@ import { cn } from "@/lib/utils"
 export const metadata: Metadata = {
   metadataBase: new URL("https://phyaesonethwimdev.vercel.app"),
   title: {
-    default: "Phyae Sone Thwim — Senior Full Stack Engineer",
-    template: "%s — Phyae Sone Thwim",
+    default: "Phyae Sone Thwim - Senior Full Stack Engineer",
+    template: "%s - Phyae Sone Thwim",
   },
   description:
     "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 4,000+ live cameras.",
@@ -89,7 +89,7 @@ export const metadata: Metadata = {
     locale: "en_US",
     url: "https://phyaesonethwimdev.vercel.app",
     siteName: "Phyae Sone Thwim",
-    title: "Phyae Sone Thwim — Senior Full Stack Engineer",
+    title: "Phyae Sone Thwim - Senior Full Stack Engineer",
     description:
       "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 4,000+ live cameras.",
     images: [
@@ -97,13 +97,13 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Phyae Sone Thwim — Senior Full Stack Engineer",
+        alt: "Phyae Sone Thwim - Senior Full Stack Engineer",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Phyae Sone Thwim — Senior Full Stack Engineer",
+    title: "Phyae Sone Thwim - Senior Full Stack Engineer",
     description:
       "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 4,000+ live cameras.",
     images: ["/og-image.png"],
@@ -115,11 +115,13 @@ export const metadata: Metadata = {
 }
 
 const interHeading = Inter({ subsets: ["latin"], variable: "--font-heading" })
-const spaceGrotesk = Space_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-sans",
-})
+const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-sans" })
 const fontMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
+const instrumentSerif = Instrument_Serif({
+  subsets: ["latin"],
+  weight: "400",
+  variable: "--font-serif",
+})
 
 export default function RootLayout({
   children,
@@ -134,7 +136,8 @@ export default function RootLayout({
         "antialiased",
         fontMono.variable,
         spaceGrotesk.variable,
-        interHeading.variable
+        interHeading.variable,
+        instrumentSerif.variable
       )}
     >
       <head>
