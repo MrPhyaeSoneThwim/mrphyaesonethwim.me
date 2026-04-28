@@ -74,16 +74,22 @@ export const projects: Project[] = [
     thumbnailImage: "/projects/daytwo/daytwo-01.png",
     targetPlatform: "Mobile",
     industrySectors: ["Fintech", "Featured"],
+
     summary:
-      "Fintech app for SMEs to track income, expenses, and credit, with automated credit score generation to support loan applications.",
-    mainMetric: "Onboarded 800+ SMEs - $37K+ revenue generated in production.",
+      "Mobile fintech platform enabling SMEs to digitize financial records, track cash flow, access AI-powered business insights, and generate credit profiles for loan eligibility based on real business activity.",
+
+    mainMetric:
+      "800+ SMEs onboarded and $37K+ revenue generated through a production-ready mobile platform.",
+
     isPrivate: false,
     externalLink: "https://play.google.com/store/search?q=daytwo&c=apps",
+
     impactMetrics: [
       { value: "800+", label: "SMEs Onboarded" },
-      { value: "$37K+", label: "Revenue" },
-      { value: "40%", label: "API Reduction" },
+      { value: "$37K+", label: "Revenue Generated" },
+      { value: "40%", label: "API Calls Reduced" },
     ],
+
     technologyStack: [
       {
         groupLabel: "Frontend",
@@ -99,182 +105,317 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["Firebase", "Firebase Cloud Messaging", "Fast API"],
+        technologies: ["Firebase", "Firebase Cloud Messaging", "FastAPI"],
       },
       {
         groupLabel: "Deployment",
         technologies: ["EAS", "CI/CD", "GitHub Actions"],
       },
     ],
+
     visualHighlights: [
       {
         title: "Growth Intelligence Hub",
         description:
-          "A unified dashboard offering real-time cash flow visibility and proactive steps to help SMEs improve overall business performance.",
+          "Displays current cash position with key business signals, priority actions, and AI-driven insights to help SMEs monitor performance and make faster decisions.",
         imageUrl: "/projects/daytwo/daytwo-01.png",
       },
       {
-        title: "Quick-Action Interface",
+        title: "Quick-Action Support",
         description:
-          "An optimized navigation menu built for high-speed logging of daily sales, business expenses, and automated cash reconciliations.",
+          "Optimized navigation for fast entry of sales, expenses, loans, and daily cash reconciliation, helping users keep financial records accurate and up to date.",
         imageUrl: "/projects/daytwo/daytwo-02.png",
       },
       {
-        title: "Automated Record Keeping",
+        title: "Automated Record Processing",
         description:
-          "A hands-free recording system that instantly converts voice notes and physical receipts into structured business transactions.",
+          "Processes unstructured data from voice and image inputs through AI pipelines to generate structured, validated financial transactions.",
         imageUrl: "/projects/daytwo/daytwo-03.png",
       },
       {
         title: "Point-of-Sale Tracker",
         description:
-          "A streamlined sales management system featuring itemized transaction history and responsive real-time inventory adjustments.",
+          "Supports manual entry of sales and expenses with multiple items, including quantity, pricing, and discount logic for accurate financial records.",
         imageUrl: "/projects/daytwo/daytwo-04.png",
       },
       {
-        title: "Liquidity Management",
+        title: "Loan Management",
         description:
-          "Detailed monitoring of customer debts and supplier payments to ensure healthy cash flow and sustainable vendor relationships.",
+          "Helps SMEs track loans, repayments, receivables, and payables in one place to stay on top of borrowing and maintain healthy cash flow.",
         imageUrl: "/projects/daytwo/daytwo-05.png",
       },
       {
-        title: "Bizzy Business Assistant",
+        title: "AI Business Assistant",
         description:
-          "A dedicated digital companion providing instant answers to financial questions and deep dives into monthly business performance.",
+          "AI-powered business assistance chat that answers financial and business questions in simple language and helps SME users make informed decisions.",
         imageUrl: "/projects/daytwo/daytwo-06.png",
       },
       {
-        title: "Loan Readiness Profile",
+        title: "Business Health Profile",
         description:
-          "A professional financial health assessment that translates business activity into a verifiable credit score for bank applications.",
+          "Converts financial activity into a simple profile showing business health and credit strength, helping SMEs understand their financial stability and loan eligibility.",
         imageUrl: "/projects/daytwo/daytwo-07.png",
       },
     ],
+
     whatChanged:
-      "Replaced manual SME record-keeping with a mobile app that captures data digitally and connects to an AI-powered backend for structured records and loan readiness.",
+      "Replaced manual SME record-keeping with a mobile-first application that converts unstructured financial data into structured records, generates loan eligibility profiles, provides actionable business recommendations, and includes an AI assistant chat for real-time business support within the application.",
+
     keyAchievements: [
       {
-        title: "Smart Data Input",
+        title: "Intelligent Data Capture",
         detail:
-          "Implemented mobile features that let users submit voice notes and photos, which are processed into structured financial data by backend services.",
+          "Built mobile inputs that convert unstructured voice and image data into structured, validated financial records for faster, reliable accounting and simpler business operations.",
       },
       {
-        title: "Data Validation Integration",
+        title: "Frontend–Backend Integration",
         detail:
-          "Integrated with backend systems that validate and clean incoming data before it is used for credit analysis.",
+          "Integrated mobile application with backend validation pipelines to ensure accurate financial data processing for business health analysis and deliver AI-driven insights with recommended actions based on user activity.",
       },
       {
-        title: "Real-Time Notifications",
+        title: "Optimized Data Fetching",
         detail:
-          "Built Firebase-based notifications to deliver alerts and updates to users based on their activity.",
+          "Improved application performance and reduced unnecessary network requests by ~40% through caching, request deduplication, and efficient server-state synchronization.",
+      },
+      {
+        title: "Lending Workflow Notifications",
+        detail:
+          "Implemented real-time loan lifecycle updates including submission, approval, rejection, and disbursement to improve user visibility and trust in lending processes.",
+      },
+      {
+        title: "App-Wide Language Support",
+        detail:
+          "Implemented full application localization where UI content and AI responses dynamically adapt to the selected language for a consistent multilingual experience.",
       },
     ],
+
     technicalDecisions: [
       {
         decision: "Expo & EAS",
         rationale:
-          "Used Expo to speed up development and EAS to streamline app builds and releases.",
+          "Accelerated development and simplified build and deployment pipelines, enabling faster and more reliable production releases.",
       },
       {
-        decision: "React Query for Server State",
+        decision: "Zustand for State Management",
         rationale:
-          "Improved data synchronization and reduced unnecessary network requests, lowering API usage by about 40%.",
+          "Used as a simple, lightweight state manager for financial record workflows and chat conversations, handling draft inputs, manual entries, and structured data from voice and image inputs for smooth multi-step flows within the application.",
+      },
+      {
+        decision: "React Query for Server Data",
+        rationale:
+          "Standardized data fetching with caching and request deduplication, improving performance and reducing redundant network requests.",
+      },
+      {
+        decision: "Zod for Data Validation",
+        rationale:
+          "Implemented schema-based validation for financial records to enforce strict data formats, ensure consistent inputs, and maintain data correctness across transaction flows.",
       },
       {
         decision: "NativeWind Styling",
         rationale:
-          "Used a utility-first approach to keep the UI consistent and speed up development.",
+          "Enabled consistent UI development and faster iteration using a utility-first styling approach and a reusable component library aligned with the application design system.",
+      },
+      {
+        decision: "AI Assistant Chat Interface",
+        rationale:
+          "Designed a business support chat that transforms raw AI outputs into clear, user-friendly responses with actionable guidance for SME users within the application.",
+      },
+      {
+        decision: "React Native Architecture",
+        rationale:
+          "Structured the application with clear separation of server state managed by React Query, UI state managed by Zustand, and derived logic to ensure predictable updates, scalability, and fewer unnecessary re-renders.",
       },
     ],
+
     role: "Senior Frontend Engineer",
     teamContext: "3-person team",
     duration: "Jan 2024 – Sep 2025 · 1 yr 9 mos",
-    primaryMilestone: "First 100 SMEs onboarded within 6 weeks",
+
+    primaryMilestone:
+      "Achieved first 100 SME onboardings within 6 weeks of initial product launch.",
+
     responsibilities: [
-      "Owned the end-to-end mobile app development, from architecture decisions to production release.",
-      "Collaborated with AI and backend teams to integrate financial tracking, intelligent chat, and real-time insights.",
-      "Contributed to design sprints by proposing UX improvements to enhance usability and clarity.",
-      "Conducted user testing, gathered feedback, and resolved issues ahead of each release cycle.",
-      "Onboarded and trained SME users post-launch to ensure effective adoption and usage of the app.",
+      "Led end-to-end mobile development from architecture to production, iterating based on SME user feedback.",
+      "Collaborated with backend and AI engineers to integrate financial tracking, business insights, and AI chat features.",
+      "Worked in design sprints to refine UX flows for non-technical SME users, improving usability across core financial workflows.",
+      "Conducted user testing and translated feedback into iterative product improvements across releases.",
+      "Led SME onboarding and training post-launch to improve platform adoption and user retention.",
     ],
   },
   {
     id: "javis-ordering",
     name: "JAVIS Mobile Ordering App",
-    thumbnailImage: "/projects/javis-mobile.png",
+    thumbnailImage: "/projects/javis/javis-01.png",
     targetPlatform: "Mobile",
     industrySectors: ["Retail Tech", "Featured"],
+
     summary:
-      "Cross-platform mobile ordering app for automated beverage machines, supporting high-concurrency peak usage.",
+      "Mobile ordering platform for automated beverage machines that allows users to browse location-based menus, customize drinks, and place orders ahead of time, reducing wait time and improving the overall ordering experience.",
+
     mainMetric:
-      "Cut ordering time by ~50% - sustained 300+ daily orders per beverage machine at peak hours.",
+      "Mobile ordering platform that reduces wait time and supports high-traffic usage.",
+
     isPrivate: true,
-    externalLink: "https://www.javisholdings.com",
+    externalLink:
+      "https://www.javisholdings.com/copy-of-emerging-digital-ecosystem-ne",
+
     impactMetrics: [
-      { value: "300+", label: "Daily Orders" },
+      { value: "300+", label: "Daily Orders Per Machine" },
       { value: "~50%", label: "Faster Ordering" },
       { value: "100+", label: "Concurrent Users" },
     ],
+
     technologyStack: [
       {
         groupLabel: "Frontend",
-        technologies: ["React Native", "JavaScript", "Zustand", "Expo"],
+        technologies: [
+          "React Native",
+          "JavaScript",
+          "Expo",
+          "Zustand",
+          "NativeWind",
+          "Mapbox",
+          "Expo SecureStore",
+        ],
       },
       {
         groupLabel: "Backend",
         technologies: [
+          "Node.js",
+          "Express.js",
           "GraphQL",
+          "JWT",
           "Stripe",
-          "Firebase",
           "Firebase Cloud Messaging",
         ],
       },
       {
-        groupLabel: "Infra",
-        technologies: ["EAS"],
+        groupLabel: "Deployment",
+        technologies: ["EAS", "CI/CD", "GitHub Actions"],
       },
     ],
+
     visualHighlights: [
       {
         title: "Machine Discovery",
-        description: "Real-time availability status and queue count.",
-        imageUrl: "https://picsum.photos/seed/javis-1/800/600",
+        description:
+          "Helps users discover nearby beverage machines and view what drinks are available at each location before placing an order.",
+        imageUrl: "/projects/javis/javis-01.png",
       },
       {
-        title: "Pre-Order Flow",
-        description: "Seamless payment before reaching the machine.",
-        imageUrl: "https://picsum.photos/seed/javis-2/800/600",
+        title: "Location-Based Menu",
+        description:
+          "Shows only drinks available at the selected beverage machine location, helping users quickly choose what they can order.",
+        imageUrl: "/projects/javis/javis-02.png",
+      },
+      {
+        title: "Drink Customization",
+        description:
+          "Allows users to customize drinks with options such as base selection, sugar level, and toppings based on each machine’s available configurations.",
+        imageUrl: "/projects/javis/javis-03.png",
+      },
+      {
+        title: "Checkout Flow",
+        description:
+          "Provides a fast and reliable checkout experience with secure payment processing and safeguards against duplicate transactions.",
+        imageUrl: "/projects/javis/javis-04.png",
+      },
+      {
+        title: "Order History",
+        description:
+          "A complete list of past orders that allows users to easily review their previous purchases at any time.",
+        imageUrl: "/projects/javis/javis-05.png",
+      },
+      {
+        title: "Order Details",
+        description:
+          "A detailed view of each order showing items, quantities, and provides an option to reorder in a few steps.",
+        imageUrl: "/projects/javis/javis-06.png",
+      },
+      {
+        title: "Profile Management",
+        description:
+          "Allows users to manage account details, personal information, payment cards, and securely stored data for a smooth app experience.",
+        imageUrl: "/projects/javis/javis-07.png",
+      },
+      {
+        title: "Rewards System",
+        description:
+          "Tracks user points and rewards based on activity, encouraging repeat usage and long-term engagement within the app.",
+        imageUrl: "/projects/javis/javis-08.png",
       },
     ],
+
     whatChanged:
-      "Kiosks relied on physical buttons; peak periods caused queues and session timeouts.",
+      "Replaced kiosk-based ordering with a mobile-first system that allows users to place orders ahead of time, while beverage machines push item availability updates to the backend and consume order data for fulfillment.",
+
     keyAchievements: [
       {
-        title: "Real-time Ordering Sync",
+        title: "End-to-End Product Delivery",
         detail:
-          "Utilized GraphQL subscriptions to keep machine state in sync across 100+ concurrent connections.",
+          "Delivered a complete mobile ordering experience covering menu browsing, drink customization, payment, and real-time order tracking, ensuring a smooth and consistent user journey.",
       },
       {
-        title: "Secure Payment Flow",
+        title: "Reliable Ordering Flow",
         detail:
-          "Integrated Stripe Payment Intents with idempotency keys to handle peak concurrency.",
+          "Ensured uninterrupted order completion under poor connectivity by retrying failed requests and providing clear user feedback, including connection status, location availability, waiting time, and order tracking.",
+      },
+      {
+        title: "Machine Integration",
+        detail:
+          "Designed and documented API contracts for external beverage machine systems, enabling real-time availability updates and webhook-based order status synchronization with the backend system, ensuring consistent synchronization between machines and the app.",
+      },
+      {
+        title: "Maintainable System Design",
+        detail:
+          "Built a scalable React Native architecture using a feature-based structure with clear separation of concerns and single-responsibility principles, making the codebase easier to maintain, extend, and scale over time.",
       },
     ],
+
     technicalDecisions: [
       {
-        decision: "GraphQL Subscriptions",
+        decision: "Expo & EAS",
         rationale:
-          "Held up reliably under 100+ concurrent connections without race conditions.",
+          "Used Expo to speed up React Native development and EAS to ensure consistent builds and reliable deployment across iOS and Android.",
+      },
+      {
+        decision: "Zustand State Management",
+        rationale:
+          "Used Zustand for scalable state management to handle complex flows such as drink customization, cart management, and multi-step ordering across screens.",
+      },
+      {
+        decision: "GraphQL Data Layer",
+        rationale:
+          "Used GraphQL to fetch only the required data per screen, improving performance across menus, orders, and real-time machine availability.",
+      },
+      {
+        decision: "Secure Authentication",
+        rationale:
+          "Used token-based authentication with secure storage to protect user sessions and securely handle account and payment information.",
+      },
+      {
+        decision: "Machine Integration via API",
+        rationale:
+          "Built a structured API layer connecting the app with beverage machines to handle real-time availability updates and order processing.",
       },
     ],
-    role: "Frontend Mobile Engineer",
-    teamContext: "2-person team",
-    duration: "6 months - 2023",
-    primaryMilestone: "Pre-order flow adopted by 80% of users in 2 weeks",
+
+    role: "Full Stack Developer",
+    teamContext: "5-person team",
+    duration: "Feb 2022 – Jan 2023 · 1 yr",
+
+    primaryMilestone:
+      "Launched a production mobile ordering system used across multiple locations, handling high-traffic periods reliably.",
+
     responsibilities: [
-      "Developed React Native mobile frontend",
-      "Implemented Stripe checkout",
-      "Collaborated on machine state protocol",
+      "Led React Native frontend development using Expo, building core flows including ordering, drink customization, checkout, and order tracking.",
+      "Designed backend APIs for ordering, payments, and machine integration to ensure stable communication between app, backend, and machines.",
+      "Managed iOS and Android releases using EAS with consistent build and deployment cycles.",
+      "Improved pre-order flow by reducing steps and simplifying the ordering experience.",
+      "Defined API contracts and created Postman documentation for machine integration used by internal teams and client stakeholders.",
+      "Integrated Stripe payments with secure validation for high-volume transaction handling.",
+      "Built drink customization and order tracking based on real-time machine availability data.",
+      "Collaborated with UI/UX designers, backend engineers, and stakeholders to deliver production-ready features.",
     ],
   },
   {
@@ -507,7 +648,7 @@ export const projects: Project[] = [
     targetPlatform: "Mobile",
     industrySectors: ["CleanTech", "IoT"],
     summary:
-      "Mobile application for real-time energy monitoring, providing appliance-level insights through GraphQL backend integration.",
+      "Mobile app for real-time energy monitoring, providing appliance-level insights through GraphQL backend integration.",
     mainMetric:
       "Energy consumption monitoring across 600 households - 119 appliances tracked every 2s with zero manual intervention.",
     isPrivate: false,
@@ -849,7 +990,7 @@ export const EXPERIENCE: ExperienceItemType[] = [
         icon: <CodeXmlIcon className="size-4" />,
         description: [
           "Led architecture and delivery of a real-time surveillance platform supporting 4,000+ cameras across 3 government agencies",
-          "Built cross-platform mobile applications (iOS & Android) using React Native and Expo for production systems",
+          "Built cross-platform mobile apps (iOS & Android) using React Native and Expo for production systems",
           "Reduced query latency by ~60% using Redis-based geospatial indexing",
           "Improved deployment speed by ~20% through CI/CD pipelines with Docker and GitHub Actions",
           "Reduced production defects by ~60% by establishing Jest and Cypress testing standards",
@@ -884,7 +1025,7 @@ export const EXPERIENCE: ExperienceItemType[] = [
           "Migrated legacy supplier platform to Next.js and TypeScript, reducing data integration time by ~30%",
           "Built digital onboarding platform for 6,000+ AIA Singapore agents with KYC and compliance workflows",
           "Designed scalable APIs and data pipelines for complex enterprise systems",
-          "Delivered responsive and accessible features across multiple production applications",
+          "Delivered responsive and accessible features across multiple production apps",
         ],
         skills: [
           "React",

@@ -40,17 +40,17 @@ export function ProjectList({ projects }: { projects: Project[] }) {
             viewport={{ once: true, margin: "-60px" }}
           >
             {/* Thumbnail */}
-            <div className="relative md:row-span-2 lg:row-span-1">
+            <div className="w-full md:row-span-2 lg:row-span-1">
               <AspectRatio
-                ratio={4 / 3}
+                ratio={3 / 2}
                 className="overflow-hidden rounded-lg bg-muted"
               >
                 <Image
                   src={project.thumbnailImage}
                   alt={project.name}
                   fill
-                  className="object-cover"
-                  sizes="(max-width: 640px) 100vw, 240px"
+                  sizes="(min-width: 1024px) 260px, (min-width: 768px) 300px, 100vw"
+                  className="object-cover object-center"
                 />
 
                 {/* Platform badge */}
@@ -104,7 +104,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
               </div>
 
               <p className="text-sm leading-snug font-medium text-foreground/80">
-                {project.summary}
+                {project.mainMetric}
               </p>
 
               {/* Dynamic Tech Stack Rendering */}
@@ -114,7 +114,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                     <span className="w-20 shrink-0 font-sans font-bold text-secondary-foreground not-italic">
                       {group.groupLabel}
                     </span>
-                    <span className="font-sans text-muted-foreground">
+                    <span className="font-sans leading-relaxed text-muted-foreground">
                       {group.technologies.join(", ")}
                     </span>
                   </div>
@@ -137,11 +137,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                 ))}
               </div>
 
-              <Button
-                className="w-full"
-                size="sm"
-                onClick={() => openCaseStudy(index)}
-              >
+              <Button className="w-full" onClick={() => openCaseStudy(index)}>
                 <BookOpenIcon size={13} />
                 View Case Study
               </Button>

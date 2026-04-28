@@ -6,9 +6,11 @@ import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpRightIcon,
+  TrophyIcon,
   XIcon,
 } from "@phosphor-icons/react"
 import { animate, motion, useMotionValue, useTransform } from "motion/react"
+import { Alert, AlertDescription } from "@/components/ui/alert"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
@@ -124,7 +126,7 @@ export function ProjectCaseStudyDialog({
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent
         showCloseButton={false}
-        className="flex max-h-[95svh] flex-col gap-0 overflow-hidden rounded-2xl p-0 sm:max-h-[90vh] sm:max-w-5xl sm:rounded-xl"
+        className="flex max-h-[calc(95dvh)] max-w-[calc(100%-0.5rem)] flex-col gap-0 overflow-hidden rounded-2xl p-0 sm:max-h-[90vh] sm:max-w-5xl sm:rounded-xl"
       >
         <DialogTitle className="sr-only">
           {project.name} — Case Study
@@ -155,7 +157,7 @@ export function ProjectCaseStudyDialog({
 
         {/* ── Scrollable Body ── */}
         <div className="flex-1 overflow-y-auto">
-          <div className="space-y-6 p-3 sm:space-y-8 sm:p-5">
+          <div className="space-y-6 p-3 sm:p-5">
             {/* ── Project Identity (outside Zone A) ── */}
             <div className="w-full sm:w-[60%]">
               <p className="font-sans text-base leading-tight font-semibold text-foreground">
@@ -280,7 +282,7 @@ export function ProjectCaseStudyDialog({
                             triggerKey={triggerKey}
                           />
                         </span>
-                        <span className="text-[10px] font-bold tracking-widest text-muted-foreground uppercase">
+                        <span className="text-[10px] font-semibold tracking-widest text-muted-foreground uppercase">
                           {m.label}
                         </span>
                       </div>
@@ -328,7 +330,6 @@ export function ProjectCaseStudyDialog({
                   )}
                   <Button
                     variant={project.isPrivate ? "outline" : "default"}
-                    size="sm"
                     className="w-full"
                     asChild
                   >
@@ -355,7 +356,7 @@ export function ProjectCaseStudyDialog({
               </p>
               <div className="flex flex-col">
                 {project.keyAchievements.map((a, i) => (
-                  <div key={i} className="flex gap-4">
+                  <div key={i} className="flex gap-3 md:gap-4">
                     {/* Number circle + connector */}
                     <div className="flex flex-col items-center">
                       <span className="flex size-6 shrink-0 items-center justify-center rounded-full bg-muted text-[10px] font-bold text-muted-foreground tabular-nums">
@@ -372,10 +373,10 @@ export function ProjectCaseStudyDialog({
                         i === project.keyAchievements.length - 1 && "pb-0"
                       )}
                     >
-                      <p className="text-sm leading-6 font-semibold text-foreground">
+                      <p className="text-sm leading-6 font-semibold text-secondary-foreground">
                         {a.title}
                       </p>
-                      <p className="mt-0.5 text-xs leading-relaxed text-muted-foreground">
+                      <p className="mt-0.5 text-xs leading-relaxed text-foreground">
                         {a.detail}
                       </p>
                     </div>
@@ -387,11 +388,13 @@ export function ProjectCaseStudyDialog({
             {/* ── "THE CALLS I MADE" ── */}
             {project.technicalDecisions.length > 0 && (
               <section>
-                <div className="overflow-hidden rounded-lg bg-muted/80">
+                <div className="overflow-hidden rounded-lg border border-muted bg-muted/70">
                   {/* Header */}
                   <div className="flex items-center gap-2 border-b px-4 py-2.5">
-                    <span className="text-[11px] text-muted-foreground">—</span>
-                    <p className="text-[9px] font-bold tracking-widest text-muted-foreground uppercase">
+                    <span className="text-[11px] text-secondary-foreground">
+                      —
+                    </span>
+                    <p className="text-[9px] font-bold tracking-widest text-secondary-foreground uppercase">
                       The Calls I Made
                     </p>
                   </div>
@@ -409,7 +412,7 @@ export function ProjectCaseStudyDialog({
                             <ItemTitle className="line-clamp-none text-sm font-semibold text-secondary-foreground">
                               {td.decision}
                             </ItemTitle>
-                            <ItemDescription className="line-clamp-none text-[11px] leading-relaxed text-foreground">
+                            <ItemDescription className="line-clamp-none text-xs leading-relaxed text-foreground">
                               {td.rationale}
                             </ItemDescription>
                           </ItemContent>
@@ -454,10 +457,12 @@ export function ProjectCaseStudyDialog({
               </ul>
 
               {project.primaryMilestone && (
-                <div className="inline-flex items-center gap-1.5 self-start rounded-full bg-emerald-50 px-3 py-1 text-[11px] font-medium text-emerald-700 dark:bg-emerald-950/40 dark:text-emerald-400">
-                  <span className="size-1.5 rounded-full bg-emerald-500 dark:bg-emerald-400" />
-                  {project.primaryMilestone}
-                </div>
+                <Alert className="w-fit rounded-md border-emerald-500/30 bg-emerald-50/60 px-3 py-2 dark:bg-emerald-950/30 [&>svg]:text-emerald-600 dark:[&>svg]:text-emerald-400">
+                  <TrophyIcon size={14} />
+                  <AlertDescription className="text-[11px] font-medium text-emerald-700 dark:text-emerald-400">
+                    {project.primaryMilestone}
+                  </AlertDescription>
+                </Alert>
               )}
             </section>
           </div>
