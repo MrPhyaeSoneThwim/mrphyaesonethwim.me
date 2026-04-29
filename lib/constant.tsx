@@ -165,22 +165,22 @@ export const projects: Project[] = [
       {
         title: "Intelligent Data Capture",
         detail:
-          "Built mobile inputs that convert unstructured voice and image data into structured, validated financial records for faster, reliable accounting and simpler business operations.",
+          "Built mobile inputs that convert unstructured voice and image data into structured, validated financial records, improving speed and reliability of accounting workflows.",
       },
       {
         title: "Frontend–Backend Integration",
         detail:
-          "Integrated mobile application with backend validation pipelines to ensure accurate financial data processing for business health analysis and deliver AI-driven insights with recommended actions based on user activity.",
+          "Integrated the mobile application with backend validation pipelines to ensure accurate financial data processing and enable AI-driven insights with recommended actions based on user activity.",
       },
       {
-        title: "Optimized Data Fetching",
+        title: "Intelligent Business Support",
         detail:
-          "Improved application performance and reduced unnecessary network requests by ~40% through caching, request deduplication, and efficient server-state synchronization.",
+          "Built an AI-powered business assistant chat that translates financial data into simple, actionable guidance, enabling SMEs to ask questions and make faster decisions on cash flow, expenses, and growth opportunities in real time.",
       },
       {
         title: "Lending Workflow Notifications",
         detail:
-          "Implemented real-time loan lifecycle updates including submission, approval, rejection, and disbursement to improve user visibility and trust in lending processes.",
+          "Implemented real-time loan lifecycle updates including submission, approval, rejection, and disbursement, improving user visibility and trust in lending processes.",
       },
       {
         title: "App-Wide Language Support",
@@ -198,38 +198,38 @@ export const projects: Project[] = [
       {
         decision: "Zustand for State Management",
         rationale:
-          "Used as a simple, lightweight state manager for financial record workflows and chat conversations, handling draft inputs, manual entries, and structured data from voice and image inputs for smooth multi-step flows within the application.",
+          "Used a lightweight state manager for financial record workflows and chat conversations, handling draft inputs, manual entries, and structured data for smooth multi-step flows.",
       },
       {
         decision: "React Query for Server Data",
         rationale:
-          "Standardized data fetching with caching and request deduplication, improving performance and reducing redundant network requests.",
+          "Standardized data fetching with caching and request deduplication, reducing API calls by ~40% and improving responsiveness.",
       },
       {
         decision: "Zod for Data Validation",
         rationale:
-          "Implemented schema-based validation for financial records to enforce strict data formats, ensure consistent inputs, and maintain data correctness across transaction flows.",
+          "Implemented schema-based validation for financial records to enforce strict data formats and ensure consistency across transaction flows.",
       },
       {
         decision: "NativeWind Styling",
         rationale:
-          "Enabled consistent UI development and faster iteration using a utility-first styling approach and a reusable component library aligned with the application design system.",
+          "Enabled consistent UI development and faster iteration using a utility-first styling approach aligned with the application design system.",
       },
       {
         decision: "AI Assistant Chat Interface",
         rationale:
-          "Designed a business support chat that transforms raw AI outputs into clear, user-friendly responses with actionable guidance for SME users within the application.",
+          "Built a frontend chat interface that standardizes raw AI responses into clear, structured messages with actionable guidance, using consistent state management and rendering patterns for a reliable conversational experience.",
       },
       {
         decision: "React Native Architecture",
         rationale:
-          "Structured the application with clear separation of server state managed by React Query, UI state managed by Zustand, and derived logic to ensure predictable updates, scalability, and fewer unnecessary re-renders.",
+          "Structured the application with clear separation of server state (React Query) and UI state (Zustand) to ensure predictable updates, scalability, and fewer unnecessary re-renders.",
       },
     ],
 
     role: "Senior Frontend Engineer",
     teamContext: "3-person team",
-    duration: "Jan 2024 – Sep 2025 · 1 yr 9 mos",
+    duration: "July 2024 – Mar 2026 · 1 yr 9 mos",
 
     primaryMilestone:
       "Achieved first 100 SME onboardings within 6 weeks of initial product launch.",
@@ -250,10 +250,10 @@ export const projects: Project[] = [
     industrySectors: ["Retail Tech", "Featured"],
 
     summary:
-      "Mobile ordering platform for automated beverage machines that allows users to browse location-based menus, customize drinks, and place orders ahead of time, reducing wait time and improving the overall ordering experience.",
+      "Mobile ordering platform for automated beverage systems that enables users to browse location-based menus, customize drinks, and place orders ahead of time, improving ordering efficiency and reducing wait time.",
 
     mainMetric:
-      "Mobile ordering platform that reduces wait time and supports high-traffic usage.",
+      "Mobile ordering platform supporting high-volume usage across multiple locations with reduced wait times and improved ordering efficiency.",
 
     isPrivate: true,
     externalLink:
@@ -299,76 +299,76 @@ export const projects: Project[] = [
       {
         title: "Machine Discovery",
         description:
-          "Helps users discover nearby beverage machines and view what drinks are available at each location before placing an order.",
+          "Enables users to discover nearby beverage systems and view available drinks before placing an order, helping them choose the most suitable location.",
         imageUrl: "/projects/javis/javis-01.png",
       },
       {
         title: "Location-Based Menu",
         description:
-          "Shows only drinks available at the selected beverage machine location, helping users quickly choose what they can order.",
+          "Displays drinks available at the selected location so users can quickly browse and select from valid ordering options.",
         imageUrl: "/projects/javis/javis-02.png",
       },
       {
         title: "Drink Customization",
         description:
-          "Allows users to customize drinks with options such as base selection, sugar level, and toppings based on each machine’s available configurations.",
+          "Allows users to customize drinks with options such as base selection, sugar level, and toppings based on available configurations at each location.",
         imageUrl: "/projects/javis/javis-03.png",
       },
       {
         title: "Checkout Flow",
         description:
-          "Provides a fast and reliable checkout experience with secure payment processing and safeguards against duplicate transactions.",
+          "Provides a streamlined checkout experience with secure payment processing and safeguards against duplicate transactions.",
         imageUrl: "/projects/javis/javis-04.png",
       },
       {
         title: "Order History",
         description:
-          "A complete list of past orders that allows users to easily review their previous purchases at any time.",
+          "Displays past orders for quick access, allowing users to review previous purchases or reorder in a few steps.",
         imageUrl: "/projects/javis/javis-05.png",
       },
       {
         title: "Order Details",
         description:
-          "A detailed view of each order showing items, quantities, and provides an option to reorder in a few steps.",
+          "Shows a detailed breakdown of each order including items, quantities, and pricing with an option to reorder instantly.",
         imageUrl: "/projects/javis/javis-06.png",
       },
       {
         title: "Profile Management",
         description:
-          "Allows users to manage account details, personal information, payment cards, and securely stored data for a smooth app experience.",
+          "Allows users to manage account details, personal information, and securely stored payment cards in one place.",
         imageUrl: "/projects/javis/javis-07.png",
       },
       {
         title: "Rewards System",
         description:
-          "Tracks user points and rewards based on activity, encouraging repeat usage and long-term engagement within the app.",
+          "Tracks user activity and rewards points to encourage repeat engagement and long-term usage of the app.",
         imageUrl: "/projects/javis/javis-08.png",
       },
     ],
 
     whatChanged:
-      "Replaced kiosk-based ordering with a mobile-first system that allows users to place orders ahead of time, while beverage machines push item availability updates to the backend and consume order data for fulfillment.",
+      "Replaced kiosk-based ordering with a mobile-first experience where users can browse drinks, search nearby locations on a map, and place orders ahead of time, with item availability synchronized through scheduled and order-driven updates across systems.",
 
     keyAchievements: [
       {
         title: "End-to-End Product Delivery",
         detail:
-          "Delivered a complete mobile ordering experience covering menu browsing, drink customization, payment, and real-time order tracking, ensuring a smooth and consistent user journey.",
+          "Delivered a complete mobile ordering experience including drink browsing, map-based location search, drink customization, payment, and order tracking, creating a seamless user experience.",
       },
       {
         title: "Reliable Ordering Flow",
         detail:
-          "Ensured uninterrupted order completion under poor connectivity by retrying failed requests and providing clear user feedback, including connection status, location availability, waiting time, and order tracking.",
+          "Ensured reliable order completion under poor network conditions by retrying failed requests and providing clear user feedback, including connection status, location availability, waiting time, and order tracking.",
       },
       {
-        title: "Machine Integration",
+        title: "System Integration",
         detail:
-          "Designed and documented API contracts for external beverage machine systems, enabling real-time availability updates and webhook-based order status synchronization with the backend system, ensuring consistent synchronization between machines and the app.",
+          "Designed API contracts to support availability updates driven by orders and scheduled synchronization, ensuring product data remains consistent between systems.",
       },
       {
         title: "Maintainable System Design",
         detail:
-          "Built a scalable React Native architecture using a feature-based structure with clear separation of concerns and single-responsibility principles, making the codebase easier to maintain, extend, and scale over time.",
+          "Built a scalable React Native architecture using a feature-based structure and clear separation of concerns, improving code maintainability and making it easier to evolve over time.",
       },
     ],
 
@@ -376,27 +376,37 @@ export const projects: Project[] = [
       {
         decision: "Expo & EAS",
         rationale:
-          "Used Expo to speed up React Native development and EAS to ensure consistent builds and reliable deployment across iOS and Android.",
+          "Used Expo to accelerate React Native development and EAS to standardize build and deployment pipelines across iOS and Android.",
       },
       {
         decision: "Zustand State Management",
         rationale:
-          "Used Zustand for scalable state management to handle complex flows such as drink customization, cart management, and multi-step ordering across screens.",
+          "Handled complex UI state with Zustand, including drink customization, cart management, and multi-step ordering flows, enabling predictable state updates across the app.",
       },
       {
         decision: "GraphQL Data Layer",
         rationale:
-          "Used GraphQL to fetch only the required data per screen, improving performance across menus, orders, and real-time machine availability.",
+          "Optimized GraphQL for menu and ordering data by querying only required fields and adding input validation in order creation mutations, reducing payload size and network overhead.",
+      },
+      {
+        decision: "Stripe Payment Integration",
+        rationale:
+          "Implemented Stripe for in-app payment processing and checkout flow, ensuring secure and reliable transaction handling.",
+      },
+      {
+        decision: "Mapbox Location Services",
+        rationale:
+          "Built location search and map-based browsing with Mapbox, enabling users to discover nearby stores and view available drinks at each location.",
       },
       {
         decision: "Secure Authentication",
         rationale:
-          "Used token-based authentication with secure storage to protect user sessions and securely handle account and payment information.",
+          "Managed token-based authentication with secure storage to handle authenticated API requests, protecting user sessions and sensitive operations such as checkout, payments, and order management.",
       },
       {
-        decision: "Machine Integration via API",
+        decision: "System Integration via API",
         rationale:
-          "Built a structured API layer connecting the app with beverage machines to handle real-time availability updates and order processing.",
+          "Designed API integration to synchronize product availability and order data across systems, ensuring consistent data flow between mobile and external systems.",
       },
     ],
 
@@ -405,17 +415,16 @@ export const projects: Project[] = [
     duration: "Feb 2022 – Jan 2023 · 1 yr",
 
     primaryMilestone:
-      "Launched a production mobile ordering system used across multiple locations, handling high-traffic periods reliably.",
+      "Launched a production mobile ordering system deployed across multiple locations with consistent high-volume usage.",
 
     responsibilities: [
-      "Led React Native frontend development using Expo, building core flows including ordering, drink customization, checkout, and order tracking.",
-      "Designed backend APIs for ordering, payments, and machine integration to ensure stable communication between app, backend, and machines.",
-      "Managed iOS and Android releases using EAS with consistent build and deployment cycles.",
-      "Improved pre-order flow by reducing steps and simplifying the ordering experience.",
-      "Defined API contracts and created Postman documentation for machine integration used by internal teams and client stakeholders.",
-      "Integrated Stripe payments with secure validation for high-volume transaction handling.",
-      "Built drink customization and order tracking based on real-time machine availability data.",
-      "Collaborated with UI/UX designers, backend engineers, and stakeholders to deliver production-ready features.",
+      "Led end-to-end React Native development from architecture to production for a high-traffic mobile ordering system.",
+      "Designed and documented GraphQL APIs for menu, ordering, and payments, enabling integration with external systems.",
+      "Integrated Stripe for secure payment processing and reliable transaction handling within the checkout flow.",
+      "Implemented Mapbox for location-based discovery to enable map-based search of nearby beverage machines.",
+      "Streamlined ordering flow with designers by reducing steps and simplifying the checkout experience.",
+      "Managed iOS and Android releases using EAS with stable build and deployment pipelines.",
+      "Collaborated with UI/UX designers, backend engineers, and stakeholders to deliver production features.",
     ],
   },
   {
