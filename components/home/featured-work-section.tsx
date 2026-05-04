@@ -24,7 +24,7 @@ export function FeaturedWorkSection() {
     <section className="border-t py-8 md:py-14 lg:py-16">
       {/* Header */}
       <motion.div
-        className="mb-0 grid grid-cols-1 gap-4 sm:mb-16 lg:mb-12 lg:grid-cols-2 lg:gap-12"
+        className="mb-5 grid grid-cols-1 gap-4 sm:mb-16 lg:mb-12 lg:grid-cols-2 lg:gap-12"
         variants={fadeUp}
         initial="hidden"
         whileInView="show"
