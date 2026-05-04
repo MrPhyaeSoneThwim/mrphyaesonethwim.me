@@ -1,5 +1,10 @@
 import type { Metadata } from "next"
-import { Geist_Mono, Instrument_Serif, Space_Grotesk, Inter } from "next/font/google"
+import {
+  Geist_Mono,
+  Instrument_Serif,
+  Space_Grotesk,
+  Inter,
+} from "next/font/google"
 
 import "./globals.css"
 import { ThemeProvider } from "@/components/theme-provider"
@@ -115,7 +120,10 @@ export const metadata: Metadata = {
 }
 
 const interHeading = Inter({ subsets: ["latin"], variable: "--font-heading" })
-const spaceGrotesk = Space_Grotesk({ subsets: ["latin"], variable: "--font-sans" })
+const spaceGrotesk = Space_Grotesk({
+  subsets: ["latin"],
+  variable: "--font-sans",
+})
 const fontMono = Geist_Mono({ subsets: ["latin"], variable: "--font-mono" })
 const instrumentSerif = Instrument_Serif({
   subsets: ["latin"],
