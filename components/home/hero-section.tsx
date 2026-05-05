@@ -13,9 +13,8 @@ import {
 
 const roles = [
   "Full Stack Engineer",
-  "Software Engineer",
   "Frontend Engineer",
-  "Mobile Engineer",
+  "React Native Engineer",
 ]
 
 export function HeroSection() {
