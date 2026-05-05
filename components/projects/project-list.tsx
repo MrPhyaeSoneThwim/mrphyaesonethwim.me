@@ -38,48 +38,46 @@ export function ProjectList({ projects }: { projects: Project[] }) {
           >
             <Card className="gap-0 rounded-xl bg-muted/20 py-0">
               <CardContent className="p-4 md:p-5">
-                {/* ── Top: name + meta left, badges right ── */}
-                <div className="mb-4 flex items-start justify-between gap-4">
-                  <div className="flex min-w-0 flex-col gap-1.5">
-                    <div className="flex items-baseline gap-2">
-                      <span className="shrink-0 font-mono text-[10px] font-bold text-primary/70">
-                        {String(index + 1).padStart(2, "0")}
-                      </span>
-                      <h3 className="text-[17px] leading-snug font-bold tracking-tight md:text-[18px]">
-                        {project.name}
-                      </h3>
-                    </div>
-                    <div className="flex flex-wrap items-center gap-x-1.5 text-[11px] text-muted-foreground/80">
-                      {project.role && <span>{project.role}</span>}
-                      {project.teamSize && (
-                        <>
-                          <span className="opacity-30">·</span>
-                          <span>{project.teamSize}</span>
-                        </>
-                      )}
-                      {project.duration && (
-                        <>
-                          <span className="opacity-30">·</span>
-                          <span>{project.duration}</span>
-                        </>
-                      )}
+                {/* ── Top: index + name + tags in one row, meta below ── */}
+                <div className="mb-4 flex flex-col gap-2 md:gap-1">
+                  <div className="flex items-baseline gap-x-2">
+                    <span className="shrink-0 font-mono text-[10px] font-bold text-primary/70">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-[17px] leading-snug font-bold tracking-tight md:text-[18px]">
+                      {project.name}
+                    </h3>
+                    <div className="ml-auto flex shrink-0 flex-wrap items-center gap-1">
+                      {project.industrySectors.map((sector, i) => (
+                        <Badge
+                          key={i}
+                          variant="outline"
+                          className={cn(
+                            "h-auto rounded-sm px-2 py-1 text-[10px] font-medium",
+                            sector === "Featured"
+                              ? "border-primary/30 bg-primary/10 text-primary"
+                              : "border-border/80 bg-transparent text-muted-foreground/60"
+                          )}
+                        >
+                          {sector}
+                        </Badge>
+                      ))}
                     </div>
                   </div>
-                  <div className="flex shrink-0 flex-wrap items-center justify-end gap-1">
-                    {project.industrySectors.map((sector, i) => (
-                      <Badge
-                        key={i}
-                        variant="outline"
-                        className={cn(
-                          "h-auto rounded-sm px-2 py-1 text-[10px] font-medium",
-                          sector === "Featured"
-                            ? "border-primary/30 bg-primary/10 text-primary"
-                            : "border-border/80 bg-transparent text-muted-foreground/60"
-                        )}
-                      >
-                        {sector}
-                      </Badge>
-                    ))}
+                  <div className="flex flex-wrap items-center gap-x-1.5 text-[11px] text-muted-foreground/80">
+                    {project.role && <span>{project.role}</span>}
+                    {project.teamSize && (
+                      <>
+                        <span className="opacity-30">·</span>
+                        <span>{project.teamSize}</span>
+                      </>
+                    )}
+                    {project.duration && (
+                      <>
+                        <span className="opacity-30">·</span>
+                        <span>{project.duration}</span>
+                      </>
+                    )}
                   </div>
                 </div>
 
