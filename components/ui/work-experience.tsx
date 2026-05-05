@@ -211,8 +211,8 @@ export function ExperiencePositionItem({
               <div
                 className={cn(
                   "flex size-6 shrink-0 items-center justify-center rounded-lg",
-                  "bg-muted text-muted-foreground",
-                  "ring-line border border-muted-foreground/15 ring-1 ring-input ring-offset-1 ring-offset-background",
+                  "bg-muted text-foreground/60",
+                  "ring-line border border-foreground/10 ring-1 ring-input ring-offset-1 ring-offset-background",
                   "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5"
                 )}
               >
@@ -223,12 +223,12 @@ export function ExperiencePositionItem({
                 {position.title}
               </h4>
 
-              <div className="shrink-0 text-muted-foreground group-disabled/experience-position:hidden [&_svg]:size-4">
+              <div className="shrink-0 text-foreground/50 group-disabled/experience-position:hidden [&_svg]:size-4">
                 <ChevronsUpDownIcon ref={chevronsIconRef} duration={0.15} />
               </div>
             </div>
 
-            <div className="relative z-1 flex items-center gap-2 pl-9 text-sm text-muted-foreground">
+            <div className="relative z-1 flex items-center gap-2 pl-9 text-sm text-foreground/55">
               {position.employmentType && (
                 <>
                   <dl>
@@ -267,9 +267,9 @@ export function ExperiencePositionItem({
                 {position.description.map((item, i) => (
                   <li
                     key={i}
-                    className="flex items-start gap-2 font-mono text-xs text-muted-foreground md:text-sm"
+                    className="flex items-start gap-2 font-mono text-xs text-foreground/70 md:text-sm"
                   >
-                    <span className="mt-1.5 size-1 shrink-0 rounded-full bg-muted-foreground" />
+                    <span className="mt-1.5 size-1 shrink-0 rounded-full bg-foreground/50" />
                     {item}
                   </li>
                 ))}
@@ -296,7 +296,7 @@ function Skill({ className, ...props }: ComponentProps<"span">) {
   return (
     <span
       className={cn(
-        "inline-flex items-center rounded-lg border bg-muted/50 px-1.5 py-0.5 font-mono text-xs text-muted-foreground",
+        "inline-flex items-center rounded-full border border-foreground/10 bg-muted px-2.5 py-1 font-mono text-[11px] text-foreground/80",
         className
       )}
       {...props}
