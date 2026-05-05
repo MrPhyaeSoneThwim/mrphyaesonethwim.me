@@ -58,7 +58,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                             "h-auto rounded-sm px-2 py-1 text-[10px] font-medium",
                             sector === "Featured"
                               ? "border-primary/30 bg-primary/10 text-primary"
-                              : "border-border/80 bg-transparent text-muted-foreground/60"
+                              : "border-border/80 bg-transparent text-muted-foreground/80"
                           )}
                         >
                           {sector}
@@ -127,7 +127,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                           <span className="w-16 shrink-0 text-[10px] font-semibold text-muted-foreground/80">
                             {group.groupLabel}
                           </span>
-                          <span className="shrink-0 text-[9px] text-muted-foreground/30">
+                          <span className="shrink-0 text-[9px] text-muted-foreground/80">
                             •
                           </span>
                           <span className="text-[11px] leading-relaxed text-muted-foreground/80">

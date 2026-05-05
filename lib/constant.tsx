@@ -167,6 +167,7 @@ export const projects: Project[] = [
         technologies: [
           "React Native",
           "Expo",
+          "JavaScript",
           "NativeWind",
           "Mapbox",
           "Zustand",
@@ -389,11 +390,17 @@ export const projects: Project[] = [
     technologyStack: [
       {
         groupLabel: "Frontend",
-        technologies: ["Expo", "JavaScript", "Zustand"],
+        technologies: [
+          "React Native",
+          "Expo",
+          "JavaScript",
+          "Zustand",
+          "GraphQL API",
+        ],
       },
       {
-        groupLabel: "Backend",
-        technologies: ["GraphQL API"],
+        groupLabel: "Deployment",
+        technologies: ["EAS"],
       },
     ],
 
