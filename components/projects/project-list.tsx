@@ -40,14 +40,16 @@ export function ProjectList({ projects }: { projects: Project[] }) {
               <CardContent className="p-4 md:p-5">
                 {/* ── Top: index + name + tags in one row, meta below ── */}
                 <div className="mb-4 flex flex-col gap-2 md:gap-1">
-                  <div className="flex items-baseline gap-x-2">
-                    <span className="shrink-0 font-mono text-[10px] font-bold text-primary/70">
-                      {String(index + 1).padStart(2, "0")}
-                    </span>
-                    <h3 className="text-[17px] leading-snug font-bold tracking-tight md:text-[18px]">
-                      {project.name}
-                    </h3>
-                    <div className="ml-auto flex shrink-0 flex-wrap items-center gap-1">
+                  <div className="flex flex-col gap-y-1 md:flex-row md:items-baseline md:justify-between md:gap-x-2">
+                    <div className="flex items-baseline gap-2">
+                      <span className="shrink-0 font-mono text-[10px] font-bold text-primary/70">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <h3 className="text-[17px] leading-snug font-bold tracking-tight md:text-[18px]">
+                        {project.name}
+                      </h3>
+                    </div>
+                    <div className="flex shrink-0 flex-wrap items-center gap-1">
                       {project.industrySectors.map((sector, i) => (
                         <Badge
                           key={i}

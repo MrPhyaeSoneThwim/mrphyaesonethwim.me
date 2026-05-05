@@ -156,6 +156,7 @@ export function HeroSection() {
                         src="/hero-avatar.png"
                         alt="Phyae Sone Thwim"
                         fill
+                        sizes="(min-width: 768px) 320px, 100vw"
                         className="scale-110 object-cover object-top"
                         priority
                       />
