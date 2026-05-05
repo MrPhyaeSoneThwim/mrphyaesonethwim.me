@@ -3,7 +3,7 @@
 import * as React from "react"
 import Image from "next/image"
 import { motion } from "motion/react"
-import { ArrowRightIcon, ArrowUpRightIcon } from "@phosphor-icons/react"
+import { ArrowUpRightIcon } from "@phosphor-icons/react"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
@@ -49,7 +49,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                         {project.name}
                       </h3>
                     </div>
-                    <div className="flex flex-wrap items-center gap-x-1.5 text-[11px] text-muted-foreground/70">
+                    <div className="flex flex-wrap items-center gap-x-1.5 text-[11px] text-muted-foreground/80">
                       {project.role && <span>{project.role}</span>}
                       {project.teamSize && (
                         <>
@@ -124,13 +124,13 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                           key={group.groupLabel}
                           className="flex items-baseline gap-2"
                         >
-                          <span className="w-20 shrink-0 text-[10px] font-semibold text-muted-foreground/70">
+                          <span className="w-16 shrink-0 text-[10px] font-semibold text-muted-foreground/80">
                             {group.groupLabel}
                           </span>
                           <span className="shrink-0 text-[9px] text-muted-foreground/30">
                             •
                           </span>
-                          <span className="text-[11px] leading-relaxed text-muted-foreground/70">
+                          <span className="text-[11px] leading-relaxed text-muted-foreground/80">
                             {group.technologies.join(", ")}
                           </span>
                         </div>

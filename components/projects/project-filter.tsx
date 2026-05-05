@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { motion } from "motion/react"
 import { type Project } from "@/lib/constant"
 import { ProjectList } from "@/components/projects/project-list"
 import { cn } from "@/lib/utils"
@@ -36,9 +37,12 @@ export function ProjectFilter({ projects }: { projects: Project[] }) {
   return (
     <>
       <div className="no-scrollbar -mx-4 flex gap-2 overflow-x-auto px-4 pb-4 sm:mx-0 sm:flex-wrap sm:px-0">
-        {categories.map(({ name, count }) => (
-          <button
+        {categories.map(({ name, count }, index) => (
+          <motion.button
             key={name}
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.4, delay: 0.3 + index * 0.06 }}
             onClick={() => setActiveCategory(name)}
             className={cn(
               "inline-flex shrink-0 items-center gap-1.5 rounded-full border px-3 py-1.5 text-xs font-medium transition-colors",
@@ -51,7 +55,7 @@ export function ProjectFilter({ projects }: { projects: Project[] }) {
             <span className="text-[10px] font-semibold opacity-60">
               {count}
             </span>
-          </button>
+          </motion.button>
         ))}
       </div>
       <ProjectList projects={filtered} />

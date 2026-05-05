@@ -1,10 +1,6 @@
 "use client"
 
-import {
-  BriefcaseBusinessIcon,
-  Building2Icon,
-  InfinityIcon,
-} from "lucide-react"
+import { GraduationCapIcon, Building2Icon, InfinityIcon } from "lucide-react"
 import { type ComponentProps, useCallback, useRef } from "react"
 import { motion } from "motion/react"
 
@@ -147,7 +143,7 @@ export function ExperienceItem({ experience, index = 0 }: ExperienceItemProps) {
         )}
       </div>
 
-      <div className="relative space-y-4 before:absolute before:left-3 before:h-full before:w-px before:bg-border">
+      <div className="relative">
         {experience.positions.map((position, pi) => (
           <ExperiencePositionItem
             key={position.id}
@@ -183,6 +179,7 @@ export function ExperiencePositionItem({
 
   return (
     <motion.div
+      className="group relative pb-4 last:pb-0"
       initial={{ opacity: 0, x: -12 }}
       whileInView={{ opacity: 1, x: 0 }}
       viewport={{ once: true, margin: "-30px" }}
@@ -192,13 +189,17 @@ export function ExperiencePositionItem({
         delay: index * 0.08,
       }}
     >
+      <div
+        aria-hidden="true"
+        className="absolute top-3 left-3.5 mt-0.5 -ml-px h-full w-px bg-border group-last:hidden"
+      />
       <Collapsible
         defaultOpen={position.isExpanded}
         onOpenChange={handleOpenChange}
         disabled={!position.description?.length}
         asChild
       >
-        <div className="relative last:before:absolute last:before:h-full last:before:w-4 last:before:bg-background">
+        <div className="relative">
           <CollapsibleTrigger
             className={cn(
               "group/experience-position not-prose block w-full text-left select-none",
@@ -215,7 +216,7 @@ export function ExperiencePositionItem({
                   "[&_svg]:shrink-0 [&_svg:not([class*='size-'])]:size-5"
                 )}
               >
-                {position.icon ?? <BriefcaseBusinessIcon />}
+                {position.icon ?? <GraduationCapIcon />}
               </div>
 
               <h4 className="flex-1 text-base font-medium text-balance text-foreground">

@@ -38,7 +38,7 @@ export interface EngineeringDecision {
 }
 
 export interface TechnologyGroup {
-  groupLabel: "Frontend" | "Backend" | "Deployment"
+  groupLabel: "Frontend" | "Backend" | "Deployment" | "Deployment & Infra"
   technologies: string[]
 }
 
@@ -84,7 +84,7 @@ export const projects: Project[] = [
   {
     id: "daytwo-mobile",
     name: "DayTwo Mobile App",
-    thumbnailImage: "/projects/daytwo/daytwo-01.png",
+    thumbnailImage: "/projects/daytwo/daytwo-00.png",
     targetPlatform: "Mobile",
     industrySectors: ["Fintech", "Featured"],
 
@@ -122,7 +122,7 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["FastAPI", "Firebase", "Cloud Messaging"],
+        technologies: ["FastAPI", "Firebase"],
       },
       {
         groupLabel: "Deployment",
@@ -142,7 +142,7 @@ export const projects: Project[] = [
   {
     id: "javis-ordering",
     name: "JAVIS Mobile Ordering App",
-    thumbnailImage: "/projects/javis/javis-01.png",
+    thumbnailImage: "/projects/javis/javis-00.png",
     targetPlatform: "Mobile",
     industrySectors: ["Retail Tech", "Featured"],
 
@@ -199,13 +199,13 @@ export const projects: Project[] = [
   {
     id: "surveillance-platform",
     name: "Surveillance Platform",
-    thumbnailImage: "/projects/surveillance.png",
+    thumbnailImage: "/projects/surveillance/surveillance-00.png",
     targetPlatform: "Web",
     industrySectors: ["GovTech", "Enterprise", "Featured"],
 
-    role: "Frontend Architect",
-    teamSize: "4-person team",
-    duration: "2022 – 2023 · 14 mos",
+    role: "Senior Fullstack Engineer",
+    teamSize: "10-person team",
+    duration: "Feb 2023 – July 2024 · 18 mos",
     ownership:
       "Led frontend architecture for real-time multi-agency surveillance platform",
 
@@ -214,12 +214,12 @@ export const projects: Project[] = [
 
     impactMetrics: [
       { icon: VideoCameraSlashIcon, value: "4,000+", label: "Live Cameras" },
-      { icon: ShieldCheckIcon, value: "3", label: "Gov Agencies Live" },
+      { icon: ShieldCheckIcon, value: "3", label: "Gov Agencies" },
       { icon: ChartLineUpIcon, value: "~60%", label: "Defects Reduced" },
     ],
 
     summary:
-      "Real-time monitoring platform that unifies thousands of live camera feeds into a single operational system for continuous surveillance, incident tracking, and real-time response across multiple government agencies.",
+      "Real-time monitoring platform that unifies thousands of live camera feeds into a single operational system for continuous surveillance and incident tracking across multiple government agencies.",
 
     fullSummary: "",
     mainAchievement: "",
@@ -236,11 +236,17 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["NestJS", "PostgreSQL", "Redis"],
+        technologies: ["NestJS", "TypeORM", "BullMQ", "PostgreSQL", "Redis"],
       },
       {
-        groupLabel: "Deployment",
-        technologies: ["Docker", "Nginx", "GitHub Actions"],
+        groupLabel: "Deployment & Infra",
+        technologies: [
+          "Lerna",
+          "Docker",
+          "Nginx",
+          "Cloudflare",
+          "GitHub Actions",
+        ],
       },
     ],
 
@@ -256,13 +262,13 @@ export const projects: Project[] = [
   {
     id: "digital-advisor",
     name: "Digital Advisor Platform",
-    thumbnailImage: "/projects/digital-advisor.png",
+    thumbnailImage: "/projects/dap/dap-00.png",
     targetPlatform: "Web",
     industrySectors: ["Fintech", "Enterprise"],
 
-    role: "Frontend Engineer",
-    teamSize: "3-person team",
-    duration: "2022 · 9 mos",
+    role: "Frontend Developer",
+    teamSize: "5-person team",
+    duration: "Feb 2022 – Sep 2022 · 8 mos",
     ownership:
       "Built structured onboarding system replacing manual compliance workflows",
 
@@ -291,8 +297,8 @@ export const projects: Project[] = [
         technologies: ["AWS AppSync", "GraphQL"],
       },
       {
-        groupLabel: "Deployment",
-        technologies: ["AWS Amplify"],
+        groupLabel: "Deployment & Infra",
+        technologies: ["AWS Amplify", "Nx Monorepo"],
       },
     ],
 
@@ -308,7 +314,7 @@ export const projects: Project[] = [
   {
     id: "b2b-portal",
     name: "B2B Supplier Portal",
-    thumbnailImage: "/projects/b2b.png",
+    thumbnailImage: "/projects/b2b/b2b-00.png",
     targetPlatform: "Web",
     industrySectors: ["Enterprise", "Supply Chain"],
 
@@ -359,7 +365,7 @@ export const projects: Project[] = [
   {
     id: "onenergy-mobile",
     name: "ONenergy Mobile",
-    thumbnailImage: "/projects/onenergy.png",
+    thumbnailImage: "/projects/onenergy-mobile/onenergy-mobile-00.png",
     targetPlatform: "Mobile",
     industrySectors: ["CleanTech", "IoT"],
 
@@ -408,7 +414,7 @@ export const projects: Project[] = [
   {
     id: "onenergy-web",
     name: "ONenergy Web Platform",
-    thumbnailImage: "/projects/onenergy-web.png",
+    thumbnailImage: "/projects/onenergy-web/onenergy-web-00.png",
     targetPlatform: "Web",
     industrySectors: ["CleanTech", "IoT"],
 
@@ -460,7 +466,7 @@ export const projects: Project[] = [
   {
     id: "smu-portal",
     name: "SMU Research Portal",
-    thumbnailImage: "/projects/smu.png",
+    thumbnailImage: "/projects/smu/smu-00.png",
     targetPlatform: "Web",
     industrySectors: ["Education", "Data"],
 
@@ -512,7 +518,7 @@ export const projects: Project[] = [
   {
     id: "collegedao",
     name: "CollegeDAO Platform",
-    thumbnailImage: "/projects/collegedao.png",
+    thumbnailImage: "/projects/collegedao/collegedao-00.png",
     targetPlatform: "Web",
     industrySectors: ["Web3", "Community"],
 
@@ -742,5 +748,32 @@ export const EXPERIENCE: ExperienceItemType[] = [
       },
     ],
     isCurrentEmployer: false,
+  },
+]
+
+export const EDUCATION: ExperienceItemType[] = [
+  {
+    id: "university-of-greenwich",
+    companyName: "University of Greenwich",
+    companyLogo: "/universities/uog.jpg",
+    positions: [
+      {
+        id: "bsc-greenwich",
+        title: "Bachelor of Science (BSc)",
+        employmentPeriod: { start: "06.2024", end: "05.2025" },
+      },
+    ],
+  },
+  {
+    id: "university-of-technology-yatanarpon",
+    companyName: "University of Technology (Yatanarpon Cyber City)",
+    companyLogo: "/universities/utycc.jpg",
+    positions: [
+      {
+        id: "be-yatanarpon",
+        title: "Bachelor of Engineering, Information Technology",
+        employmentPeriod: { start: "12.2014", end: "03.2019" },
+      },
+    ],
   },
 ]

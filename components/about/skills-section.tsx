@@ -46,9 +46,9 @@ const categories: Category[] = [
   {
     label: "Frontend & Mobile",
     icon: DeviceMobileIcon,
-    title: "Pixel-Perfect, Cross-Platform",
+    title: "Frontend Architecture & State Strategy",
     description:
-      "Responsive web apps and cross-platform mobile, built for consistent quality across every screen and device.",
+      "Driving frontend direction across web and mobile, shaping UI architecture, state, and data flow so interfaces remain consistent, performant, and easy to evolve as complexity increases.",
     skills: [
       { label: "React", icon: "devicon-react-original colored" },
       { label: "React Native", icon: "devicon-react-original colored" },
@@ -63,9 +63,9 @@ const categories: Category[] = [
   {
     label: "Backend Systems",
     icon: HardDrivesIcon,
-    title: "APIs That Scale Under Pressure",
+    title: "API, Data & Service Architecture",
     description:
-      "Production backends handling thousands of concurrent users, from REST and GraphQL to real-time data pipelines.",
+      "Designing backend systems, defining APIs, data models, and service boundaries to maintain data integrity, ensure reliable request handling, and sustain performance as load and complexity grow.",
     skills: [
       { label: "Node.js", icon: "devicon-nodejs-plain colored" },
       { label: "Express.js", icon: "devicon-express-original colored" },
@@ -84,9 +84,9 @@ const categories: Category[] = [
   {
     label: "Engineering & Infrastructure",
     icon: GearIcon,
-    title: "Ship Fast. Break Nothing.",
+    title: "Infrastructure, Delivery & Production Systems",
     description:
-      "CI/CD pipelines, containerised deployments, and automated testing so every release is confident and production-ready.",
+      "Establishing delivery and production practices, managing CI/CD, testing, and deployments to reduce failures, maintain system stability, and support continuous change at scale.",
     skills: [
       { label: "Docker", icon: "devicon-docker-plain colored" },
       { label: "GitHub Actions", icon: "devicon-github-original colored" },
