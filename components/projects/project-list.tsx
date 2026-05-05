@@ -124,7 +124,7 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                           key={group.groupLabel}
                           className="flex items-baseline gap-2"
                         >
-                          <span className="w-16 shrink-0 text-[10px] font-semibold text-muted-foreground/80">
+                          <span className="w-20 shrink-0 text-[10px] font-semibold text-muted-foreground/80">
                             {group.groupLabel}
                           </span>
                           <span className="shrink-0 text-[9px] text-muted-foreground/80">

@@ -33,7 +33,7 @@ export interface EngineeringDecision {
 }
 
 export interface TechnologyGroup {
-  groupLabel: "Frontend" | "Backend" | "Deployment" | "Deployment & Infra"
+  groupLabel: "Frontend" | "Backend" | "Infrastructure"
   technologies: string[]
 }
 
@@ -113,6 +113,7 @@ export const projects: Project[] = [
           "NativeWind",
           "React Query",
           "Zustand",
+          "REST API",
         ],
       },
       {
@@ -120,7 +121,7 @@ export const projects: Project[] = [
         technologies: ["FastAPI", "Firebase"],
       },
       {
-        groupLabel: "Deployment",
+        groupLabel: "Infrastructure",
         technologies: ["EAS", "GitHub Actions"],
       },
     ],
@@ -175,10 +176,10 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["Node.js", "Express", "GraphQL", "Stripe"],
+        technologies: ["Node.js", "Express.js", "GraphQL API", "Stripe"],
       },
       {
-        groupLabel: "Deployment",
+        groupLabel: "Infrastructure",
         technologies: ["EAS", "GitHub Actions"],
       },
     ],
@@ -228,14 +229,21 @@ export const projects: Project[] = [
           "Redux Toolkit",
           "RTK Query",
           "Material UI",
+          "REST API",
         ],
       },
       {
         groupLabel: "Backend",
-        technologies: ["NestJS", "TypeORM", "BullMQ", "PostgreSQL", "Redis"],
+        technologies: [
+          "Node.js",
+          "Express.js",
+          "BullMQ",
+          "PostgreSQL",
+          "Redis",
+        ],
       },
       {
-        groupLabel: "Deployment & Infra",
+        groupLabel: "Infrastructure",
         technologies: [
           "Lerna",
           "Docker",
@@ -290,10 +298,10 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["AWS AppSync", "GraphQL"],
+        technologies: ["AWS AppSync", "GraphQL API"],
       },
       {
-        groupLabel: "Deployment & Infra",
+        groupLabel: "Infrastructure",
         technologies: ["AWS Amplify", "Nx Monorepo"],
       },
     ],
@@ -341,10 +349,16 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["Express.js", "GraphQL", "Strapi", "MySQL"],
+        technologies: [
+          "Node.js",
+          "Express.js",
+          "GraphQL API",
+          "Strapi CMS",
+          "MySQL",
+        ],
       },
       {
-        groupLabel: "Deployment",
+        groupLabel: "Infrastructure",
         technologies: ["AWS EC2", "AWS S3"],
       },
     ],
@@ -395,11 +409,15 @@ export const projects: Project[] = [
           "Expo",
           "JavaScript",
           "Zustand",
-          "GraphQL API",
+          "Apollo Client",
         ],
       },
       {
-        groupLabel: "Deployment",
+        groupLabel: "Backend",
+        technologies: ["GraphQL API"],
+      },
+      {
+        groupLabel: "Infrastructure",
         technologies: ["EAS"],
       },
     ],
@@ -448,10 +466,10 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["Express.js", "GraphQL", "Node.js"],
+        technologies: ["Node.js", "Express.js", "GraphQL API", "PostgreSQL"],
       },
       {
-        groupLabel: "Deployment",
+        groupLabel: "Infrastructure",
         technologies: ["Docker", "GitHub Actions", "Vercel"],
       },
     ],
@@ -500,10 +518,10 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["Strapi CMS", "GraphQL", "Node.js"],
+        technologies: ["Node.js", "Express.js", "Strapi CMS", "GraphQL API"],
       },
       {
-        groupLabel: "Deployment",
+        groupLabel: "Infrastructure",
         technologies: ["Docker", "AWS S3", "GitHub Actions"],
       },
     ],
@@ -558,10 +576,10 @@ export const projects: Project[] = [
       },
       {
         groupLabel: "Backend",
-        technologies: ["GraphQL", "Strapi CMS"],
+        technologies: ["GraphQL API", "Strapi CMS"],
       },
       {
-        groupLabel: "Deployment",
+        groupLabel: "Infrastructure",
         technologies: ["Vercel", "Docker", "GitHub Actions"],
       },
     ],
@@ -607,6 +625,7 @@ export const EXPERIENCE: ExperienceItemType[] = [
           "NativeWind",
           "Zustand",
           "React Query",
+          "REST API",
           "Firebase",
           "Expo",
           "EAS",
@@ -652,8 +671,9 @@ export const EXPERIENCE: ExperienceItemType[] = [
           "React Native",
           "Redux Toolkit",
           "RTK Query",
+          "REST API",
           "WebSockets",
-          "GraphQL",
+          "GraphQL API",
           "PostgreSQL",
           "Redis",
           "Lerna",
@@ -683,7 +703,7 @@ export const EXPERIENCE: ExperienceItemType[] = [
           "Next.js",
           "React Native",
           "TypeScript",
-          "GraphQL",
+          "GraphQL API",
           "Express.js",
           "Zustand",
           "PostgreSQL",
@@ -723,6 +743,7 @@ export const EXPERIENCE: ExperienceItemType[] = [
           "Tailwind CSS",
           "Node.js",
           "Express.js",
+          "REST API",
           "MongoDB",
           "Solana Wallet Adapter",
           "Web3",
