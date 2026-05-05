@@ -1,6 +1,5 @@
 "use client"
 import { ExperienceItemType } from "@/components/ui/work-experience"
-import { CodeXmlIcon } from "lucide-react"
 import type { Icon } from "@phosphor-icons/react"
 import {
   UsersThreeIcon,
@@ -14,10 +13,6 @@ import {
   UsersFourIcon,
   CheckCircleIcon,
   TreeStructureIcon,
-  HouseLineIcon,
-  DeviceMobileIcon,
-  BookOpenIcon,
-  GlobeIcon,
 } from "@phosphor-icons/react"
 
 export interface ImpactMetric {
@@ -319,8 +314,8 @@ export const projects: Project[] = [
     industrySectors: ["Enterprise", "Supply Chain"],
 
     role: "Full-Stack Engineer",
-    teamSize: "Solo",
-    duration: "2021 – 2022 · 8 mos",
+    teamSize: "10-person team",
+    duration: "Aug 2022 – Jun 2023 · 10 mos",
     ownership:
       "Led full-stack rebuild of legacy procurement system into modern GraphQL platform",
 
@@ -369,9 +364,9 @@ export const projects: Project[] = [
     targetPlatform: "Mobile",
     industrySectors: ["CleanTech", "IoT"],
 
-    role: "Mobile Engineer",
-    teamSize: "Solo",
-    duration: "7 months - 2022",
+    role: "Full-stack Engineer",
+    teamSize: "6-person team",
+    duration: "May 2024 - Nov 2024 · 7 months",
     ownership:
       "Built real-time mobile energy monitoring experience for household appliance-level tracking",
 
@@ -419,8 +414,8 @@ export const projects: Project[] = [
     industrySectors: ["CleanTech", "IoT"],
 
     role: "Full-stack Engineer",
-    teamSize: "Solo",
-    duration: "7 months - 2022",
+    teamSize: "6-person team",
+    duration: "May 2024 - Nov 2024 · 7 months",
     ownership:
       "Built full-stack real-time energy analytics platform for IoT data visualization and processing",
 
@@ -470,9 +465,9 @@ export const projects: Project[] = [
     targetPlatform: "Web",
     industrySectors: ["Education", "Data"],
 
-    role: "Frontend Engineer",
-    teamSize: "Solo",
-    duration: "6 months - 2021",
+    role: "Full-stack Engineer",
+    teamSize: "4-person team",
+    duration: "Jul 2024 – Nov 2024 · 4 mos",
     ownership:
       "Built automated academic data pipeline for publication and citation synchronization",
 
@@ -522,9 +517,9 @@ export const projects: Project[] = [
     targetPlatform: "Web",
     industrySectors: ["Web3", "Community"],
 
-    role: "Frontend Engineer",
-    teamSize: "Solo",
-    duration: "5 months - 2022",
+    role: "Full-stack Engineer",
+    teamSize: "4-person team",
+    duration: "May 2023 – Nov 2023 · 6 mos",
     ownership:
       "Built scalable Web3 platform connecting global university blockchain communities",
 
