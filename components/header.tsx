@@ -59,7 +59,7 @@ export function Header() {
   }, [open])
 
   return (
-    <header className="sticky top-0 z-50 flex w-full justify-center px-4 pt-4 pb-2">
+    <header className="sticky top-0 z-50 flex w-full justify-center px-3 pt-4 pb-2">
       <nav
         className={cn(
           "flex h-12 w-full max-w-5xl items-center justify-between gap-4 rounded-full border bg-background/80 px-2 backdrop-blur-xl transition-all duration-300 supports-[backdrop-filter]:bg-background/60",

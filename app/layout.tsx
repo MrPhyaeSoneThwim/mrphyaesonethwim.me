@@ -157,7 +157,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <Header />
-          <main className="mx-auto w-full max-w-5xl px-4 sm:px-6">
+          <main className="mx-auto w-full max-w-5xl px-3 sm:px-6">
             {children}
           </main>
           <Footer />

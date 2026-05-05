@@ -477,7 +477,7 @@ export const projects: Project[] = [
       "Built automated academic data pipeline for publication and citation synchronization",
 
     isPrivate: false,
-    externalLink: "https://smu.oneberryhub.com",
+    externalLink: "https://smu.oneberryhub.com/login",
 
     impactMetrics: [
       { icon: CheckCircleIcon, value: "14,798", label: "Publications Managed" },
