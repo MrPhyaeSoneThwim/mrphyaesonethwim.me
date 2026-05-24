@@ -1,7 +1,6 @@
 import type { Metadata } from "next"
 import { ProjectFilter } from "@/components/projects/project-filter"
 import { ProjectsHeader } from "@/components/projects/projects-header"
-import { projects } from "@/lib/constant"
 
 export const metadata: Metadata = {
   title: "Projects",
@@ -20,7 +19,7 @@ export default function ProjectsPage() {
     <div className="py-8 md:py-14 lg:py-16">
       <ProjectsHeader />
 
-      <ProjectFilter projects={projects} />
+      <ProjectFilter />
     </div>
   )
 }

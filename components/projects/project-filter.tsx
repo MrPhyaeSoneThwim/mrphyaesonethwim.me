@@ -2,11 +2,11 @@
 
 import * as React from "react"
 import { motion } from "motion/react"
-import { type Project } from "@/lib/constant"
+import { projects } from "@/lib/constant"
 import { ProjectList } from "@/components/projects/project-list"
 import { cn } from "@/lib/utils"
 
-export function ProjectFilter({ projects }: { projects: Project[] }) {
+export function ProjectFilter() {
   const [activeCategory, setActiveCategory] = React.useState("All")
 
   const categories = React.useMemo(() => {
@@ -20,7 +20,7 @@ export function ProjectFilter({ projects }: { projects: Project[] }) {
             ? projects.filter((p) => p.targetPlatform === name).length
             : projects.filter((p) => p.industrySectors.includes(name)).length,
     }))
-  }, [projects])
+  }, [])
 
   const filtered = React.useMemo(
     () =>
@@ -31,7 +31,7 @@ export function ProjectFilter({ projects }: { projects: Project[] }) {
               ? p.targetPlatform === activeCategory
               : p.industrySectors.includes(activeCategory)
           ),
-    [projects, activeCategory]
+    [activeCategory]
   )
 
   return (

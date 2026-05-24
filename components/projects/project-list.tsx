@@ -2,25 +2,51 @@
 
 import * as React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import { motion } from "motion/react"
-import { ArrowUpRightIcon } from "@phosphor-icons/react"
+import type { Icon } from "@phosphor-icons/react"
+import {
+  ArrowUpRightIcon,
+  UsersThreeIcon,
+  BankIcon,
+  ChartLineUpIcon,
+  ChatCircleIcon,
+  DatabaseIcon,
+  GitBranchIcon,
+  ShoppingCartIcon,
+  ClockIcon,
+  LightningIcon,
+  VideoCameraSlashIcon,
+  ShieldCheckIcon,
+  CheckCircleIcon,
+  BellIcon,
+  AppStoreLogoIcon,
+  GooglePlayLogoIcon,
+} from "@phosphor-icons/react"
+
+const RESULT_ICON_MAP: Record<string, Icon> = {
+  Users: UsersThreeIcon,
+  Landmark: BankIcon,
+  TrendingUp: ChartLineUpIcon,
+  MessageCircle: ChatCircleIcon,
+  Database: DatabaseIcon,
+  GitBranch: GitBranchIcon,
+  ShoppingCart: ShoppingCartIcon,
+  Clock: ClockIcon,
+  Zap: LightningIcon,
+  Video: VideoCameraSlashIcon,
+  ShieldCheck: ShieldCheckIcon,
+  CheckCircle: CheckCircleIcon,
+  Bell: BellIcon,
+}
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { cn } from "@/lib/utils"
 import { type Project } from "@/lib/constant"
-import { ProjectCaseStudyDialog } from "@/components/projects/project-case-study-dialog"
 
 export function ProjectList({ projects }: { projects: Project[] }) {
-  const [dialogOpen, setDialogOpen] = React.useState(false)
-  const [activeIndex, setActiveIndex] = React.useState(0)
-
-  function openCaseStudy(index: number) {
-    setActiveIndex(index)
-    setDialogOpen(true)
-  }
-
   return (
     <>
       <div className="mb-4 flex flex-col gap-2 md:mb-5 md:gap-3">
@@ -67,93 +93,157 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                     </div>
                   </div>
                   <div className="flex flex-wrap items-center gap-x-1.5 text-[11px] text-muted-foreground/80">
-                    {project.role && <span>{project.role}</span>}
-                    {project.teamSize && (
+                    {project.hero.meta.role && (
+                      <span>{project.hero.meta.role}</span>
+                    )}
+                    {project.hero.meta.teamSize && (
                       <>
                         <span className="opacity-30">·</span>
-                        <span>{project.teamSize}</span>
+                        <span>{project.hero.meta.teamSize}</span>
                       </>
                     )}
-                    {project.duration && (
+                    {project.hero.meta.period && (
                       <>
                         <span className="opacity-30">·</span>
-                        <span>{project.duration}</span>
+                        <span>{project.hero.meta.period}</span>
+                      </>
+                    )}
+                    {project.hero.meta.duration && (
+                      <>
+                        <span className="opacity-30">·</span>
+                        <span>{project.hero.meta.duration}</span>
                       </>
                     )}
                   </div>
                 </div>
 
-                <div className="grid grid-cols-1 gap-5 md:grid-cols-[3fr_2fr] md:items-start md:gap-8">
+                <div className="grid grid-cols-1 gap-5 md:grid-cols-[3fr_2fr] md:items-stretch md:gap-8">
                   {/* ── Left: content details ── */}
-                  <div className="order-2 flex flex-col gap-4 md:order-1">
+                  <div className="order-2 flex flex-col gap-5 md:order-1">
                     {/* Description */}
                     <p className="text-sm leading-relaxed text-foreground/80">
-                      {project.summary}
+                      {project.hero.summary}
                     </p>
 
                     {/* Metrics */}
-                    <div className="flex items-center">
-                      {project.impactMetrics.map((m, i) => (
-                        <React.Fragment key={m.label}>
-                          {i > 0 && (
-                            <div className="mx-3 h-7 w-px shrink-0 bg-border md:mx-4 md:h-8" />
-                          )}
-                          <div className="flex items-start gap-2">
-                            <m.icon
-                              size={15}
-                              weight="duotone"
-                              className="shrink-0 text-primary/80"
-                            />
-                            <div className="flex flex-col">
-                              <span className="text-[17px] leading-none font-bold tracking-tight md:text-[18px]">
-                                {m.value}
-                              </span>
-                              <span className="mt-0.5 text-[10px] leading-snug text-muted-foreground">
-                                {m.label}
-                              </span>
+                    <div className="flex items-start">
+                      {project.results.slice(0, 3).map((r, i) => {
+                        const Icon = RESULT_ICON_MAP[r.icon] ?? LightningIcon
+                        return (
+                          <React.Fragment key={r.label}>
+                            {i > 0 && (
+                              <div className="mx-5 h-10 w-px shrink-0 bg-muted md:mx-6" />
+                            )}
+                            <div className="flex items-start gap-2">
+                              <Icon
+                                size={14}
+                                className="mt-0.5 shrink-0 text-primary/80"
+                              />
+                              <div className="flex flex-col">
+                                <span className="text-[17px] leading-none font-bold tracking-tight md:text-[18px]">
+                                  {r.value}
+                                </span>
+                                <span className="mt-0.5 text-[10px] leading-snug text-muted-foreground">
+                                  {r.label}
+                                </span>
+                              </div>
                             </div>
-                          </div>
-                        </React.Fragment>
-                      ))}
+                          </React.Fragment>
+                        )
+                      })}
                     </div>
 
                     {/* Tech stack */}
                     <div className="flex flex-col gap-1.5">
-                      {project.technologyStack.map((group) => (
-                        <div
-                          key={group.groupLabel}
-                          className="flex items-baseline gap-2"
-                        >
-                          <span className="w-20 shrink-0 text-[10px] font-semibold text-muted-foreground/80">
-                            {group.groupLabel}
-                          </span>
-                          <span className="shrink-0 text-[9px] text-muted-foreground/80">
-                            •
-                          </span>
-                          <span className="text-[11px] leading-relaxed text-muted-foreground/80">
-                            {group.technologies.join(", ")}
-                          </span>
-                        </div>
-                      ))}
+                      <div className="flex flex-wrap gap-1.5">
+                        {project.coreTechStack.map((tech) => (
+                          <Badge
+                            key={tech}
+                            variant="secondary"
+                            className="h-auto rounded-sm px-2 py-1 text-xs"
+                          >
+                            {tech}
+                          </Badge>
+                        ))}
+                      </div>
                     </div>
 
                     {/* CTAs */}
-                    <div className="flex flex-wrap items-center gap-3 pt-0">
-                      {/* <Button className="text-xs" onClick={() => openCaseStudy(index)}>
-                        View Case Study
-                        <ArrowRightIcon size={12} />
-                      </Button> */}
-                      {project.externalLink && (
-                        <Button className="text-xs" asChild>
-                          <a
-                            href={project.externalLink}
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          >
-                            {project.isPrivate ? "Product Site" : "Live Demo"}
-                            <ArrowUpRightIcon size={12} />
-                          </a>
-                        </Button>
+                    <div className="flex flex-wrap items-center gap-3 md:mt-auto">
+                      {project.hasCaseStudy && (
+                        <Link
+                          href={`/projects/${project.id}`}
+                          className="text-xs font-medium text-primary hover:underline"
+                        >
+                          View Case Study
+                        </Link>
+                      )}
+                      {project.demoLinks ? (
+                        <>
+                          {project.demoLinks.web && (
+                            <Button className="text-xs" asChild>
+                              <a
+                                href={project.demoLinks.web}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                              >
+                                {project.isPrivate
+                                  ? "Product Site"
+                                  : "Live Demo"}
+                                <ArrowUpRightIcon size={12} />
+                              </a>
+                            </Button>
+                          )}
+                          {(project.demoLinks.ios ||
+                            project.demoLinks.android) && (
+                            <>
+                              <div className="h-4 w-px bg-border" />
+                              <div className="flex items-center gap-3">
+                                {project.demoLinks.ios && (
+                                  <a
+                                    href={project.demoLinks.ios}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                                  >
+                                    <AppStoreLogoIcon size={13} />
+                                    App Store
+                                  </a>
+                                )}
+                                {project.demoLinks.ios &&
+                                  project.demoLinks.android && (
+                                    <span className="text-[10px] text-border">
+                                      |
+                                    </span>
+                                  )}
+                                {project.demoLinks.android && (
+                                  <a
+                                    href={project.demoLinks.android}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                                  >
+                                    <GooglePlayLogoIcon size={13} />
+                                    Google Play
+                                  </a>
+                                )}
+                              </div>
+                            </>
+                          )}
+                        </>
+                      ) : (
+                        project.externalLink && (
+                          <Button className="text-xs" asChild>
+                            <a
+                              href={project.externalLink}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
+                              {project.isPrivate ? "Product Site" : "Live Demo"}
+                              <ArrowUpRightIcon size={12} />
+                            </a>
+                          </Button>
+                        )
                       )}
                     </div>
                   </div>
@@ -180,14 +270,6 @@ export function ProjectList({ projects }: { projects: Project[] }) {
           </motion.div>
         ))}
       </div>
-
-      <ProjectCaseStudyDialog
-        projects={projects}
-        open={dialogOpen}
-        onOpenChange={setDialogOpen}
-        activeIndex={activeIndex}
-        onNavigate={setActiveIndex}
-      />
     </>
   )
 }
