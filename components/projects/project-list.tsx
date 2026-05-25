@@ -7,6 +7,7 @@ import { motion } from "motion/react"
 import type { Icon } from "@phosphor-icons/react"
 import {
   ArrowUpRightIcon,
+  GlobeIcon,
   UsersThreeIcon,
   BankIcon,
   ChartLineUpIcon,
@@ -40,7 +41,6 @@ const RESULT_ICON_MAP: Record<string, Icon> = {
   Bell: BellIcon,
 }
 import { Badge } from "@/components/ui/badge"
-import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import { cn } from "@/lib/utils"
@@ -181,68 +181,94 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                       {project.demoLinks ? (
                         <>
                           {project.demoLinks.web && (
-                            <Button className="text-xs" asChild>
-                              <a
-                                href={project.demoLinks.web}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                              >
-                                {project.isPrivate
-                                  ? "Product Site"
-                                  : "Live Demo"}
-                                <ArrowUpRightIcon size={12} />
-                              </a>
-                            </Button>
+                            <>
+                              {project.hasCaseStudy && (
+                                <div className="h-4 w-px bg-border" />
+                              )}
+                              {project.isPrivate ? (
+                                <a
+                                  href={project.demoLinks.web}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+                                >
+                                  Product Site
+                                  <ArrowUpRightIcon size={11} />
+                                </a>
+                              ) : (
+                                <a
+                                  href={project.demoLinks.web}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                                >
+                                  <GlobeIcon size={13} />
+                                  Live Demo
+                                </a>
+                              )}
+                            </>
                           )}
                           {(project.demoLinks.ios ||
                             project.demoLinks.android) && (
                             <>
                               <div className="h-4 w-px bg-border" />
-                              <div className="flex items-center gap-3">
-                                {project.demoLinks.ios && (
-                                  <a
-                                    href={project.demoLinks.ios}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
-                                  >
-                                    <AppStoreLogoIcon size={13} />
-                                    App Store
-                                  </a>
+                              {project.demoLinks.ios && (
+                                <a
+                                  href={project.demoLinks.ios}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                                >
+                                  <AppStoreLogoIcon size={13} />
+                                  App Store
+                                </a>
+                              )}
+                              {project.demoLinks.ios &&
+                                project.demoLinks.android && (
+                                  <div className="h-4 w-px bg-border" />
                                 )}
-                                {project.demoLinks.ios &&
-                                  project.demoLinks.android && (
-                                    <span className="text-[10px] text-border">
-                                      |
-                                    </span>
-                                  )}
-                                {project.demoLinks.android && (
-                                  <a
-                                    href={project.demoLinks.android}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
-                                  >
-                                    <GooglePlayLogoIcon size={13} />
-                                    Google Play
-                                  </a>
-                                )}
-                              </div>
+                              {project.demoLinks.android && (
+                                <a
+                                  href={project.demoLinks.android}
+                                  target="_blank"
+                                  rel="noopener noreferrer"
+                                  className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                                >
+                                  <GooglePlayLogoIcon size={13} />
+                                  Google Play
+                                </a>
+                              )}
                             </>
                           )}
                         </>
                       ) : (
                         project.externalLink && (
-                          <Button className="text-xs" asChild>
-                            <a
-                              href={project.externalLink}
-                              target="_blank"
-                              rel="noopener noreferrer"
-                            >
-                              {project.isPrivate ? "Product Site" : "Live Demo"}
-                              <ArrowUpRightIcon size={12} />
-                            </a>
-                          </Button>
+                          <>
+                            {project.hasCaseStudy && (
+                              <div className="h-4 w-px bg-border" />
+                            )}
+                            {project.isPrivate ? (
+                              <a
+                                href={project.externalLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1 text-xs font-medium text-primary hover:underline"
+                              >
+                                Product Site
+                                <ArrowUpRightIcon size={11} />
+                              </a>
+                            ) : (
+                              <a
+                                href={project.externalLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-1.5 text-xs text-muted-foreground transition-colors hover:text-foreground"
+                              >
+                                <GlobeIcon size={13} />
+                                Live Demo
+                              </a>
+                            )}
+                          </>
                         )
                       )}
                     </div>

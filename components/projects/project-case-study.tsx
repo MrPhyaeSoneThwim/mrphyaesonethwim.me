@@ -43,7 +43,6 @@ import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import {
-  type CarouselApi,
   Carousel,
   CarouselContent,
   CarouselItem,
@@ -121,15 +120,6 @@ function SectionLabel({ children }: { children: React.ReactNode }) {
 // ── Main component ────────────────────────────────────────────────────────────
 
 export function ProjectCaseStudy({ id }: { id: string }) {
-  const [api, setApi] = React.useState<CarouselApi>()
-  const [current, setCurrent] = React.useState(0)
-
-  React.useEffect(() => {
-    if (!api) return
-    setCurrent(api.selectedScrollSnap())
-    api.on("select", () => setCurrent(api.selectedScrollSnap()))
-  }, [api])
-
   const index = projects.findIndex((p) => p.id === id)
   const project = projects[index]
   if (!project) return null
@@ -206,7 +196,7 @@ export function ProjectCaseStudy({ id }: { id: string }) {
 
       {/* ── Carousel ─────────────────────────────────────────────────────── */}
       <section className="mb-10">
-        <Carousel setApi={setApi} opts={{ align: "start" }} className="w-full">
+        <Carousel opts={{ align: "start" }} className="w-full">
           <CarouselContent className="items-stretch">
             {slides.map((slide, i) => (
               <CarouselItem key={i} className="flex flex-col lg:basis-1/2">
@@ -225,7 +215,7 @@ export function ProjectCaseStudy({ id }: { id: string }) {
                     />
                   </AspectRatio>
                   {slide.caption && (
-                    <p className="mt-2.5 text-xs font-medium text-foreground/80">
+                    <p className="mt-2.5 px-1 pb-0.5 text-xs font-medium text-foreground/80">
                       {slide.caption}
                     </p>
                   )}
@@ -234,22 +224,8 @@ export function ProjectCaseStudy({ id }: { id: string }) {
             ))}
           </CarouselContent>
           {slides.length > 1 && (
-            <div className="relative mt-3 grid grid-cols-[auto_1fr_auto] items-center gap-2 lg:flex lg:justify-end">
+            <div className="mt-3 flex justify-end gap-2">
               <CarouselPrevious className="static translate-x-0 translate-y-0 bg-card hover:bg-muted active:translate-y-0" />
-              <div className="flex items-center justify-center gap-1.5 lg:absolute lg:left-1/2 lg:-translate-x-1/2">
-                {slides.map((_, i) => (
-                  <button
-                    key={i}
-                    onClick={() => api?.scrollTo(i)}
-                    className={cn(
-                      "h-2 rounded-full transition-all duration-300",
-                      i === current
-                        ? "w-5 bg-primary"
-                        : "w-2 bg-muted-foreground/30 hover:bg-muted-foreground/50"
-                    )}
-                  />
-                ))}
-              </div>
               <CarouselNext className="static translate-x-0 translate-y-0 bg-card hover:bg-muted active:translate-y-0" />
             </div>
           )}

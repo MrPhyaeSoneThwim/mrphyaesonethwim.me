@@ -13,11 +13,6 @@ export interface Result {
   description: string
 }
 
-export interface CoverImage {
-  src: string
-  alt: string
-}
-
 export interface Visual {
   src: string
   caption: string
@@ -51,8 +46,6 @@ export interface Project {
       platform: "Web" | "Mobile"
     }
   }
-
-  coverImages: CoverImage[]
 
   challenge: {
     prose: string
@@ -118,8 +111,6 @@ export const projects: Project[] = [
       },
     },
 
-    coverImages: [],
-
     challenge: {
       prose:
         "Most SME owners managed business finances using notebooks or spreadsheets with no real-time visibility into cash flow, expenses, debts, or overall business performance. We needed to build a production-ready fintech platform from scratch that could simplify bookkeeping, provide actionable financial insights, support AI-assisted business guidance, and work reliably in low-connectivity environments for everyday business operations.",
@@ -129,62 +120,56 @@ export const projects: Project[] = [
 
     whatIDid: {
       intro:
-        "I led frontend architecture and delivery for the DayTwo mobile app, owning the mobile system design, AI-powered advisor experience, offline-first workflows, and iOS and Android production releases. I worked closely with backend engineers, designers, and product owners to deliver fintech tools used by 800+ SMEs.",
+        "I led frontend architecture and mobile delivery for the DayTwo app, owning system design, AI-driven experiences, offline-first reliability, and end-to-end iOS/Android releases. I worked closely with backend engineers, designers, and product owners to ship a fintech platform used by 800+ SMEs.",
 
       contributions: [
         {
           icon: "Layers",
-          title: "Mobile architecture",
+          title: "Core mobile foundation",
           detail:
-            "Designed scalable mobile architecture using React Native, TypeScript, Zustand, and TanStack Query, establishing reusable patterns for state management, API handling, and shared UI systems across the product.",
+            "Defined the React Native architecture using TypeScript, Zustand, and TanStack Query, establishing predictable data flow, reusable state patterns, and UI structure that allowed the product to scale without rework.",
         },
+
         {
           icon: "BarChart2",
-          title: "Core financial system",
+          title: "Financial system core",
           detail:
-            "Built the end-to-end financial workflows including cash tracking, sales and expense recording, debt tracking, lending flows, and real-time business insights covering cash position, income, expenses, and cash buffer goals.",
+            "Built the main financial system covering cash tracking, sales, expenses, debt, and lending workflows, forming the primary daily tool SMEs rely on to understand cash flow and business performance.",
         },
+
         {
           icon: "Camera",
-          title: "OCR transaction entry",
+          title: "Fast transaction capture",
           detail:
-            "Implemented AI-assisted OCR workflows allowing users to snap photos of receipts and automatically extract transaction data into structured financial records.",
+            "Shipped OCR-based receipt scanning alongside optimized manual entry flows, reducing bookkeeping effort by converting receipts into structured transactions within seconds.",
         },
+
         {
           icon: "MessageCircle",
-          title: "AI business advisor system",
+          title: "AI advisor experience",
           detail:
-            "Delivered a production AI chat system powered by LLM APIs, focusing on structured response rendering, streaming UX, retry handling, and transforming raw model outputs into readable financial guidance for business decision-making.",
+            "Delivered an LLM-powered chat experience with streaming responses and structured output rendering, turning raw model output into clear, actionable financial guidance for decision-making.",
         },
+
         {
           icon: "Database",
-          title: "Offline-first system",
+          title: "Offline-first reliability",
           detail:
-            "Designed offline-first workflows using Supabase to ensure reliable transaction recording and data synchronization in low and unstable connectivity environments.",
+            "Engineered offline-first workflows with local persistence and background sync via Supabase, ensuring users could reliably record and review financial data even without stable connectivity.",
         },
-        {
-          icon: "Globe",
-          title: "Multilingual support",
-          detail:
-            "Implemented multi-language support and localization features to improve accessibility for SME users across different regions and languages.",
-        },
+
         {
           icon: "Bell",
-          title: "Push notifications",
+          title: "Real-time financial alerts",
           detail:
-            "Implemented Firebase push notifications for lending updates, repayment reminders, and lifecycle events across borrower and lender workflows.",
+            "Implemented Firebase push notifications for repayments, lending updates, and financial events, keeping users informed of critical business activities in real time.",
         },
+
         {
           icon: "GitBranch",
-          title: "Release automation pipeline",
+          title: "Release & engineering ownership",
           detail:
-            "Automated iOS and Android builds, deployments, and release workflows using EAS and GitHub Actions, enabling faster iteration cycles and reliable hotfix delivery.",
-        },
-        {
-          icon: "Users",
-          title: "User and product collaboration",
-          detail:
-            "Worked directly with SME users, designers, and product owners through training sessions, usability testing, and design sprints to refine workflows and validate product decisions.",
+            "Owned iOS and Android release pipelines using EAS and GitHub Actions, ensuring cross-platform consistency while enforcing engineering standards across a 5-person team to maintain stable and predictable delivery.",
         },
       ],
     },
@@ -291,22 +276,22 @@ export const projects: Project[] = [
       {
         lead: "Frontend architecture drives product velocity",
         detail:
-          "Early architectural decisions determine how quickly features can be shipped and how sustainably the codebase evolves as complexity increases.",
+          "Early architectural decisions determine feature delivery speed and how sustainably the codebase scales as complexity grows.",
       },
       {
         lead: "AI UX is as important as AI capability",
         detail:
-          "AI features only succeed in production when outputs are structured, readable, and resilient to latency through streaming, retries, and clear loading states.",
+          "AI features only work in production when outputs are structured, readable, and resilient to latency through streaming, retries, and clear loading states.",
       },
       {
         lead: "Real user feedback exposes system gaps",
         detail:
-          "Direct interaction with SME users consistently revealed mismatches between assumed workflows and real-world usage patterns.",
+          "Direct interaction with SME users consistently revealed mismatches between assumed workflows and real usage patterns.",
       },
       {
         lead: "Automation is critical for delivery speed",
         detail:
-          "Automating build and release workflows reduced operational overhead and enabled faster, more reliable production iteration cycles.",
+          "Automating build and release workflows reduced operational overhead and enabled faster, more reliable iteration cycles.",
       },
       {
         lead: "Offline-first is a core product requirement",
@@ -369,12 +354,21 @@ export const projects: Project[] = [
     externalLink:
       "https://www.javisholdings.com/copy-of-emerging-digital-ecosystem-ne",
     isPrivate: true,
-    hasCaseStudy: false,
-    coreTechStack: [],
+    hasCaseStudy: true,
+
+    coreTechStack: [
+      "React Native",
+      "TypeScript",
+      "GraphQL",
+      "Node.js",
+      "Stripe",
+      "Mapbox",
+    ],
+
     hero: {
       title: "JAVIS Mobile Ordering App",
       summary:
-        "Mobile ordering app for beverage machines that enables users to discover nearby locations, customize drinks, and place instant pre-orders through a fast, real-time, location-aware ordering experience.",
+        "Cross-platform ordering platform for self-service beverage machines, enabling users to discover nearby machines, place real-time orders, and complete digital payments with a faster and more predictable ordering experience.",
       meta: {
         role: "Full Stack Developer",
         teamSize: "5-person team",
@@ -384,118 +378,234 @@ export const projects: Project[] = [
       },
     },
 
-    coverImages: [],
-
     challenge: {
       prose:
-        "Customers walked up to machines and paid with cash — with no way to pre-order, no inventory visibility, and no digital receipt. Operators had no data on which machines were running low or which locations were underperforming. The brief was to move the entire ordering flow to mobile without adding friction to an experience that already took under a minute.",
+        "Customers placed orders at beverage shops and self-service machines without visibility into availability or the ability to plan ahead, resulting in inconsistent and unpredictable ordering experiences across locations. We built a mobile ordering platform that introduced pre-ordering, real-time availability awareness, and digital payments, transforming a fragmented on-site process into a unified and reliable ordering experience.",
       pullQuote:
-        "Customers walked up to machines and paid with cash — with no idea if the drink they wanted was even in stock.",
+        "Customers had no way to know if nearby machines or shops had availability before arriving.",
     },
 
     whatIDid: {
       intro:
-        "JAVIS is a B2C mobile app that lets customers find nearby automated beverage machines on a live map, customize their order, and pay in under 30 seconds. I owned the full React Native client and contributed to the Node.js/GraphQL backend — building the real-time ordering pipeline from cart through Stripe payment confirmation.",
+        "Led full-stack engineering for the JAVIS mobile ordering platform, owning system design, real-time ordering logic, payment reliability, and end-to-end mobile delivery. Partnered closely with designers and operational stakeholders to translate real-world machine constraints into a reliable, production-grade ordering system across iOS and Android.",
+
       contributions: [
         {
-          icon: "Zap",
-          title: "Reduced ordering flow to under 5 taps",
+          icon: "Layers",
+          title: "System architecture ownership",
           detail:
-            "Redesigned the discovery-to-payment UX, cutting required interactions by 60% compared to the initial prototype. Combined Mapbox marker tap-to-order with optimistic cart updates for a near-instant feel.",
+            "Designed the end-to-end mobile and backend architecture, defining system structure, API interactions, state management, and data flow for ordering, payments, and real-time machine updates.",
         },
         {
-          icon: "Radio",
-          title: "Real-time machine availability via WebSocket",
+          icon: "ShoppingCart",
+          title: "Real-time ordering under machine constraints",
           detail:
-            "Integrated WebSocket subscriptions for live stock and machine status, preventing orders against out-of-stock or offline machines — a key source of failed orders in the beta.",
+            "Built ordering workflows tightly coupled with live machine state, handling edge cases such as stock drift, machine downtime, and unstable network conditions to ensure consistent checkout behavior.",
         },
         {
           icon: "CreditCard",
-          title: "Stripe payment flow with under 1% failure rate",
+          title: "Payment reliability & recovery flows",
           detail:
-            "Built the full Stripe React Native SDK integration with saved cards, payment failure recovery, and server-side receipt generation, achieving sub-1% payment failure in production.",
+            "Integrated Stripe payment flows with robust state management, retry logic, and recovery handling to ensure secure checkout even under partial failures or interrupted sessions.",
+        },
+        {
+          icon: "Map",
+          title: "Location-based discovery experience",
+          detail:
+            "Built location-based discovery flows using Mapbox, allowing users to find nearby self-service machines, check availability, and place orders based on real-world context.",
+        },
+        {
+          icon: "Zap",
+          title: "Ordering performance optimization",
+          detail:
+            "Optimized API interactions and streamlined ordering flows, reducing checkout time by ~50% through reduced network overhead, improved state handling, and UX simplification.",
+        },
+        {
+          icon: "GitBranch",
+          title: "Release engineering & CI/CD ownership",
+          detail:
+            "Owned mobile release pipelines using Expo, EAS, and GitHub Actions, ensuring stable iOS and Android deployments and consistent engineering workflows.",
+        },
+        {
+          icon: "Handshake",
+          title: "Stakeholder delivery & production handover",
+          detail:
+            "Led collaboration with design and operations stakeholders, followed by structured production handover including documentation, system walkthroughs, and deployment guidance.",
         },
       ],
     },
 
     technicalDecisions: [
       {
-        decision: "Mapbox over Google Maps for machine discovery",
+        decision: "Designed system around real-time ordering consistency",
         rationale:
-          "Mapbox gave us precise control over marker clustering and custom map styling needed to surface active machines clearly. It also paired better with the GraphQL geospatial queries powering machine proximity lookups.",
+          "Core complexity came from aligning user actions with rapidly changing machine availability, requiring strong consistency and recovery handling.",
       },
       {
-        decision: "GraphQL for the ordering API",
+        decision: "Built synchronization logic for live machine state",
         rationale:
-          "The ordering domain has deep nesting: machines → slots → products → customizations → pricing tiers. GraphQL let the mobile client fetch exactly what each screen needed, keeping payloads small on mobile connections.",
+          "Machine availability changed frequently, requiring real-time sync to prevent stale data and failed orders.",
+      },
+      {
+        decision: "Optimized checkout speed as a core product metric",
+        rationale:
+          "Ordering needed to outperform manual on-site interaction, making speed and simplicity critical to adoption.",
+      },
+      {
+        decision: "Used Mapbox for geolocation-based discovery",
+        rationale:
+          "Machine discovery depended on spatial context, requiring accurate location-based filtering and navigation.",
       },
     ],
-
-    visuals: [],
 
     results: [
       {
         icon: "ShoppingCart",
         value: "300+",
         label: "Daily Orders / Machine",
-        description: "Orders processed per machine at peak throughput",
+        description: "Supported high-volume self-service machine transactions",
       },
       {
         icon: "Clock",
         value: "~50%",
         label: "Faster Ordering",
-        description: "vs. walk-up cash purchase before the app",
+        description:
+          "Reduced checkout time through UX and performance optimization",
       },
       {
         icon: "Users",
         value: "100+",
         label: "Concurrent Users",
-        description: "Simultaneous users with no performance degradation",
+        description: "Handled simultaneous real-time ordering activity",
+      },
+      {
+        icon: "CreditCard",
+        value: "Stripe",
+        label: "Payment Processing",
+        description: "Delivered secure and reliable mobile payment experiences",
+      },
+      {
+        icon: "RefreshCcw",
+        value: "Live Sync",
+        label: "Machine Availability",
+        description:
+          "Kept ordering state aligned with real-world machine status",
+      },
+      {
+        icon: "Rocket",
+        value: "Cross-platform",
+        label: "Production Delivery",
+        description: "Handled full iOS and Android release cycle workflow",
+      },
+    ],
+
+    visuals: [
+      {
+        src: "/projects/javis/javis-01.png",
+        caption:
+          "Machine discovery with live queue length, wait time, and distance",
+      },
+      {
+        src: "/projects/javis/javis-02.png",
+        caption: "Beverage menu with signature drinks and custom build options",
+      },
+      {
+        src: "/projects/javis/javis-03.png",
+        caption: "Checkout with order summary, pickup time, and Stripe payment",
+      },
+      {
+        src: "/projects/javis/javis-04.png",
+        caption:
+          "Order history with real-time status tracking across locations",
+      },
+      {
+        src: "/projects/javis/javis-05.png",
+        caption:
+          "Order detail with itemised receipt, coupon applied, and reorder",
+      },
+      {
+        src: "/projects/javis/javis-06.png",
+        caption: "User profile with JAVIS PAY wallet and bank card management",
+      },
+      {
+        src: "/projects/javis/javis-07.png",
+        caption: "Loyalty rewards with tier progression and redeemable coupons",
       },
     ],
 
     whatILearned: [
       {
-        lead: "Map UX is the product when location is the core feature.",
+        lead: "Edge cases matter most",
         detail:
-          "Mapbox gave us precise control over marker clustering and map styling that Google Maps couldn't match. Investing in the right mapping SDK early shaped every discovery interaction downstream.",
+          "Real usage showed mismatches between machine availability, ordering state, and payment status. I learned to design systems that handle failures, recovery, and inconsistencies instead of assuming everything works in a straight flow.",
       },
+
       {
-        lead: "GraphQL shines when your data model has deep nesting.",
+        lead: "Speed shapes user behavior",
         detail:
-          "The ordering domain had machines → slots → products → customizations → pricing tiers. GraphQL let the mobile client fetch exactly what each screen needed, keeping payloads small on mobile connections.",
+          "Even small delays in ordering and checkout reduced user satisfaction. This showed that performance and smooth flow matter more than adding extra features.",
+      },
+
+      {
+        lead: "Payments must be reliable",
+        detail:
+          "Payment flows need careful handling of retries and recovery to prevent failed or duplicate transactions. Reliability is critical to user trust.",
+      },
+
+      {
+        lead: "Real-world use breaks assumptions",
+        detail:
+          "Live machine behavior exposed cases that were not expected during design, requiring changes to ordering logic and availability handling.",
+      },
+
+      {
+        lead: "Team alignment is essential",
+        detail:
+          "Working closely with engineers, designers, and stakeholders helped align system design, user experience, and implementation, reducing misunderstandings and rework.",
+      },
+
+      {
+        lead: "Delivery affects product quality",
+        detail:
+          "Automated deployment and frequent releases improved stability and reduced issues in production, showing that delivery process is part of the product itself.",
       },
     ],
 
     sidebar: {
-      role: "Owned mobile ordering experience and real-time commerce flow",
+      role: "Led full-stack engineering and mobile ordering delivery for a real-time self-service machine ordering platform",
+
       technologyStack: [
         {
           groupLabel: "Frontend",
           technologies: [
             "React Native",
+            "TypeScript",
             "Expo",
-            "JavaScript",
-            "NativeWind",
-            "Mapbox",
+            "TanStack Query",
             "Zustand",
+            "Mapbox",
           ],
         },
         {
           groupLabel: "Backend",
-          technologies: ["Node.js", "Express.js", "GraphQL API", "Stripe"],
+          technologies: ["Node.js", "API services", "Strapi", "Stripe"],
         },
         {
           groupLabel: "Infrastructure",
-          technologies: ["EAS", "GitHub Actions"],
+          technologies: ["GitHub Actions", "CI/CD", "EAS Build"],
         },
       ],
+
       constraints: [
-        "Dual platform (iOS + Android) from day one",
-        "Stripe PCI compliance requirements",
-        "Dependency on physical beverage machine hardware APIs",
+        "Cross-platform mobile delivery",
+        "Real-time machine availability synchronization",
+        "Reliable payment processing under unstable conditions",
+        "Location-based ordering workflows",
       ],
-      collaborators: "2 backend engineers · 1 mobile co-developer · 1 designer",
+
+      collaborators:
+        "Backend engineers · Mobile developers · UI/UX designers · Operations stakeholders",
+
       cta: {
         label: "Product Site",
         url: "https://www.javisholdings.com/copy-of-emerging-digital-ecosystem-ne",
@@ -526,8 +636,6 @@ export const projects: Project[] = [
         platform: "Web",
       },
     },
-
-    coverImages: [],
 
     challenge: {
       prose:
@@ -683,8 +791,6 @@ export const projects: Project[] = [
       },
     },
 
-    coverImages: [],
-
     challenge: {
       prose:
         "AIA Singapore's 6,000+ advisors were filling paper KYC forms at client meetings, then manually re-entering the same data into compliance systems. A hard cutover date with no parallel-run period meant we had to replace the entire paper workflow on day one — with MAS-regulated compliance flows that could not go live with defects.",
@@ -814,8 +920,6 @@ export const projects: Project[] = [
         platform: "Web",
       },
     },
-
-    coverImages: [],
 
     challenge: {
       prose:
@@ -959,8 +1063,6 @@ export const projects: Project[] = [
       },
     },
 
-    coverImages: [],
-
     challenge: {
       prose:
         "Homeowners had no visibility into how individual appliances contributed to their electricity bill until the monthly statement arrived. The IoT hardware produced sensor readings every 2 seconds per appliance — 119 appliances per household — and the mobile client had to display this live without exhausting the battery or the network. I was the sole mobile developer with 7 months to deliver from scratch to Play Store.",
@@ -1095,8 +1197,6 @@ export const projects: Project[] = [
       },
     },
 
-    coverImages: [],
-
     challenge: {
       prose:
         "Facility managers and energy researchers needed aggregated visibility across all 600 monitored households — patterns and anomalies that weren't visible from a single homeowner's view. The system had to ingest sensor data at 2-second intervals across 119 appliances per household, serve it to a web dashboard and a mobile app simultaneously, and keep 30-day historical queries fast. I owned the full stack solo.",
@@ -1224,8 +1324,6 @@ export const projects: Project[] = [
         platform: "Web",
       },
     },
-
-    coverImages: [],
 
     challenge: {
       prose:
@@ -1355,8 +1453,6 @@ export const projects: Project[] = [
         platform: "Web",
       },
     },
-
-    coverImages: [],
 
     challenge: {
       prose:
