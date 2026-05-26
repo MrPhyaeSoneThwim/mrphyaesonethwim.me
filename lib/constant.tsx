@@ -934,12 +934,22 @@ export const projects: Project[] = [
     externalLink:
       "https://www.hitachi.asia/fibu/product/digital-advisor-platform/",
     isPrivate: true,
-    hasCaseStudy: false,
-    coreTechStack: [],
+    hasCaseStudy: true,
+    coreTechStack: [
+      "React",
+      "TypeScript",
+      "Zustand",
+      "Bootstrap",
+      "AWS Cognito",
+      "AWS AppSync",
+      "GraphQL",
+      "AWS Amplify",
+      "Nx Monorepo",
+    ],
     hero: {
       title: "Digital Advisor Platform",
       summary:
-        "Digital platform connecting financial advisors and customers for collaborative financial planning through interactive life simulations, improving understanding of financial decisions and outcomes.",
+        "Web platform used by 6,000+ insurance advisors to conduct live client sessions, capture structured customer data, and complete guided financial planning workflows across protection, savings, investment, and retirement.",
       meta: {
         role: "Frontend Developer",
         teamSize: "5-person team",
@@ -948,85 +958,192 @@ export const projects: Project[] = [
         platform: "Web",
       },
     },
-
     challenge: {
       prose:
-        "AIA Singapore's 6,000+ advisors were filling paper KYC forms at client meetings, then manually re-entering the same data into compliance systems. A hard cutover date with no parallel-run period meant we had to replace the entire paper workflow on day one — with MAS-regulated compliance flows that could not go live with defects.",
+        "Advisors needed a single system to capture customer information, validate financial inputs, and complete advisory workflows during live client sessions. Each step directly affected financial calculations, so incomplete or inconsistent data could not be allowed to progress through the workflow.",
       pullQuote:
-        "Advisors were filling paper forms at client meetings, then manually re-entering the same data into compliance systems — twice.",
+        "Customer onboarding, financial data capture, and advisory workflows had to run as one continuous guided session.",
     },
-
     whatIDid: {
       intro:
-        "A digital platform for AIA Singapore that replaced paper-based KYC and agent onboarding with structured digital workflows — covering identity verification, compliance forms, and an interactive financial life simulator used during client advisory sessions. I built all 7 compliance flows, the simulation module, and the shared Nx component library.",
+        "Built the frontend system for structured onboarding, financial data capture, and advisory workflows used during live client sessions. Focused on keeping multi-step financial data consistent and ensuring reliable progression across tightly coupled workflow steps.",
       contributions: [
         {
-          icon: "FileText",
-          title: "Built all 7 KYC and compliance flows end-to-end",
+          icon: "Users",
+          title: "Platform used by 6,000+ insurance advisors",
           detail:
-            "Implemented multi-step forms with conditional field logic, cross-step validation, and digital signature capture — achieving 100% KYC digitization on the launch day rollout.",
+            "Delivered a production system used by thousands of advisors for onboarding, compliance, and financial planning during live advisory sessions.",
+        },
+        {
+          icon: "Shield",
+          title: "Implemented secure authentication and access control",
+          detail:
+            "Integrated AWS Cognito for SSO, OTP login, and role-based access control to ensure secure handling of sensitive customer and financial data.",
+        },
+        {
+          icon: "FileText",
+          title: "Built structured multi-step onboarding workflows",
+          detail:
+            "Designed step-based flows covering identity, dependents, income, expenses, net worth, insurance coverage, and financial goals with validation at each step to ensure data correctness before proceeding.",
         },
         {
           icon: "BarChart2",
-          title:
-            "Interactive financial life simulator with real-time recalculation",
+          title: "Built real-time financial planning simulation",
           detail:
-            "Built the simulation tool advisors use to model income, expenses, and insurance coverage interactively during client sessions, with instant recalculation as variables change.",
+            "Created an interactive tool that recalculates savings, insurance coverage, and retirement outcomes instantly as advisors adjust inputs during client sessions.",
+        },
+        {
+          icon: "GitBranch",
+          title: "Designed modular frontend architecture using Nx",
+          detail:
+            "Structured the application into Nx monorepo with shared libraries and feature-based modules across onboarding, advisory, and simulation workflows.",
+        },
+        {
+          icon: "Layout",
+          title: "Defined frontend engineering standards across the team",
+          detail:
+            "Established consistent UI patterns, state management using Zustand, and reusable component structures across a 5-engineer frontend team.",
+        },
+        {
+          icon: "Cloud",
+          title: "Integrated APIs and deployment pipeline",
+          detail:
+            "Connected GraphQL APIs via AWS AppSync and deployed frontend applications using AWS Amplify with environment-based deployment workflows.",
         },
       ],
     },
-
     technicalDecisions: [
       {
-        decision: "AWS AppSync for real-time advisor-client session sync",
+        decision: "AWS AppSync for structured data access",
         rationale:
-          "Advisory sessions involve two people reviewing the same data simultaneously. AppSync's managed GraphQL subscriptions gave us real-time sync without building a WebSocket server, and its IAM integration handled auth against the existing AIA identity setup.",
+          "Used GraphQL to simplify data retrieval across onboarding and advisory modules where multiple related data sources needed to be combined per workflow step.",
       },
       {
-        decision: "Zustand for cross-step KYC form state",
+        decision: "Zustand for multi-step workflow state management",
         rationale:
-          "The KYC flows have 50+ fields across 7 steps with complex conditional logic between them. Zustand's flat store made cross-step field dependencies straightforward — Redux's action/reducer pattern would have doubled the boilerplate for the same outcome.",
+          "Used a centralized store to maintain consistency across multi-step onboarding flows and prevent mismatched state between steps.",
       },
     ],
-
-    visuals: [],
-
+    visuals: [
+      {
+        src: "/projects/dap/dap-01.png",
+        caption:
+          "Client profile — joint household summary with net worth, coverage, and cash flow",
+      },
+      {
+        src: "/projects/dap/dap-02.png",
+        caption:
+          "Goals overview — life protection, savings, and retirement goals with shortfall status",
+      },
+      {
+        src: "/projects/dap/dap-03.png",
+        caption:
+          "Goal analysis — life protection shortfall projected across asset provisions and coverage years",
+      },
+      {
+        src: "/projects/dap/dap-04.png",
+        caption:
+          "Plan recommendations — matched insurance products with coverage benefits and favourites",
+      },
+      {
+        src: "/projects/dap/dap-05.png",
+        caption:
+          "Peer insights — protection coverage benchmarks compared against similar customer profiles",
+      },
+      {
+        src: "/projects/dap/dap-06.png",
+        caption:
+          "Community — trending financial discussion spaces with member and engagement activity",
+      },
+      {
+        src: "/projects/dap/dap-07.png",
+        caption:
+          "Community — live podcast experts and upcoming financial planning sessions",
+      },
+      {
+        src: "/projects/dap/dap-08.png",
+        caption:
+          "Goal analysis — investment shortfall projection with required monthly savings breakdown",
+      },
+    ],
     results: [
       {
         icon: "Users",
         value: "6,000+",
-        label: "Agents Onboarded",
-        description: "AIA Singapore advisors migrated from paper on launch day",
+        label: "Active Advisors",
+        description:
+          "Advisors actively using the platform during client sessions",
       },
       {
         icon: "CheckCircle",
-        value: "100%",
-        label: "KYC Digitized",
-        description: "Paper KYC submissions eliminated on launch day",
+        value: "7",
+        label: "Workflow Modules",
+        description:
+          "Structured onboarding and advisory workflows implemented end-to-end",
       },
       {
         icon: "GitBranch",
-        value: "7",
-        label: "Compliance Flows",
-        description: "Multi-step KYC flows with conditional field logic",
+        value: "100%",
+        label: "Workflow Coverage",
+        description:
+          "All onboarding and advisory processes implemented in digital system",
+      },
+      {
+        icon: "Zap",
+        value: "Live",
+        label: "Session Data Sync",
+        description:
+          "Customer and advisor data kept consistent during active sessions",
+      },
+      {
+        icon: "Shield",
+        value: "Secure",
+        label: "Access Control",
+        description:
+          "Authentication and role-based access implemented using AWS Cognito",
+      },
+      {
+        icon: "Layers",
+        value: "Nx",
+        label: "System Structure",
+        description:
+          "Frontend organized into modular monorepo architecture with shared libraries",
       },
     ],
-
     whatILearned: [
       {
-        lead: "Managed subscriptions eliminate WebSocket infrastructure at a real cost.",
+        lead: "Multi-step workflows require strict state control",
         detail:
-          "AppSync's managed GraphQL subscriptions gave us real-time advisor-client sync without building a WebSocket server. The IAM integration also handled auth against AIA's existing identity setup — two infrastructure problems solved in one decision.",
+          "Breaking onboarding into structured steps helped prevent inconsistent or incomplete data from affecting downstream financial calculations.",
       },
       {
-        lead: "Flat stores win over reducers when field dependencies are deep.",
+        lead: "Validation must happen throughout the workflow",
         detail:
-          "The KYC flows had 50+ fields across 7 steps with complex conditional logic between them. Zustand's flat store made cross-step field dependencies straightforward — Redux's action/reducer pattern would have doubled the boilerplate.",
+          "Each step required correctness checks because financial outputs depended directly on intermediate inputs.",
+      },
+      {
+        lead: "Live sessions require consistent shared state",
+        detail:
+          "Advisor-client interactions depend on synchronized data updates across both users during active planning.",
+      },
+      {
+        lead: "System structure impacts long-term maintainability",
+        detail:
+          "Nx-based modular design reduced coupling between features and made the system easier to scale and maintain.",
+      },
+      {
+        lead: "Authentication defines system boundaries",
+        detail:
+          "Role-based access directly influenced how workflows were structured and what data users could access.",
+      },
+      {
+        lead: "Correctness is more important than completeness",
+        detail:
+          "In financial workflows, inaccurate data has higher impact than missing features.",
       },
     ],
-
     sidebar: {
-      role: "Built structured onboarding system replacing manual compliance workflows",
+      role: "Built onboarding and financial advisory system used in live insurance advisor sessions",
       technologyStack: [
         {
           groupLabel: "Frontend",
@@ -1034,7 +1151,7 @@ export const projects: Project[] = [
         },
         {
           groupLabel: "Backend",
-          technologies: ["AWS AppSync", "GraphQL API"],
+          technologies: ["AWS AppSync", "GraphQL", "AWS Cognito"],
         },
         {
           groupLabel: "Infrastructure",
@@ -1042,12 +1159,12 @@ export const projects: Project[] = [
         },
       ],
       constraints: [
-        "MAS regulatory compliance for all KYC flows",
-        "AIA identity system integration (no direct DB access)",
-        "Hard cutover date — no parallel-run period",
+        "6,000+ active advisors using system",
+        "Strict step-by-step financial data validation",
+        "Live client advisory sessions with real-time updates",
       ],
       collaborators:
-        "1 frontend co-developer · 1 backend engineer · 1 QA · 1 PM",
+        "Frontend engineer · Backend engineer · QA engineer · Product manager",
       cta: {
         label: "Product Site",
         url: "https://www.hitachi.asia/fibu/product/digital-advisor-platform/",
