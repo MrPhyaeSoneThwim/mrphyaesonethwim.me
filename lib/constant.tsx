@@ -928,7 +928,7 @@ export const projects: Project[] = [
     id: "digital-advisor",
     name: "Digital Advisor Platform",
     slug: "digital-advisor",
-    thumbnailImage: "/projects/dap/dap-00.png",
+    thumbnailImage: "/projects/dap/dap-01.png",
     targetPlatform: "Web",
     industrySectors: ["Fintech", "Enterprise"],
     externalLink:
