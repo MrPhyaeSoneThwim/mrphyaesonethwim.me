@@ -7,6 +7,9 @@ import {
 } from "next/font/google"
 
 import "./globals.css"
+import "yet-another-react-lightbox/styles.css"
+import "yet-another-react-lightbox/plugins/captions.css"
+import "yet-another-react-lightbox/plugins/counter.css"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Header } from "@/components/header"
 import { Footer } from "@/components/footer"
@@ -157,9 +160,7 @@ export default function RootLayout({
       <body>
         <ThemeProvider>
           <Header />
-          <main className="mx-auto w-full max-w-5xl px-3 sm:px-6">
-            {children}
-          </main>
+          <main className="mx-auto w-full max-w-5xl px-4">{children}</main>
           <Footer />
           <Toaster />
         </ThemeProvider>

@@ -8,6 +8,11 @@ import {
   ArrowLeftIcon,
   ArrowRightIcon,
   ArrowUpRightIcon,
+  XIcon,
+  MagnifyingGlassPlusIcon,
+  MagnifyingGlassMinusIcon,
+  CornersOutIcon,
+  CornersInIcon,
   UserIcon,
   UsersThreeIcon,
   CalendarIcon,
@@ -39,6 +44,12 @@ import {
   GooglePlayLogoIcon,
 } from "@phosphor-icons/react"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
@@ -49,6 +60,11 @@ import {
   CarouselPrevious,
   CarouselNext,
 } from "@/components/ui/carousel"
+import Lightbox from "yet-another-react-lightbox"
+import Captions from "yet-another-react-lightbox/plugins/captions"
+import Counter from "yet-another-react-lightbox/plugins/counter"
+import Fullscreen from "yet-another-react-lightbox/plugins/fullscreen"
+import Zoom from "yet-another-react-lightbox/plugins/zoom"
 import { projects } from "@/lib/constant"
 import { cn } from "@/lib/utils"
 
@@ -138,6 +154,15 @@ export function ProjectCaseStudy({ id }: { id: string }) {
       ? project.visuals
       : [{ src: project.thumbnailImage, caption: project.name }]
 
+  const [lightboxOpen, setLightboxOpen] = React.useState(false)
+  const [lightboxIndex, setLightboxIndex] = React.useState(0)
+
+  const lightboxSlides = project.visuals.map((v) => ({
+    src: v.src,
+    alt: v.caption,
+    description: v.caption,
+  }))
+
   return (
     <div className="py-4 md:py-10">
       {/* Back */}
@@ -152,7 +177,7 @@ export function ProjectCaseStudy({ id }: { id: string }) {
       </div>
 
       {/* ── Hero ─────────────────────────────────────────────────────────── */}
-      <section className="mb-6 pb-6">
+      <section className="mb-4 pb-6">
         <div className="mb-3 flex flex-wrap gap-1.5">
           {displaySectors.map((tag) => (
             <span
@@ -195,7 +220,7 @@ export function ProjectCaseStudy({ id }: { id: string }) {
       </section>
 
       {/* ── Carousel ─────────────────────────────────────────────────────── */}
-      <section className="mb-10">
+      {/* <section className="mb-10">
         <Carousel opts={{ align: "start" }} className="w-full">
           <CarouselContent className="items-stretch">
             {slides.map((slide, i) => (
@@ -230,7 +255,7 @@ export function ProjectCaseStudy({ id }: { id: string }) {
             </div>
           )}
         </Carousel>
-      </section>
+      </section> */}
 
       {/* ── Body: main + sidebar ─────────────────────────────────────────── */}
       <div className="grid grid-cols-1 items-start gap-10 lg:grid-cols-[1fr_320px] lg:gap-12">
@@ -314,7 +339,51 @@ export function ProjectCaseStudy({ id }: { id: string }) {
             </div>
           </section>
 
-          {/* 4. What I Learned */}
+          {/* 4. Visuals */}
+          {project.visuals.length > 0 && (
+            <section>
+              <SectionLabel>Visuals</SectionLabel>
+              <Accordion type="single" collapsible defaultValue="visuals">
+                <AccordionItem value="visuals">
+                  <AccordionTrigger className="text-sm">
+                    Screenshots &amp; Visuals ({project.visuals.length})
+                  </AccordionTrigger>
+                  <AccordionContent>
+                    <div className="grid grid-cols-2 gap-3 pt-1">
+                      {project.visuals.map((visual, i) => (
+                        <button
+                          key={i}
+                          className="flex flex-col gap-2 text-left"
+                          onClick={() => {
+                            setLightboxIndex(i)
+                            setLightboxOpen(true)
+                          }}
+                        >
+                          <AspectRatio
+                            ratio={3 / 2}
+                            className="overflow-hidden rounded-lg border border-border transition-opacity hover:opacity-80"
+                          >
+                            <Image
+                              src={visual.src}
+                              alt={visual.caption}
+                              fill
+                              sizes="(min-width: 1024px) 20vw, 45vw"
+                              className="object-cover object-center"
+                            />
+                          </AspectRatio>
+                          <p className="text-xs leading-snug font-medium text-foreground/80">
+                            {visual.caption}
+                          </p>
+                        </button>
+                      ))}
+                    </div>
+                  </AccordionContent>
+                </AccordionItem>
+              </Accordion>
+            </section>
+          )}
+
+          {/* 5. What I Learned */}
           {project.whatILearned.length > 0 && (
             <section>
               <SectionLabel>What I Learned</SectionLabel>
@@ -459,6 +528,25 @@ export function ProjectCaseStudy({ id }: { id: string }) {
           </div>
         </aside>
       </div>
+
+      <Lightbox
+        open={lightboxOpen}
+        close={() => setLightboxOpen(false)}
+        slides={lightboxSlides}
+        index={lightboxIndex}
+        plugins={[Captions, Counter, Fullscreen, Zoom]}
+        captions={{ descriptionTextAlign: "center" }}
+        counter={{ container: { style: { left: "50%", transform: "translateX(-50%)" } } }}
+        render={{
+          iconClose: () => <XIcon size={20} />,
+          iconPrev: () => <ArrowLeftIcon size={20} />,
+          iconNext: () => <ArrowRightIcon size={20} />,
+          iconZoomIn: () => <MagnifyingGlassPlusIcon size={20} />,
+          iconZoomOut: () => <MagnifyingGlassMinusIcon size={20} />,
+          iconEnterFullscreen: () => <CornersOutIcon size={20} />,
+          iconExitFullscreen: () => <CornersInIcon size={20} />,
+        }}
+      />
 
       {/* ── Prev / Next ──────────────────────────────────────────────────── */}
       <div className="mt-14 grid grid-cols-2 gap-3 border-t border-border pt-7">
