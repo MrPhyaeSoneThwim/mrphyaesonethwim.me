@@ -93,11 +93,12 @@ export const projects: Project[] = [
       "React Native",
       "TypeScript",
       "Expo",
-      "FastAPI",
+      "TanStack Query",
+      "REST API",
       "Firebase",
+      "EAS Build",
       "GitHub Actions",
     ],
-
     hero: {
       title: "DayTwo Mobile App",
       summary:
@@ -358,11 +359,15 @@ export const projects: Project[] = [
 
     coreTechStack: [
       "React Native",
-      "TypeScript",
-      "GraphQL",
+      "JavaScript",
+      "Zustand",
       "Node.js",
+      "GraphQL",
+      "Strapi CMS",
       "Stripe",
       "Mapbox",
+      "EAS Build",
+      "GitHub Actions",
     ],
 
     hero: {
@@ -627,10 +632,14 @@ export const projects: Project[] = [
     coreTechStack: [
       "Next.js",
       "TypeScript",
+      "Redux",
       "NestJS",
       "PostgreSQL",
       "Redis",
       "RabbitMQ",
+      "Docker",
+      "Nginx",
+      "GitHub Actions",
     ],
 
     hero: {
@@ -1181,14 +1190,28 @@ export const projects: Project[] = [
     industrySectors: ["Enterprise", "Supply Chain"],
     externalLink: "https://shengsiong.com.sg/",
     isPrivate: true,
-    hasCaseStudy: false,
-    coreTechStack: [],
+    hasCaseStudy: true,
+
+    coreTechStack: [
+      "Next.js",
+      "JavaScript",
+      "Redux",
+      "Node.js",
+      "Express.js",
+      "GraphQL",
+      "MySQL",
+      "Nginx",
+      "AWS EC2",
+      "AWS S3",
+      "AWS RDS",
+    ],
+
     hero: {
       title: "B2B Supplier Portal",
       summary:
-        "Enterprise procurement platform that replaces legacy workflows with a unified data-driven system, eliminating data inconsistencies and improving operational efficiency across large-scale supply chain processes.",
+        "Enterprise procurement and integration platform used by 100+ vendors across Sheng Siong Group and CMM, handling purchase orders, pricing updates, rebates, invoices, and large-scale procurement data within a unified system.",
       meta: {
-        role: "Full-Stack Engineer",
+        role: "Full Stack Engineer",
         teamSize: "10-person team",
         duration: "10 mos",
         period: "Aug 2022 – Jun 2023",
@@ -1198,114 +1221,162 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "Sheng Siong's 200+ suppliers were faxing purchase orders and submitting CSVs by email. The operations team manually reconciled these against internal records — a process that took days and introduced errors on every cycle. The legacy system had no schema documentation, and data existed only in flat files. We had to migrate everything with zero data loss and keep the business running during the cutover.",
+        "The supplier portal supported procurement and financial operations across Sheng Siong Group and CMM for more than 100 vendors. As transaction volume grew into millions of records, duplicated business logic, inconsistent data handling across backend services, and heavy data ingestion workloads caused slower processing, inconsistencies across procurement and finance workflows, and reduced operational efficiency across teams. I analyzed production usage patterns and legacy workflows to redesign the system around actual operational behavior.",
       pullQuote:
-        "Suppliers were faxing purchase orders. The operations team was manually reconciling CSVs. Nobody had real-time order status.",
+        "Growing transaction volume exposed performance bottlenecks and inconsistent workflow behavior across procurement and finance systems.",
     },
 
     whatIDid: {
       intro:
-        "A modern B2B procurement portal for Sheng Siong — Singapore's third-largest supermarket chain — that replaced a decade-old legacy system handling supplier onboarding, purchase orders, invoicing, and delivery confirmations. I led the full-stack rebuild: Next.js frontend, GraphQL API design, and MySQL schema migration.",
+        "Led the modernization of a legacy supplier portal by reverse-engineering operational workflows, migrating the platform to Next.js and Node.js services, and restructuring the system architecture to isolate transactional APIs from heavy data processing workloads.",
+
       contributions: [
         {
+          icon: "Users",
+          title: "Standardized procurement workflows across vendors",
+          detail:
+            "Unified fragmented procurement processes into standardized operational workflows covering purchase orders, pricing updates, rebates, and invoice lifecycle across procurement and finance users.",
+        },
+        {
+          icon: "Shield",
+          title: "Implemented role-based access control (RBAC)",
+          detail:
+            "Defined and enforced RBAC across Admin, Supplier Admin, Finance, and PO roles across API and UI layers to ensure controlled access to procurement and financial modules.",
+        },
+        {
           icon: "Database",
-          title: "Reduced data integration time by 30%",
+          title: "Built data ingestion services for structured files",
           detail:
-            "Replaced REST polling with optimized GraphQL queries using DataLoader batching, eliminating N+1 queries across the supplier/product/PO relationship graph that had been the primary bottleneck.",
+            "Developed backend services to process CSV, Excel, and PDF procurement data with validation, transformation, database storage, and email notifications for processing results and data validation errors.",
         },
         {
-          icon: "Zap",
-          title: "40% frontend performance improvement on critical pages",
+          icon: "TrendingUp",
+          title: "Improved database performance by ~30%",
           detail:
-            "Migrated high-traffic supplier dashboard and PO list views from client-side rendering to Next.js SSR and ISR, reducing Time-to-Interactive from 4.2s to 2.5s on average connections.",
+            "Optimized MySQL indexing and rewrote complex queries on large transaction datasets, reducing latency in reporting and dashboard queries.",
         },
         {
-          icon: "CheckCircle",
-          title: "100% legacy data migrated with zero loss",
+          icon: "Layout",
+          title: "Built centralized operational dashboard",
           detail:
-            "Wrote migration scripts transforming legacy flat-file records into the normalized MySQL schema with validation checkpoints and per-batch rollback — enabling a clean cutover with no data recovery incidents.",
+            "Built a unified operational dashboard consolidating purchase orders, pricing updates, rebates, incentives, and invoice information into a single interface, replacing disconnected views used by vendors and internal teams.",
+        },
+        {
+          icon: "GitBranch",
+          title: "Isolated data processing from API layer",
+          detail:
+            "Separated data ingestion workloads into dedicated backend services to prevent heavy processing from impacting transactional API performance.",
+        },
+        {
+          icon: "Cloud",
+          title: "Deployed production system on AWS with Nginx",
+          detail:
+            "Hosted applications on EC2 behind Nginx, used S3 for document storage, and RDS MySQL for transactional and reporting data across UAT and production environments.",
         },
       ],
     },
 
+    visuals: [],
+
     technicalDecisions: [
       {
-        decision: "GraphQL over REST for the procurement API",
+        decision: "GraphQL for procurement data modeling",
         rationale:
-          "Procurement data has deep nesting: POs → line items → products → suppliers → contracts. GraphQL reduced average page-load API calls from 12 to 3, cutting both latency and backend load during peak supplier activity.",
+          "Enabled efficient retrieval of related procurement entities such as orders, suppliers, and invoices while reducing over-fetching in API calls.",
       },
       {
-        decision: "Strapi CMS for supplier catalog and document management",
+        decision: "Dedicated data ingestion pipeline",
         rationale:
-          "Supplier profiles and document templates changed frequently. Strapi gave business users a non-technical interface to manage them without engineering involvement, cutting content update turnaround from days to minutes.",
+          "Separated CSV, Excel, and PDF processing workloads from transactional APIs to maintain stable system responsiveness during heavy data processing.",
+      },
+      {
+        decision: "MySQL optimization strategy",
+        rationale:
+          "Improved indexing and query design to support million-scale transaction datasets with reduced latency in reporting workflows.",
       },
     ],
 
-    visuals: [],
-
     results: [
+      {
+        icon: "Users",
+        value: "100+",
+        label: "Active Vendors",
+        description: "Vendors actively using the procurement platform",
+      },
+      {
+        icon: "Database",
+        value: "~1M+",
+        label: "Transaction Records",
+        description:
+          "Procurement records processed across purchase orders, invoices, pricing, and rebates",
+      },
       {
         icon: "TrendingUp",
         value: "30%",
-        label: "Faster Integration",
-        description: "Via GraphQL with DataLoader batching over REST polling",
-      },
-      {
-        icon: "Zap",
-        value: "40%",
-        label: "Frontend Performance",
-        description: "TTI dropped from 4.2s → 2.5s with Next.js SSR/ISR",
+        label: "Performance Improvement",
+        description:
+          "Reduced query latency and improved responsiveness of reporting and dashboard views",
       },
       {
         icon: "CheckCircle",
         value: "100%",
-        label: "Migration Complete",
-        description: "Legacy flat-file records to MySQL with zero data loss",
+        label: "Workflow Coverage",
+        description:
+          "Consolidated procurement, pricing, rebate, and invoice workflows into a unified system",
       },
     ],
 
     whatILearned: [
       {
-        lead: "GraphQL pays for itself when the data model has real depth.",
+        lead: "Real system usage differs from design assumptions",
         detail:
-          "Procurement data had POs → line items → products → suppliers → contracts. GraphQL reduced average page-load API calls from 12 to 3, cutting both latency and backend load during peak supplier activity.",
+          "Production workflows revealed differences between intended design and actual procurement, pricing, rebate, and invoice usage, requiring adjustments to align system behavior with real operations.",
       },
       {
-        lead: "Give non-technical users control over their own content.",
+        lead: "System boundaries are critical for scalability",
         detail:
-          "Supplier profiles and document templates changed frequently. Strapi gave business users a non-technical interface without engineering involvement, cutting content update turnaround from days to minutes.",
+          "Separating transactional APIs from data processing workloads improved stability and prevented performance degradation under heavy processing loads.",
+      },
+      {
+        lead: "Performance directly affects operational efficiency",
+        detail:
+          "Database and query optimization significantly improved usability for teams working with large procurement datasets and reporting workflows.",
+      },
+      {
+        lead: "Access control reduces operational risk",
+        detail:
+          "Implementing role-based access across procurement and finance users helped prevent unintended actions and ensured proper workflow boundaries.",
       },
     ],
 
     sidebar: {
-      role: "Led full-stack rebuild of legacy procurement system into modern GraphQL platform",
+      role: "Built enterprise procurement platform supporting vendor operations and transaction processing",
+
       technologyStack: [
         {
           groupLabel: "Frontend",
-          technologies: ["Next.js", "Redux", "Bootstrap"],
+          technologies: ["Next.js", "Redux", "JavaScript"],
         },
         {
           groupLabel: "Backend",
-          technologies: [
-            "Node.js",
-            "Express.js",
-            "GraphQL API",
-            "Strapi CMS",
-            "MySQL",
-          ],
+          technologies: ["Node.js", "Express.js", "GraphQL", "MySQL"],
         },
         {
           groupLabel: "Infrastructure",
-          technologies: ["AWS EC2", "AWS S3"],
+          technologies: ["AWS EC2", "AWS S3", "AWS RDS", "Nginx"],
         },
       ],
+
       constraints: [
-        "Zero data loss across 200+ supplier records",
-        "Zero-downtime cutover from legacy system",
-        "Legacy data in flat-file format with no schema documentation",
+        "100+ vendors operating across procurement workflows",
+        "Millions of transaction records processed across systems",
+        "High-volume CSV, Excel, and PDF data ingestion workflows",
+        "Strict consistency requirements across procurement and finance data",
       ],
+
       collaborators:
-        "2 frontend engineers · 3 backend engineers · 2 QA · 1 DevOps · 1 PM",
+        "Frontend engineers · Backend engineers · QA engineers · DevOps · PM",
+
       cta: {
         label: "Product Site",
         url: "https://shengsiong.com.sg/",
