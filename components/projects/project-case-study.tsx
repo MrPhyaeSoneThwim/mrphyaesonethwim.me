@@ -36,10 +36,15 @@ import {
   ChartLineUpIcon,
   ShoppingCartIcon,
   ClockIcon,
-  VideoCameraSlashIcon,
+  VideoCameraIcon,
   ShieldCheckIcon,
   BellIcon,
   RobotIcon,
+  CameraIcon,
+  MapPinIcon,
+  HandshakeIcon,
+  ArrowsClockwiseIcon,
+  RocketIcon,
   AppStoreLogoIcon,
   GooglePlayLogoIcon,
 } from "@phosphor-icons/react"
@@ -115,9 +120,15 @@ const ICON_MAP: Record<string, Icon> = {
   TrendingUp: ChartLineUpIcon,
   ShoppingCart: ShoppingCartIcon,
   Clock: ClockIcon,
-  Video: VideoCameraSlashIcon,
+  Video: VideoCameraIcon,
   ShieldCheck: ShieldCheckIcon,
   Bell: BellIcon,
+  Camera: CameraIcon,
+  Map: MapPinIcon,
+  Handshake: HandshakeIcon,
+  Workflow: ArrowsClockwiseIcon,
+  RefreshCcw: ArrowsClockwiseIcon,
+  Rocket: RocketIcon,
 }
 
 // ── Sub-components ────────────────────────────────────────────────────────────

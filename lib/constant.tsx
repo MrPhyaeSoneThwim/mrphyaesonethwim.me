@@ -617,17 +617,28 @@ export const projects: Project[] = [
     id: "surveillance-platform",
     name: "Surveillance Platform",
     slug: "surveillance-platform",
-    thumbnailImage: "/projects/surveillance/surveillance-00.png",
+    thumbnailImage: "/projects/surveillance/surveillance-01.png",
     targetPlatform: "Web",
     industrySectors: ["GovTech", "Enterprise", "Featured"],
     externalLink: "https://oneberry.com/anomaly-detection-ai/",
     isPrivate: true,
-    hasCaseStudy: false,
-    coreTechStack: [],
+    hasCaseStudy: true,
+
+    coreTechStack: [
+      "Next.js",
+      "TypeScript",
+      "NestJS",
+      "PostgreSQL",
+      "Redis",
+      "RabbitMQ",
+    ],
+
     hero: {
       title: "Surveillance Platform",
+
       summary:
-        "Real-time monitoring platform that unifies thousands of live camera feeds into a single operational system for continuous surveillance and incident tracking across multiple government agencies.",
+        "Real-time monitoring platform that unified nearly 10,000 CCTV camera feeds into a single surveillance system used by 3 government agencies for continuous 24/7 monitoring and incident tracking.",
+
       meta: {
         role: "Senior Fullstack Engineer",
         teamSize: "10-person team",
@@ -639,87 +650,224 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "Each of the three government agencies operated its own VMS client with no shared visibility. Incidents that crossed agency jurisdictions fell through the cracks. We were tasked with building a single platform that unified 4,000+ live camera feeds, enforced per-agency access boundaries, and met a 200ms alert delivery SLA mandated in the government contract — all without any downtime to operational systems.",
+        "Each government agency operated its own surveillance system with limited visibility across organizations, making incident coordination difficult. The platform needed to unify nearly 10,000 CCTV camera feeds into a shared monitoring system used by 3 government agencies while supporting secure access control, real-time monitoring, low-latency incident alerts, and high-availability infrastructure for continuous 24/7 operations.",
+
       pullQuote:
-        "Each agency had its own VMS client. Incidents fell through the cracks because no one platform could see everything.",
+        "Incidents were difficult to coordinate because surveillance systems were isolated across agencies.",
     },
 
     whatIDid: {
       intro:
-        "A multi-tenant real-time surveillance platform centralizing 4,000+ live camera feeds across 3 government agencies — with AI-powered anomaly detection, WebSocket-based incident alerts, and role-based access per agency. I led frontend architecture, built the NestJS BFF layer, and later drove engineering standards across 4 concurrent projects in a Lerna monorepo.",
+        "Led full-stack engineering across frontend, backend, middleware, and infrastructure workflows for a large-scale surveillance platform used by multiple government agencies. Owned architecture decisions, VMS integration, real-time monitoring workflows, scalability improvements, and engineering standards across multiple concurrent projects.",
+
       contributions: [
         {
           icon: "Layout",
-          title: "Improved map rendering performance by ~50%",
+          title:
+            "Led frontend architecture for large-scale surveillance monitoring",
           detail:
-            "Replaced direct DOM updates in the camera map with a virtualized RTK Query approach backed by Redis geospatial indexing, eliminating layout thrash when 100+ marker states updated simultaneously.",
+            "Designed and maintained frontend architecture using Next.js, Redux Toolkit, and RTK Query to support live camera monitoring, incident management, real-time updates, and responsive monitoring dashboards for large-scale surveillance operations.",
+        },
+        {
+          icon: "Database",
+          title: "Built backend and middleware services for VMS integration",
+          detail:
+            "Developed NestJS backend APIs and secured middleware services that connected directly with third-party VMS systems inside protected intranet environments. Managed camera synchronization, live streams, snapshots, camera health status, and secure data delivery to frontend applications.",
+        },
+        {
+          icon: "Map",
+          title: "Developed map-based monitoring and geospatial features",
+          detail:
+            "Built Mapbox-based monitoring features integrated with Redis geospatial indexing, reverse geocoding, camera filtering, and real-time camera updates to improve monitoring visibility and incident response.",
+        },
+        {
+          icon: "Video",
+          title: "Delivered responsive real-time monitoring experiences",
+          detail:
+            "Implemented low-latency monitoring workflows supporting concurrent live video streams, WebSocket-based incident updates, and optimized frontend rendering for smooth real-time monitoring.",
         },
         {
           icon: "Shield",
-          title: "Reduced production defects by ~60% with TDD",
+          title: "Implemented secure multi-agency access control",
           detail:
-            "Introduced Jest unit tests for all business logic and Cypress e2e tests for critical flows across 4 concurrent projects, cutting the defect rate from 8.4 per sprint to 3.2 over 6 months.",
+            "Designed role-based access control, department-level permissions, OAuth 2.0 SSO integration, and secured service communication to support separate agency access and enterprise security requirements.",
         },
+
         {
-          icon: "Radio",
-          title: "Delivered real-time alert system meeting 200ms SLA",
+          icon: "Workflow",
+          title: "Built background processing and evidence workflows",
           detail:
-            "Engineered WebSocket-based push alerts with delivery confirmation and polling fallback, meeting the agency-mandated 200ms incident delivery SLA across all three tenants.",
+            "Implemented BullMQ worker pipelines for video clip generation, asynchronous evidence processing, MinIO S3 uploads, and incident alert handling to isolate CPU-intensive workloads from monitoring services.",
+        },
+
+        {
+          icon: "GitBranch",
+          title: "Improved development workflows and code quality",
+          detail:
+            "Introduced a Lerna monorepo setup, automated testing, CI/CD pipelines, and shared engineering practices using Jest, Cypress, Docker, and GitHub Actions to improve code quality, deployment reliability, and collaboration across frontend, backend, and middleware services.",
+        },
+
+        {
+          icon: "Server",
+          title: "Supported infrastructure scaling and production delivery",
+          detail:
+            "Collaborated with DevOps teams and government stakeholders on deployment architecture, Docker infrastructure, Nginx configuration, horizontal scaling, production troubleshooting, security hardening, and high-availability deployments across distributed environments.",
         },
       ],
     },
 
     technicalDecisions: [
       {
-        decision: "Lerna monorepo across all services and frontends",
+        decision:
+          "Used a Lerna monorepo across frontend, backend, and middleware",
         rationale:
-          "3 agencies, 2 frontends, a BFF, and shared component libraries meant without a monorepo we'd have 5+ repos drifting in TypeScript types and tooling config. Lerna gave us a single CI pipeline and consistent versioning across all packages.",
+          "The platform consisted of multiple frontend applications, backend services, middleware services, and shared TypeScript packages. A monorepo setup improved dependency management, code sharing, CI/CD consistency, and collaboration across engineering teams.",
       },
       {
-        decision: "BullMQ for alert video clip generation",
+        decision: "Separated backend and middleware services",
         rationale:
-          "Generating video snippets from live streams is CPU-intensive and can't block the HTTP cycle. BullMQ queued these jobs with priority lanes and retry policies, keeping the API responsive during alert bursts that could trigger dozens of clips simultaneously.",
+          "Middleware services operated inside secured intranet environments with direct access to third-party VMS infrastructure, while backend services exposed APIs to frontend applications. Separating responsibilities improved security, scalability, and fault isolation.",
+      },
+      {
+        decision: "Used RabbitMQ for asynchronous service communication",
+        rationale:
+          "Real-time camera synchronization, incident processing, and streaming workflows required reliable asynchronous communication between distributed services under high concurrency.",
+      },
+      {
+        decision: "Used BullMQ for video clip processing workflows",
+        rationale:
+          "Video clip generation and evidence uploads were CPU-intensive operations. Offloading these tasks into background workers prevented monitoring services from becoming blocked during heavy alert activity.",
       },
     ],
 
-    visuals: [],
+    visuals: [
+      {
+        src: "/projects/surveillance/surveillance-01.png",
+        caption:
+          "Command dashboard — site map with active camera count and real-time alert status per location",
+      },
+      {
+        src: "/projects/surveillance/surveillance-02.png",
+        caption:
+          "Camera map — geospatial camera monitoring with live alert visibility across zones",
+      },
+      {
+        src: "/projects/surveillance/surveillance-03.png",
+        caption:
+          "Zone selection — drag-to-select cameras by area for rapid group assignment",
+      },
+      {
+        src: "/projects/surveillance/surveillance-04.png",
+        caption:
+          "Live monitoring — simultaneous camera feeds with real-time incident alerts",
+      },
+      {
+        src: "/projects/surveillance/surveillance-05.png",
+        caption:
+          "Incident review — full feed playback with timeline navigation and evidence clip creation",
+      },
+      {
+        src: "/projects/surveillance/surveillance-06.png",
+        caption:
+          "Alert triage — prioritised incident log with severity filtering and audit export",
+      },
+      {
+        src: "/projects/surveillance/surveillance-07.png",
+        caption:
+          "Case management — structured incident workspace linking evidence footage and team notes",
+      },
+      {
+        src: "/projects/surveillance/surveillance-08.png",
+        caption:
+          "Access control — role-based camera permissions scoped per department and site",
+      },
+    ],
 
     results: [
       {
         icon: "Video",
-        value: "4,000+",
-        label: "Live Cameras",
-        description: "Concurrent feeds unified into one real-time platform",
+        value: "10,000+",
+        label: "CCTV Cameras",
+        description:
+          "Unified large-scale surveillance feeds into one monitoring platform",
       },
+
       {
         icon: "ShieldCheck",
         value: "3",
-        label: "Gov Agencies",
-        description: "Onboarded with isolated multi-tenant access control",
+        label: "Government Agencies",
+        description:
+          "Supported secure shared monitoring across multiple agencies",
       },
+      {
+        icon: "Zap",
+        value: "~50%",
+        label: "Faster Map Rendering",
+        description:
+          "Improved monitoring responsiveness through optimized state management",
+      },
+
       {
         icon: "TrendingUp",
         value: "~60%",
-        label: "Defects Reduced",
-        description: "Defect rate drop after TDD across 4 concurrent projects",
+        label: "Fewer Production Defects",
+        description:
+          "Reduced defects through automated testing and TDD practices",
+      },
+
+      {
+        icon: "Clock",
+        value: "~20%",
+        label: "Faster Deployments",
+        description:
+          "Improved release efficiency through CI/CD automation workflows",
+      },
+
+      {
+        icon: "Server",
+        value: "24/7",
+        label: "Continuous Monitoring",
+        description:
+          "Supported high-availability surveillance operations and monitoring",
       },
     ],
 
     whatILearned: [
       {
-        lead: "A monorepo pays off immediately when sharing types across services.",
+        lead: "Distributed systems require clear boundaries",
         detail:
-          "3 agencies, 2 frontends, a BFF, and shared component libraries meant without a monorepo we'd have had 5+ repos drifting in TypeScript types. Lerna gave us a single CI pipeline and consistent versioning from day one.",
+          "Separating frontend, backend, and middleware responsibilities improved scalability, fault isolation, maintainability, and long-term reliability across large-scale real-time systems.",
       },
       {
-        lead: "CPU-intensive jobs must never block the request cycle.",
+        lead: "Real-time systems depend on state consistency",
         detail:
-          "Generating video snippets from live streams is expensive. BullMQ with priority lanes kept the API responsive during alert bursts that would otherwise have queued dozens of clip jobs on the main thread.",
+          "Monitoring workflows exposed synchronization challenges between camera status, streaming data, alerts, and frontend rendering under high concurrency conditions.",
+      },
+      {
+        lead: "Reliability matters as much as feature delivery",
+        detail:
+          "Systems used in mission-critical environments require stable deployments, strong monitoring tools, recovery planning, and fast production troubleshooting processes.",
+      },
+      {
+        lead: "Performance directly affects operational usability",
+        detail:
+          "Improving rendering speed, map responsiveness, and streaming latency significantly improved usability for operators managing large-scale surveillance workflows.",
+      },
+      {
+        lead: "Real-time incident systems demand reliability at scale",
+        detail:
+          "Building systems used by government agencies taught me how critical reliable event delivery, secure access control, and high-availability infrastructure are when thousands of live streams and concurrent operators depend on accurate incident visibility.",
+      },
+
+      {
+        lead: "Engineering standards improve long-term scalability",
+        detail:
+          "Automated testing, CI/CD pipelines, monorepo workflows, and shared engineering practices improved maintainability, team collaboration, and deployment stability across multiple services.",
       },
     ],
 
     sidebar: {
-      role: "Led frontend architecture for real-time multi-agency surveillance platform",
+      role: "Led full-stack engineering and architecture delivery for a real-time surveillance platform used by 3 government agencies",
       technologyStack: [
         {
           groupLabel: "Frontend",
@@ -729,36 +877,46 @@ export const projects: Project[] = [
             "Redux Toolkit",
             "RTK Query",
             "Material UI",
-            "REST API",
+            "Mapbox",
           ],
         },
+
         {
           groupLabel: "Backend",
           technologies: [
-            "Node.js",
-            "Express.js",
-            "BullMQ",
+            "NestJS",
             "PostgreSQL",
             "Redis",
+            "RabbitMQ",
+            "BullMQ",
+            "REST API",
+            "MQTT broker",
           ],
         },
+
         {
           groupLabel: "Infrastructure",
           technologies: [
-            "Lerna",
             "Docker",
             "Nginx",
-            "Cloudflare",
             "GitHub Actions",
+            "Lerna",
+            "MinIO S3",
+            "Proxmox VE",
           ],
         },
       ],
+
       constraints: [
-        "200ms alert delivery SLA mandated by agencies",
-        "Government security audit before go-live",
-        "Zero-downtime deployment for live operational system",
+        "24/7 monitoring across nearly 10,000 CCTV cameras",
+        "Secure shared access for 3 government agencies",
+        "High-availability distributed surveillance systems",
+        "Low-latency incident monitoring and alerts",
       ],
-      collaborators: "3 cross-functional teams · backend, DevOps, QA, PM leads",
+
+      collaborators:
+        "Frontend engineers · Backend engineers · DevOps engineers · QA engineers · UI/UX designers · Government stakeholders",
+
       cta: {
         label: "Product Site",
         url: "https://oneberry.com/anomaly-detection-ai/",
