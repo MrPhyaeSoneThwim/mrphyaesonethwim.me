@@ -99,10 +99,11 @@ export const projects: Project[] = [
       "EAS Build",
       "GitHub Actions",
     ],
+
     hero: {
       title: "DayTwo Mobile App",
       summary:
-        "AI-powered fintech platform for SMEs that helps business owners track cash, sales, expenses, debts, and financial goals through offline-first workflows, real-time insights, and AI-assisted business guidance.",
+        "Built and shipped a production React Native fintech app helping SMEs track finances, manage debt, and get AI-assisted business guidance, with offline-first support across iOS and Android.",
       meta: {
         role: "Senior Frontend Engineer",
         teamSize: "5-person team",
@@ -114,88 +115,81 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "Most SME owners managed business finances using notebooks or spreadsheets with no real-time visibility into cash flow, expenses, debts, or overall business performance. We needed to build a production-ready fintech platform from scratch that could simplify bookkeeping, provide actionable financial insights, support AI-assisted business guidance, and work reliably in low-connectivity environments for everyday business operations.",
+        "Most SME owners tracked business finances through notebooks or spreadsheets with no clear visibility into cash flow, expenses, or debts, making it difficult to make informed business decisions. The engineering challenge was building a production-ready fintech app from scratch with a 5-person team, covering AI-assisted guidance and offline reliability in low-connectivity environments.",
       pullQuote:
-        "Most SME owners lacked real-time visibility into cash flow and profitability until the end of the month.",
+        "By the time most SME owners knew they were losing money, it was already too late to act.",
     },
 
     whatIDid: {
       intro:
-        "I led frontend architecture and mobile delivery for the DayTwo app, owning system design, AI-driven experiences, offline-first reliability, and end-to-end iOS/Android releases. I worked closely with backend engineers, designers, and product owners to ship a fintech platform used by 800+ SMEs.",
+        "Owned frontend architecture and mobile delivery for the DayTwo app, from system design through production release on iOS and Android.",
 
       contributions: [
         {
           icon: "Layers",
-          title: "Core mobile foundation",
+          title: "Mobile architecture and state layer",
           detail:
-            "Defined the React Native architecture using TypeScript, Zustand, and TanStack Query, establishing predictable data flow, reusable state patterns, and UI structure that allowed the product to scale without rework.",
+            "Defined the React Native architecture using TypeScript, Zustand, and TanStack Query, establishing predictable data flow and reusable patterns that let the product scale without significant rework.",
         },
-
         {
           icon: "BarChart2",
-          title: "Financial system core",
+          title: "Core financial system",
           detail:
-            "Built the main financial system covering cash tracking, sales, expenses, debt, and lending workflows, forming the primary daily tool SMEs rely on to understand cash flow and business performance.",
+            "Built end-to-end financial workflows covering cash tracking, sales, expenses, debt management, and lending flows used by SME owners for daily business operations.",
         },
-
         {
           icon: "Camera",
-          title: "Fast transaction capture",
+          title: "AI-assisted receipt capture",
           detail:
-            "Shipped OCR-based receipt scanning alongside optimized manual entry flows, reducing bookkeeping effort by converting receipts into structured transactions within seconds.",
+            "Shipped OCR-based receipt scanning that extracted transaction data from photos and mapped it into structured financial records, reducing manual entry for high-frequency users.",
         },
-
         {
           icon: "MessageCircle",
-          title: "AI advisor experience",
+          title: "AI business advisor chat",
           detail:
-            "Delivered an LLM-powered chat experience with streaming responses and structured output rendering, turning raw model output into clear, actionable financial guidance for decision-making.",
+            "Built a production LLM-powered chat experience with token streaming, structured response rendering, and retry handling, turning AI outputs into clear financial guidance for business owners.",
         },
-
         {
           icon: "Database",
-          title: "Offline-first reliability",
+          title: "Offline-first data sync",
           detail:
-            "Engineered offline-first workflows with local persistence and background sync via Supabase, ensuring users could reliably record and review financial data even without stable connectivity.",
+            "Designed local persistence with background sync to the REST API, ensuring users could record and review financial data reliably even without a stable internet connection.",
         },
-
         {
           icon: "Bell",
-          title: "Real-time financial alerts",
+          title: "Push notifications for lending workflows",
           detail:
-            "Implemented Firebase push notifications for repayments, lending updates, and financial events, keeping users informed of critical business activities in real time.",
+            "Integrated Firebase push notifications for repayment reminders and lending status updates, keeping borrowers and lenders informed of time-sensitive lending activities.",
         },
-
         {
           icon: "GitBranch",
-          title: "Release & engineering ownership",
+          title: "Release pipeline and engineering standards",
           detail:
-            "Owned iOS and Android release pipelines using EAS and GitHub Actions, ensuring cross-platform consistency while enforcing engineering standards across a 5-person team to maintain stable and predictable delivery.",
+            "Built and owned iOS and Android release pipelines using EAS and GitHub Actions, enabling stable cross-platform delivery and consistent release workflows.",
         },
       ],
     },
 
     technicalDecisions: [
       {
-        decision:
-          "Used TanStack Query and Zustand for scalable state management",
+        decision: "TanStack Query and Zustand over a single global store",
         rationale:
-          "This reduced unnecessary API calls by ~40%, improved frontend performance, and simplified synchronization across complex financial workflows.",
+          "Separating server state from local UI state reduced unnecessary API calls by 40%, eliminated stale data across shared financial screens, and made the data flow easier to debug as the product grew.",
       },
       {
-        decision: "Built offline-first support from the beginning",
+        decision: "Offline-first architecture built from the start",
         rationale:
-          "Many users operated in unstable network conditions, making offline reliability essential for daily transaction recording and business continuity.",
+          "Many users operated in low-connectivity environments. Designing local persistence and background sync as core infrastructure from day one avoided the data consistency issues that come from adding offline support later.",
       },
       {
-        decision: "Focused heavily on AI response rendering and usability",
+        decision: "Streaming-first rendering for AI responses",
         rationale:
-          "AI-generated outputs needed structured rendering and defensive UX handling to feel reliable, readable, and actionable for business users.",
+          "AI response latency made standard request-response patterns feel slow. Token streaming with structured rendering made the advisor feel responsive and readable from the first token.",
       },
       {
-        decision: "Used reusable component systems with NativeWind",
+        decision: "NativeWind for a shared component system",
         rationale:
-          "This improved development speed, UI consistency, and maintainability across a rapidly evolving mobile product.",
+          "With a small team and shared design decisions across web and mobile, NativeWind kept styling consistent and reduced the overhead of maintaining a separate mobile component system.",
       },
     ],
 
@@ -203,32 +197,32 @@ export const projects: Project[] = [
       {
         src: "/projects/daytwo/daytwo-01.png",
         caption:
-          "Live cash dashboard with reconciliation and AI-driven business insights",
+          "Cash dashboard with current balance, manual cash verification, and AI business insights",
       },
       {
         src: "/projects/daytwo/daytwo-02.png",
         caption:
-          "Multi-channel entry menu — loans, sales, expenses, and Quick Capture via voice, photo, or text",
+          "Transaction entry flow for managing cash updates, loans, sales, expenses, and receipt capture",
       },
       {
         src: "/projects/daytwo/daytwo-03.png",
         caption:
-          "POS-style number pad for fast multi-item sales and expense recording",
+          "POS interface with number pad for fast multi-item sales and expense recording",
       },
       {
         src: "/projects/daytwo/daytwo-04.png",
         caption:
-          "Payable and receivable credit tracker with urgency-based overdue prioritisation",
+          "Credit management dashboard showing payables, receivables, and overdue payment status",
       },
       {
         src: "/projects/daytwo/daytwo-05.png",
         caption:
-          "Bizzy — AI business advisor chat with voice support, suggested prompts, and conversation history",
+          "AI business advisor chat with streaming responses, suggested prompts, and conversation history",
       },
       {
         src: "/projects/daytwo/daytwo-06.png",
         caption:
-          "Goal management for savings, sales, expenses, and cash buffer with AI bill detection",
+          "Goal tracking for savings, expenses, sales targets, and cash buffer",
       },
     ],
 
@@ -247,22 +241,24 @@ export const projects: Project[] = [
       },
       {
         icon: "TrendingUp",
-        value: "~40%",
+        value: "40%",
         label: "API Calls Reduced",
-        description: "Reduced through caching and request deduplication",
+        description:
+          "Reduced through TanStack Query caching and request deduplication",
       },
       {
         icon: "MessageCircle",
         value: "AI-powered",
         label: "Business Advisor Chat",
         description:
-          "Delivered production-ready AI financial guidance workflows",
+          "Production LLM chat with streaming responses and structured output rendering",
       },
       {
         icon: "Database",
         value: "Offline-first",
-        label: "Reliable Mobile Experience",
-        description: "Supported SME usage in unstable network environments",
+        label: "Reliable on Any Network",
+        description:
+          "Local persistence and background sync for low-connectivity environments",
       },
       {
         icon: "Globe",
@@ -275,34 +271,29 @@ export const projects: Project[] = [
 
     whatILearned: [
       {
-        lead: "Frontend architecture drives product velocity",
+        lead: "Real production usage exposes problems that testing never catches.",
         detail:
-          "Early architectural decisions determine feature delivery speed and how sustainably the codebase scales as complexity grows.",
+          "Machine downtime, inventory gaps, and interrupted payments only appeared after launch, which reinforced the value of building error handling into the system from the beginning.",
       },
       {
-        lead: "AI UX is as important as AI capability",
+        lead: "Performance requirements need to be defined before building, not after.",
         detail:
-          "AI features only work in production when outputs are structured, readable, and resilient to latency through streaming, retries, and clear loading states.",
+          "Setting checkout speed as a goal from day one shaped how the entire ordering flow was designed and built.",
       },
       {
-        lead: "Real user feedback exposes system gaps",
+        lead: "A payment flow is only as reliable as its failure handling.",
         detail:
-          "Direct interaction with SME users consistently revealed mismatches between assumed workflows and real usage patterns.",
+          "Handling retries and interrupted sessions was what made Stripe integration trustworthy for users under real mobile network conditions.",
       },
       {
-        lead: "Automation is critical for delivery speed",
+        lead: "External system integration requires reliable synchronization.",
         detail:
-          "Automating build and release workflows reduced operational overhead and enabled faster, more reliable iteration cycles.",
-      },
-      {
-        lead: "Offline-first is a core product requirement",
-        detail:
-          "Unstable connectivity is a normal condition for many users, making offline-first design essential for reliable day-to-day financial operations.",
+          "Machine inventory and status were managed by an external backend system, making reliable synchronization essential to ensure orders were only placed against accurate and up-to-date machine data.",
       },
     ],
 
     sidebar: {
-      role: "Led frontend architecture and delivery for an AI-powered fintech platform serving SMEs",
+      role: "Owned frontend architecture, AI chat integration, offline sync, and full iOS and Android release pipeline",
 
       technologyStack: [
         {
@@ -329,15 +320,15 @@ export const projects: Project[] = [
         },
         {
           groupLabel: "Infrastructure",
-          technologies: ["GitHub Actions", "CI/CD", "EAS Build"],
+          technologies: ["GitHub Actions", "EAS Build"],
         },
       ],
 
       constraints: [
-        "5-person engineering team",
-        "Cross-platform mobile delivery",
-        "Low-connectivity user environments",
-        "Production AI feature delivery",
+        "Built from scratch with a 5-person team",
+        "Cross-platform iOS and Android delivery",
+        "LLM response latency requiring streaming and optimistic UI",
+        "Offline reliability in low-connectivity environments",
       ],
 
       collaborators:
@@ -373,7 +364,7 @@ export const projects: Project[] = [
     hero: {
       title: "JAVIS Mobile Ordering App",
       summary:
-        "Cross-platform ordering platform for self-service beverage machines, enabling users to discover nearby machines, place real-time orders, and complete digital payments with a faster and more predictable ordering experience.",
+        "Designed and delivered a cross-platform mobile ordering app for self-service beverage machines, enabling real-time machine discovery, digital payments, and live order tracking across iOS and Android.",
       meta: {
         role: "Full Stack Developer",
         teamSize: "5-person team",
@@ -385,81 +376,81 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "Customers placed orders at beverage shops and self-service machines without visibility into availability or the ability to plan ahead, resulting in inconsistent and unpredictable ordering experiences across locations. We built a mobile ordering platform that introduced pre-ordering, real-time availability awareness, and digital payments, transforming a fragmented on-site process into a unified and reliable ordering experience.",
+        "Customers had no way to check machine availability, queue length, or wait time before arriving at a location. Orders were placed on-site with no pre-ordering capability, no digital payment option, and no visibility into order status after placing. The engineering challenge was building a real-time ordering system tightly coupled with live machine state, where stale data or failed payments could not be tolerated.",
       pullQuote:
-        "Customers had no way to know if nearby machines or shops had availability before arriving.",
+        "By the time customers arrived, machines were often unavailable. There was no way to know until they got there.",
     },
 
     whatIDid: {
       intro:
-        "Led full-stack engineering for the JAVIS mobile ordering platform, owning system design, real-time ordering logic, payment reliability, and end-to-end mobile delivery. Partnered closely with designers and operational stakeholders to translate real-world machine constraints into a reliable, production-grade ordering system across iOS and Android.",
+        "Owned full-stack engineering for the JAVIS mobile ordering platform, from system architecture through production delivery on iOS and Android.",
 
       contributions: [
         {
           icon: "Layers",
-          title: "System architecture ownership",
+          title: "End-to-end system architecture",
           detail:
-            "Designed the end-to-end mobile and backend architecture, defining system structure, API interactions, state management, and data flow for ordering, payments, and real-time machine updates.",
+            "Designed the full mobile and backend architecture, defining API structure, state management, and data flow for ordering, payments, and real-time machine availability.",
         },
         {
           icon: "ShoppingCart",
           title: "Real-time ordering under machine constraints",
           detail:
-            "Built ordering workflows tightly coupled with live machine state, handling edge cases such as stock drift, machine downtime, and unstable network conditions to ensure consistent checkout behavior.",
+            "Built ordering workflows tightly coupled with live machine state, handling inventory discrepancies, machine downtime, and unstable network conditions to keep checkout behavior consistent.",
         },
         {
           icon: "CreditCard",
-          title: "Payment reliability & recovery flows",
+          title: "Stripe payment reliability and recovery",
           detail:
-            "Integrated Stripe payment flows with robust state management, retry logic, and recovery handling to ensure secure checkout even under partial failures or interrupted sessions.",
+            "Integrated Stripe with retry logic and payment recovery handling, ensuring secure checkout completion even when connections are unstable or interrupted.",
         },
         {
           icon: "Map",
-          title: "Location-based discovery experience",
+          title: "Location-based machine discovery",
           detail:
-            "Built location-based discovery flows using Mapbox, allowing users to find nearby self-service machines, check availability, and place orders based on real-world context.",
+            "Built Mapbox-powered discovery showing nearby machines with live queue length, wait time, and distance so users could decide before heading out.",
         },
         {
           icon: "Zap",
-          title: "Ordering performance optimization",
+          title: "Checkout performance optimization",
           detail:
-            "Optimized API interactions and streamlined ordering flows, reducing checkout time by ~50% through reduced network overhead, improved state handling, and UX simplification.",
+            "Reduced checkout time by 50% through API optimization, improved state handling, and a simplified ordering flow, making the app faster than ordering on-site.",
         },
         {
           icon: "GitBranch",
-          title: "Release engineering & CI/CD ownership",
+          title: "CI/CD and release pipeline",
           detail:
-            "Owned mobile release pipelines using Expo, EAS, and GitHub Actions, ensuring stable iOS and Android deployments and consistent engineering workflows.",
+            "Owned iOS and Android release pipelines using Expo, EAS, and GitHub Actions, enabling stable deployments and consistent release workflows.",
         },
         {
           icon: "Handshake",
-          title: "Stakeholder delivery & production handover",
+          title: "Production delivery and client handover",
           detail:
-            "Led collaboration with design and operations stakeholders, followed by structured production handover including documentation, system walkthroughs, and deployment guidance.",
+            "Led structured production handover with documentation, system walkthroughs, and deployment guidance for the client team taking over the system.",
         },
       ],
     },
 
     technicalDecisions: [
       {
-        decision: "Designed system around real-time ordering consistency",
+        decision: "Live machine data fetched fresh, never cached",
         rationale:
-          "Core complexity came from aligning user actions with rapidly changing machine availability, requiring strong consistency and recovery handling.",
+          "Machine availability changed frequently and unpredictably. Always fetching live data prevented stale availability from causing failed orders or incorrect displays.",
       },
       {
-        decision: "Built synchronization logic for live machine state",
+        decision: "Stripe with explicit retry and interrupted payment recovery",
         rationale:
-          "Machine availability changed frequently, requiring real-time sync to prevent stale data and failed orders.",
+          "Mobile payment sessions are vulnerable to dropped connections. Building explicit retry and recovery flows ensured failed sessions could complete without duplicate charges or lost order state.",
       },
       {
-        decision: "Optimized checkout speed as a core product metric",
+        decision: "Checkout speed treated as a core engineering requirement",
         rationale:
-          "Ordering needed to outperform manual on-site interaction, making speed and simplicity critical to adoption.",
+          "The app needed to outperform walking up to a machine. Treating checkout speed as a core requirement from the start drove better API design, leaner state management, and a simpler ordering flow rather than treating it as an afterthought.",
       },
       {
-        decision: "Used Mapbox for geolocation-based discovery",
+        decision: "Mapbox for location-based machine discovery",
         rationale:
-          "Machine discovery depended on spatial context, requiring accurate location-based filtering and navigation.",
+          "Finding nearby machines depended on accurate location data. Mapbox provided reliable location filtering, real-time availability display, and in-app navigation in one integrated layer.",
       },
     ],
 
@@ -467,15 +458,15 @@ export const projects: Project[] = [
       {
         icon: "ShoppingCart",
         value: "300+",
-        label: "Daily Orders / Machine",
+        label: "Daily Orders per Machine",
         description: "Supported high-volume self-service machine transactions",
       },
       {
         icon: "Clock",
-        value: "~50%",
-        label: "Faster Ordering",
+        value: "50%",
+        label: "Faster Checkout",
         description:
-          "Reduced checkout time through UX and performance optimization",
+          "Reduced through API optimization, state handling, and simplified ordering flow",
       },
       {
         icon: "Users",
@@ -484,23 +475,11 @@ export const projects: Project[] = [
         description: "Handled simultaneous real-time ordering activity",
       },
       {
-        icon: "CreditCard",
-        value: "Stripe",
-        label: "Payment Processing",
-        description: "Delivered secure and reliable mobile payment experiences",
-      },
-      {
         icon: "RefreshCcw",
-        value: "Live Sync",
+        value: "Live sync",
         label: "Machine Availability",
         description:
-          "Kept ordering state aligned with real-world machine status",
-      },
-      {
-        icon: "Rocket",
-        value: "Cross-platform",
-        label: "Production Delivery",
-        description: "Handled full iOS and Android release cycle workflow",
+          "Ordering state kept aligned with real-world machine status",
       },
     ],
 
@@ -526,7 +505,7 @@ export const projects: Project[] = [
       {
         src: "/projects/javis/javis-05.png",
         caption:
-          "Order detail with itemised receipt, coupon applied, and reorder",
+          "Order detail with itemized receipt, coupon applied, and reorder",
       },
       {
         src: "/projects/javis/javis-06.png",
@@ -540,72 +519,56 @@ export const projects: Project[] = [
 
     whatILearned: [
       {
-        lead: "Edge cases matter most",
+        lead: "Edge cases are where real systems get tested",
         detail:
-          "Real usage showed mismatches between machine availability, ordering state, and payment status. I learned to design systems that handle failures, recovery, and inconsistencies instead of assuming everything works in a straight flow.",
+          "Inventory discrepancies, machine downtime, and interrupted payments were regular occurrences in production. Designing for failure paths from the start made the system significantly more reliable.",
       },
-
       {
-        lead: "Speed shapes user behavior",
+        lead: "Checkout speed is a product decision, not an afterthought",
         detail:
-          "Even small delays in ordering and checkout reduced user satisfaction. This showed that performance and smooth flow matter more than adding extra features.",
+          "Treating speed as a core requirement from day one drove better API design, leaner state management, and a simpler ordering flow compared to optimizing at the end.",
       },
-
       {
-        lead: "Payments must be reliable",
+        lead: "Payment reliability requires planning for failures, not just successes",
         detail:
-          "Payment flows need careful handling of retries and recovery to prevent failed or duplicate transactions. Reliability is critical to user trust.",
+          "Stripe works well for straightforward flows. The real engineering work was building retry logic and recovery handling that prevented duplicate charges and lost order state under real mobile network conditions.",
       },
-
       {
-        lead: "Real-world use breaks assumptions",
+        lead: "Live data must be verified, not assumed",
         detail:
-          "Live machine behavior exposed cases that were not expected during design, requiring changes to ordering logic and availability handling.",
-      },
-
-      {
-        lead: "Team alignment is essential",
-        detail:
-          "Working closely with engineers, designers, and stakeholders helped align system design, user experience, and implementation, reducing misunderstandings and rework.",
-      },
-
-      {
-        lead: "Delivery affects product quality",
-        detail:
-          "Automated deployment and frequent releases improved stability and reduced issues in production, showing that delivery process is part of the product itself.",
+          "Always fetching fresh machine availability instead of relying on cached data prevented an entire class of bugs that would have caused customers to order from unavailable machines.",
       },
     ],
 
     sidebar: {
-      role: "Led full-stack engineering and mobile ordering delivery for a real-time self-service machine ordering platform",
+      role: "Owned full-stack engineering and mobile delivery for a real-time self-service machine ordering platform",
 
       technologyStack: [
         {
           groupLabel: "Frontend",
           technologies: [
             "React Native",
-            "TypeScript",
+            "JavaScript",
             "Expo",
-            "TanStack Query",
             "Zustand",
             "Mapbox",
           ],
         },
         {
           groupLabel: "Backend",
-          technologies: ["Node.js", "API services", "Strapi", "Stripe"],
+          technologies: ["Node.js", "GraphQL", "Strapi", "Stripe"],
         },
         {
           groupLabel: "Infrastructure",
-          technologies: ["GitHub Actions", "CI/CD", "EAS Build"],
+          technologies: ["GitHub Actions", "EAS Build"],
         },
       ],
 
       constraints: [
-        "Cross-platform mobile delivery",
+        "Cross-platform iOS and Android delivery",
         "Real-time machine availability synchronization",
-        "Reliable payment processing under unstable conditions",
-        "Location-based ordering workflows",
+        "Stripe reliability under unstable mobile connections",
+        "Location-based ordering with live machine state",
       ],
 
       collaborators:
@@ -644,10 +607,8 @@ export const projects: Project[] = [
 
     hero: {
       title: "Surveillance Platform",
-
       summary:
-        "Real-time monitoring platform that unified nearly 10,000 CCTV camera feeds into a single surveillance system used by 3 government agencies for continuous 24/7 monitoring and incident tracking.",
-
+        "Architected and deployed a production-ready surveillance platform supporting 10,000 CCTV cameras, 24/7 monitoring, and real-time incident management, independently deployed and configured for 3 government agencies.",
       meta: {
         role: "Senior Fullstack Engineer",
         teamSize: "10-person team",
@@ -659,93 +620,81 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "Each government agency operated its own surveillance system with limited visibility across organizations, making incident coordination difficult. The platform needed to unify nearly 10,000 CCTV camera feeds into a shared monitoring system used by 3 government agencies while supporting secure access control, real-time monitoring, low-latency incident alerts, and high-availability infrastructure for continuous 24/7 operations.",
-
+        "Each government agency was managing surveillance operations through fragmented, outdated systems with no centralized way to monitor camera feeds, track incidents, or manage access within their own organization. The engineering challenge was building a single production-ready platform that could be deployed and configured independently for each agency, supporting nearly 10,000 camera feeds, strict access control, real-time incident monitoring, and 24/7 high-availability operations.",
       pullQuote:
-        "Incidents were difficult to coordinate because surveillance systems were isolated across agencies.",
+        "Each agency needed a production-grade surveillance system built to their own security and operational requirements.",
     },
 
     whatIDid: {
       intro:
-        "Led full-stack engineering across frontend, backend, middleware, and infrastructure workflows for a large-scale surveillance platform used by multiple government agencies. Owned architecture decisions, VMS integration, real-time monitoring workflows, scalability improvements, and engineering standards across multiple concurrent projects.",
+        "Led full-stack engineering across frontend, backend, middleware, and infrastructure for a large-scale government surveillance platform. Owned architecture decisions, VMS integration, real-time monitoring workflows, and engineering standards across the platform.",
 
       contributions: [
         {
           icon: "Layout",
-          title:
-            "Led frontend architecture for large-scale surveillance monitoring",
+          title: "Frontend architecture for real-time monitoring",
           detail:
-            "Designed and maintained frontend architecture using Next.js, Redux Toolkit, and RTK Query to support live camera monitoring, incident management, real-time updates, and responsive monitoring dashboards for large-scale surveillance operations.",
+            "Architected the frontend using Next.js, Redux Toolkit, and RTK Query to support live camera monitoring, incident management, and real-time dashboard updates across large-scale surveillance operations.",
         },
         {
           icon: "Database",
-          title: "Built backend and middleware services for VMS integration",
+          title: "Backend and middleware services for VMS integration",
           detail:
-            "Developed NestJS backend APIs and secured middleware services that connected directly with third-party VMS systems inside protected intranet environments. Managed camera synchronization, live streams, snapshots, camera health status, and secure data delivery to frontend applications.",
+            "Built NestJS APIs and secured middleware services that connected directly with third-party VMS systems inside protected intranet environments, handling camera sync, live streams, snapshots, and health status.",
         },
         {
           icon: "Map",
-          title: "Developed map-based monitoring and geospatial features",
+          title: "Geospatial map monitoring with Redis indexing",
           detail:
-            "Built Mapbox-based monitoring features integrated with Redis geospatial indexing, reverse geocoding, camera filtering, and real-time camera updates to improve monitoring visibility and incident response.",
-        },
-        {
-          icon: "Video",
-          title: "Delivered responsive real-time monitoring experiences",
-          detail:
-            "Implemented low-latency monitoring workflows supporting concurrent live video streams, WebSocket-based incident updates, and optimized frontend rendering for smooth real-time monitoring.",
+            "Built Mapbox monitoring features integrated with Redis geospatial indexing and real-time camera updates, improving operator visibility and incident response across distributed camera sites.",
         },
         {
           icon: "Shield",
-          title: "Implemented secure multi-agency access control",
+          title: "Multi-tier role-based access control and SSO",
           detail:
-            "Designed role-based access control, department-level permissions, OAuth 2.0 SSO integration, and secured service communication to support separate agency access and enterprise security requirements.",
+            "Designed a multi-tier permission system with OAuth 2.0 SSO, ensuring operators only accessed camera feeds and incident data within their assigned boundary.",
         },
-
         {
           icon: "Workflow",
-          title: "Built background processing and evidence workflows",
+          title: "Background processing for evidence and video clips",
           detail:
-            "Implemented BullMQ worker pipelines for video clip generation, asynchronous evidence processing, MinIO S3 uploads, and incident alert handling to isolate CPU-intensive workloads from monitoring services.",
+            "Built BullMQ worker pipelines for video clip generation, evidence processing, and MinIO S3 uploads, isolating CPU-intensive workloads from real-time monitoring services.",
         },
-
         {
           icon: "GitBranch",
-          title: "Improved development workflows and code quality",
+          title: "Monorepo setup and engineering standards",
           detail:
-            "Introduced a Lerna monorepo setup, automated testing, CI/CD pipelines, and shared engineering practices using Jest, Cypress, Docker, and GitHub Actions to improve code quality, deployment reliability, and collaboration across frontend, backend, and middleware services.",
+            "Introduced Lerna monorepo, automated testing with Jest and Cypress, and CI/CD pipelines via GitHub Actions across frontend, backend, and middleware services.",
         },
-
         {
           icon: "Server",
-          title: "Supported infrastructure scaling and production delivery",
+          title: "Infrastructure scaling and production delivery",
           detail:
-            "Collaborated with DevOps teams and government stakeholders on deployment architecture, Docker infrastructure, Nginx configuration, horizontal scaling, production troubleshooting, security hardening, and high-availability deployments across distributed environments.",
+            "Collaborated on deployment architecture using Docker and Nginx, supporting horizontal scaling, security hardening, and high-availability deployments across distributed government environments.",
         },
       ],
     },
 
     technicalDecisions: [
       {
-        decision:
-          "Used a Lerna monorepo across frontend, backend, and middleware",
+        decision: "Lerna monorepo across frontend, backend, and middleware",
         rationale:
-          "The platform consisted of multiple frontend applications, backend services, middleware services, and shared TypeScript packages. A monorepo setup improved dependency management, code sharing, CI/CD consistency, and collaboration across engineering teams.",
+          "Multiple frontend apps, backend services, and middleware packages needed shared TypeScript types and consistent CI/CD. A monorepo reduced duplication and kept dependency management under control as the team grew.",
       },
       {
-        decision: "Separated backend and middleware services",
+        decision: "Separated backend and middleware into distinct services",
         rationale:
-          "Middleware services operated inside secured intranet environments with direct access to third-party VMS infrastructure, while backend services exposed APIs to frontend applications. Separating responsibilities improved security, scalability, and fault isolation.",
+          "Middleware operated inside secured intranet environments with direct VMS access. Keeping it separate from the public-facing backend improved security isolation and let each layer scale independently.",
       },
       {
-        decision: "Used RabbitMQ for asynchronous service communication",
+        decision: "RabbitMQ for asynchronous service communication",
         rationale:
-          "Real-time camera synchronization, incident processing, and streaming workflows required reliable asynchronous communication between distributed services under high concurrency.",
+          "Camera sync, incident processing, and streaming workflows ran concurrently across distributed services. RabbitMQ provided reliable message delivery without tightly coupling services under high concurrency.",
       },
       {
-        decision: "Used BullMQ for video clip processing workflows",
+        decision: "BullMQ for video clip and evidence processing",
         rationale:
-          "Video clip generation and evidence uploads were CPU-intensive operations. Offloading these tasks into background workers prevented monitoring services from becoming blocked during heavy alert activity.",
+          "Video clip generation was CPU-intensive and unpredictable in duration. Moving it into background workers meant heavy alert activity could never block live monitoring workflows.",
       },
     ],
 
@@ -778,7 +727,7 @@ export const projects: Project[] = [
       {
         src: "/projects/surveillance/surveillance-06.png",
         caption:
-          "Alert triage — prioritised incident log with severity filtering and audit export",
+          "Alert management — prioritized incident log with severity filtering and audit export",
       },
       {
         src: "/projects/surveillance/surveillance-07.png",
@@ -788,7 +737,7 @@ export const projects: Project[] = [
       {
         src: "/projects/surveillance/surveillance-08.png",
         caption:
-          "Access control — role-based camera permissions scoped per department and site",
+          "Access control — role-based camera permissions scoped per agency and site",
       },
     ],
 
@@ -798,85 +747,75 @@ export const projects: Project[] = [
         value: "10,000+",
         label: "CCTV Cameras",
         description:
-          "Unified large-scale surveillance feeds into one monitoring platform",
+          "Supported across a single platform built for large-scale surveillance operations",
       },
-
       {
         icon: "ShieldCheck",
         value: "3",
         label: "Government Agencies",
         description:
-          "Supported secure shared monitoring across multiple agencies",
+          "Platform independently deployed and configured for each agency",
       },
       {
         icon: "Zap",
-        value: "~50%",
+        value: "50%",
         label: "Faster Map Rendering",
         description:
-          "Improved monitoring responsiveness through optimized state management",
+          "Improved through optimized state management and geospatial indexing",
       },
-
       {
         icon: "TrendingUp",
         value: "~60%",
         label: "Fewer Production Defects",
-        description:
-          "Reduced defects through automated testing and TDD practices",
+        description: "Reduced through automated testing and TDD practices",
       },
-
       {
         icon: "Clock",
-        value: "~20%",
+        value: "20%",
         label: "Faster Deployments",
         description:
-          "Improved release efficiency through CI/CD automation workflows",
+          "Achieved through CI/CD automation and monorepo pipeline improvements",
       },
-
       {
         icon: "Server",
         value: "24/7",
         label: "Continuous Monitoring",
         description:
-          "Supported high-availability surveillance operations and monitoring",
+          "High-availability surveillance operations across all agency sites",
       },
     ],
 
     whatILearned: [
       {
-        lead: "Distributed systems require clear boundaries",
+        lead: "Clear service boundaries make systems easier to reason about",
         detail:
-          "Separating frontend, backend, and middleware responsibilities improved scalability, fault isolation, maintainability, and long-term reliability across large-scale real-time systems.",
+          "Separating frontend, backend, and middleware into distinct layers kept failures contained and made the system significantly easier to debug and scale as complexity grew.",
       },
       {
-        lead: "Real-time systems depend on state consistency",
+        lead: "State consistency is a design requirement, not an afterthought",
         detail:
-          "Monitoring workflows exposed synchronization challenges between camera status, streaming data, alerts, and frontend rendering under high concurrency conditions.",
+          "Working on real-time monitoring taught me to treat synchronization between camera status, alerts, and frontend state as a core architectural concern from the start.",
       },
       {
-        lead: "Reliability matters as much as feature delivery",
+        lead: "Offloading heavy processing early keeps critical workflows stable",
         detail:
-          "Systems used in mission-critical environments require stable deployments, strong monitoring tools, recovery planning, and fast production troubleshooting processes.",
+          "Moving video clip generation into background workers before it became a bottleneck meant live monitoring stayed unaffected even during the heaviest alert spikes in production.",
       },
       {
-        lead: "Performance directly affects operational usability",
+        lead: "Government delivery sharpens your instinct for reliability",
         detail:
-          "Improving rendering speed, map responsiveness, and streaming latency significantly improved usability for operators managing large-scale surveillance workflows.",
+          "Operating in a mission-critical environment shifted my priorities toward deployment stability, fast production support, and recovery planning as core engineering responsibilities.",
       },
       {
-        lead: "Real-time incident systems demand reliability at scale",
+        lead: "Security and compliance are engineering constraints, not checklists",
         detail:
-          "Building systems used by government agencies taught me how critical reliable event delivery, secure access control, and high-availability infrastructure are when thousands of live streams and concurrent operators depend on accurate incident visibility.",
-      },
-
-      {
-        lead: "Engineering standards improve long-term scalability",
-        detail:
-          "Automated testing, CI/CD pipelines, monorepo workflows, and shared engineering practices improved maintainability, team collaboration, and deployment stability across multiple services.",
+          "Deploying on government infrastructure taught me to treat security hardening and GDPR compliance as first-class requirements built into the architecture, not steps added at the end.",
       },
     ],
 
     sidebar: {
-      role: "Led full-stack engineering and architecture delivery for a real-time surveillance platform used by 3 government agencies",
+      role: "Led full-stack engineering and architecture for a real-time surveillance platform independently deployed across 3 government agencies",
+
       technologyStack: [
         {
           groupLabel: "Frontend",
@@ -889,7 +828,6 @@ export const projects: Project[] = [
             "Mapbox",
           ],
         },
-
         {
           groupLabel: "Backend",
           technologies: [
@@ -902,7 +840,6 @@ export const projects: Project[] = [
             "MQTT broker",
           ],
         },
-
         {
           groupLabel: "Infrastructure",
           technologies: [
@@ -917,10 +854,10 @@ export const projects: Project[] = [
       ],
 
       constraints: [
-        "24/7 monitoring across nearly 10,000 CCTV cameras",
-        "Secure shared access for 3 government agencies",
-        "High-availability distributed surveillance systems",
-        "Low-latency incident monitoring and alerts",
+        "24/7 monitoring across 10,000 CCTV cameras",
+        "Independently deployed and configured per government agency",
+        "High-availability distributed surveillance infrastructure",
+        "Low-latency incident monitoring and real-time alerts",
       ],
 
       collaborators:
@@ -944,6 +881,7 @@ export const projects: Project[] = [
       "https://www.hitachi.asia/fibu/product/digital-advisor-platform/",
     isPrivate: true,
     hasCaseStudy: true,
+
     coreTechStack: [
       "React",
       "TypeScript",
@@ -955,10 +893,11 @@ export const projects: Project[] = [
       "AWS Amplify",
       "Nx Monorepo",
     ],
+
     hero: {
       title: "Digital Advisor Platform",
       summary:
-        "Web platform used by 6,000+ insurance advisors to conduct live client sessions, capture structured customer data, and complete guided financial planning workflows across protection, savings, investment, and retirement.",
+        "Developed and launched a guided financial advisory platform used by 6,000+ insurance advisors to run live client sessions, capture structured financial data, and complete end-to-end advisory workflows across protection, savings, investment, and retirement planning.",
       meta: {
         role: "Frontend Developer",
         teamSize: "5-person team",
@@ -967,192 +906,173 @@ export const projects: Project[] = [
         platform: "Web",
       },
     },
+
     challenge: {
       prose:
-        "Advisors needed a single system to capture customer information, validate financial inputs, and complete advisory workflows during live client sessions. Each step directly affected financial calculations, so incomplete or inconsistent data could not be allowed to progress through the workflow.",
+        "Insurance advisors were running live client sessions using disconnected tools, with no unified system to capture financial data, validate inputs, and drive end-to-end advisory workflows. Each step directly impacted downstream financial calculations, meaning inconsistent or incomplete data could invalidate an entire session. The system needed strict step-level validation, real-time responsiveness, and reliable state consistency under live usage conditions.",
       pullQuote:
-        "Customer onboarding, financial data capture, and advisory workflows had to run as one continuous guided session.",
+        "One inconsistent input could cascade into incorrect financial outcomes across the entire advisory session.",
     },
+
     whatIDid: {
       intro:
-        "Built the frontend system for structured onboarding, financial data capture, and advisory workflows used during live client sessions. Focused on keeping multi-step financial data consistent and ensuring reliable progression across tightly coupled workflow steps.",
+        "Owned the frontend architecture and implementation across onboarding, financial data capture, and advisory workflows, ensuring correctness, performance, and consistency during live advisory sessions.",
+
       contributions: [
         {
-          icon: "Users",
-          title: "Platform used by 6,000+ insurance advisors",
-          detail:
-            "Delivered a production system used by thousands of advisors for onboarding, compliance, and financial planning during live advisory sessions.",
-        },
-        {
-          icon: "Shield",
-          title: "Implemented secure authentication and access control",
-          detail:
-            "Integrated AWS Cognito for SSO, OTP login, and role-based access control to ensure secure handling of sensitive customer and financial data.",
-        },
-        {
           icon: "FileText",
-          title: "Built structured multi-step onboarding workflows",
+          title: "Built structured onboarding and financial data flows",
           detail:
-            "Designed step-based flows covering identity, dependents, income, expenses, net worth, insurance coverage, and financial goals with validation at each step to ensure data correctness before proceeding.",
+            "Designed multi-step workflows covering identity, dependents, income, expenses, net worth, coverage, and financial goals, with strict validation gates to ensure downstream financial calculations remained consistent and reliable.",
         },
         {
           icon: "BarChart2",
           title: "Built real-time financial planning simulation",
           detail:
-            "Created an interactive tool that recalculates savings, insurance coverage, and retirement outcomes instantly as advisors adjust inputs during client sessions.",
+            "Developed an interactive simulation engine that recalculates insurance coverage, savings projections, and retirement outcomes instantly as advisors adjust inputs during live client sessions.",
         },
         {
           icon: "GitBranch",
           title: "Designed modular frontend architecture using Nx",
           detail:
-            "Structured the application into Nx monorepo with shared libraries and feature-based modules across onboarding, advisory, and simulation workflows.",
+            "Structured the application into a Nx monorepo with shared libraries and feature-based modules across onboarding, advisory, and simulation domains, enabling scalable development across the team.",
         },
         {
           icon: "Layout",
-          title: "Defined frontend engineering standards across the team",
+          title: "Established frontend engineering standards",
           detail:
-            "Established consistent UI patterns, state management using Zustand, and reusable component structures across a 5-engineer frontend team.",
+            "Defined reusable UI patterns, Zustand-based state conventions, GraphQL data fetching guidelines, and component architecture standards that ensured consistency across a 5-person frontend team.",
+        },
+        {
+          icon: "Shield",
+          title: "Integrated secure authentication and access control",
+          detail:
+            "Implemented AWS Cognito-based SSO, OTP authentication, and role-based access control to ensure secure handling of sensitive financial and customer data.",
         },
         {
           icon: "Cloud",
-          title: "Integrated APIs and deployment pipeline",
+          title: "Integrated APIs and deployment workflows",
           detail:
-            "Connected GraphQL APIs via AWS AppSync and deployed frontend applications using AWS Amplify with environment-based deployment workflows.",
+            "Connected GraphQL APIs via AWS AppSync and configured AWS Amplify deployment pipelines across UAT and production environments for reliable delivery.",
         },
       ],
     },
+
     technicalDecisions: [
-      {
-        decision: "AWS AppSync for structured data access",
-        rationale:
-          "Used GraphQL to simplify data retrieval across onboarding and advisory modules where multiple related data sources needed to be combined per workflow step.",
-      },
       {
         decision: "Zustand for multi-step workflow state management",
         rationale:
-          "Used a centralized store to maintain consistency across multi-step onboarding flows and prevent mismatched state between steps.",
+          "A shared state model ensured consistency across onboarding and advisory steps, preventing mismatched data from affecting financial calculations and improving session reliability.",
+      },
+      {
+        decision: "AWS AppSync with GraphQL for data access",
+        rationale:
+          "GraphQL allowed each workflow step to fetch only the required data in a single request, reducing over-fetching and simplifying complex data dependencies across advisory flows.",
+      },
+      {
+        decision: "Nx monorepo for frontend scalability",
+        rationale:
+          "A modular monorepo structure enabled shared utilities while maintaining clear boundaries between onboarding, advisory, and simulation features, improving maintainability across the team.",
       },
     ],
+
     visuals: [
       {
         src: "/projects/dap/dap-01.png",
         caption:
-          "Client profile — joint household summary with net worth, coverage, and cash flow",
+          "Client profile — household overview with net worth, coverage, and cash flow",
       },
       {
         src: "/projects/dap/dap-02.png",
         caption:
-          "Goals overview — life protection, savings, and retirement goals with shortfall status",
+          "Goals dashboard — protection, savings, and retirement planning with gap analysis",
       },
       {
         src: "/projects/dap/dap-03.png",
         caption:
-          "Goal analysis — life protection shortfall projected across asset provisions and coverage years",
+          "Protection analysis — coverage shortfall projections across scenarios",
       },
       {
         src: "/projects/dap/dap-04.png",
         caption:
-          "Plan recommendations — matched insurance products with coverage benefits and favourites",
+          "Recommendation engine — insurance product matching with coverage breakdown",
       },
       {
         src: "/projects/dap/dap-05.png",
         caption:
-          "Peer insights — protection coverage benchmarks compared against similar customer profiles",
+          "Peer benchmarking — coverage comparison across similar profiles",
       },
       {
         src: "/projects/dap/dap-06.png",
-        caption:
-          "Community — trending financial discussion spaces with member and engagement activity",
+        caption: "Advisor community — financial discussion and engagement hub",
       },
       {
         src: "/projects/dap/dap-07.png",
         caption:
-          "Community — live podcast experts and upcoming financial planning sessions",
+          "Expert sessions — live advisory and financial planning events",
       },
       {
         src: "/projects/dap/dap-08.png",
         caption:
-          "Goal analysis — investment shortfall projection with required monthly savings breakdown",
+          "Investment planning — monthly savings requirement and gap analysis",
       },
     ],
+
     results: [
       {
         icon: "Users",
         value: "6,000+",
         label: "Active Advisors",
         description:
-          "Advisors actively using the platform during client sessions",
+          "Insurance advisors using the platform for live financial advisory sessions",
       },
       {
         icon: "CheckCircle",
         value: "7",
         label: "Workflow Modules",
-        description:
-          "Structured onboarding and advisory workflows implemented end-to-end",
-      },
-      {
-        icon: "GitBranch",
-        value: "100%",
-        label: "Workflow Coverage",
-        description:
-          "All onboarding and advisory processes implemented in digital system",
+        description: "End-to-end onboarding and advisory workflows delivered",
       },
       {
         icon: "Zap",
-        value: "Live",
-        label: "Session Data Sync",
+        value: "Real-time",
+        label: "Financial Simulation",
         description:
-          "Customer and advisor data kept consistent during active sessions",
+          "Instant recalculation of financial outcomes during live sessions",
       },
       {
         icon: "Shield",
         value: "Secure",
         label: "Access Control",
-        description:
-          "Authentication and role-based access implemented using AWS Cognito",
-      },
-      {
-        icon: "Layers",
-        value: "Nx",
-        label: "System Structure",
-        description:
-          "Frontend organized into modular monorepo architecture with shared libraries",
+        description: "SSO, OTP, and role-based access via AWS Cognito",
       },
     ],
+
     whatILearned: [
       {
-        lead: "Multi-step workflows require strict state control",
+        lead: "Data correctness must be enforced at the entry point",
         detail:
-          "Breaking onboarding into structured steps helped prevent inconsistent or incomplete data from affecting downstream financial calculations.",
+          "Early validation prevented invalid inputs from propagating into financial models that advisors and clients rely on during live sessions.",
       },
       {
-        lead: "Validation must happen throughout the workflow",
+        lead: "State consistency is foundational in multi-step workflows",
         detail:
-          "Each step required correctness checks because financial outputs depended directly on intermediate inputs.",
+          "A shared state layer was the only reliable way to enforce step completion, track progression, and keep financial data accurate across a multi-step advisory session.",
       },
       {
-        lead: "Live sessions require consistent shared state",
+        lead: "Performance directly impacts trust in live advisory sessions",
         detail:
-          "Advisor-client interactions depend on synchronized data updates across both users during active planning.",
+          "Even small delays during client sessions disrupted workflow continuity, making responsiveness as important as correctness.",
       },
       {
-        lead: "System structure impacts long-term maintainability",
+        lead: "Modular architecture makes teams faster",
         detail:
-          "Nx-based modular design reduced coupling between features and made the system easier to scale and maintain.",
-      },
-      {
-        lead: "Authentication defines system boundaries",
-        detail:
-          "Role-based access directly influenced how workflows were structured and what data users could access.",
-      },
-      {
-        lead: "Correctness is more important than completeness",
-        detail:
-          "In financial workflows, inaccurate data has higher impact than missing features.",
+          "Separating onboarding, advisory, and simulation into distinct modules reduced coordination overhead and enabled parallel development across the team.",
       },
     ],
+
     sidebar: {
-      role: "Built onboarding and financial advisory system used in live insurance advisor sessions",
+      role: "Built the frontend system for a live financial advisory platform used by 6,000+ insurance advisors",
+
       technologyStack: [
         {
           groupLabel: "Frontend",
@@ -1167,13 +1087,16 @@ export const projects: Project[] = [
           technologies: ["AWS Amplify", "Nx Monorepo"],
         },
       ],
+
       constraints: [
-        "6,000+ active advisors using system",
-        "Strict step-by-step financial data validation",
-        "Live client advisory sessions with real-time updates",
+        "6,000+ advisors in live sessions",
+        "Strict step-by-step financial validation",
+        "Consistent financial data state across multi-step advisory workflows",
       ],
+
       collaborators:
         "Frontend engineer · Backend engineer · QA engineer · Product manager",
+
       cta: {
         label: "Product Site",
         url: "https://www.hitachi.asia/fibu/product/digital-advisor-platform/",
@@ -1185,7 +1108,7 @@ export const projects: Project[] = [
     id: "b2b-portal",
     name: "B2B Supplier Portal",
     slug: "b2b-portal",
-    thumbnailImage: "/projects/b2b/b2b-00.png",
+    thumbnailImage: "/projects/b2b/b2b-01.png",
     targetPlatform: "Web",
     industrySectors: ["Enterprise", "Supply Chain"],
     externalLink: "https://shengsiong.com.sg/",
@@ -1209,7 +1132,7 @@ export const projects: Project[] = [
     hero: {
       title: "B2B Supplier Portal",
       summary:
-        "Enterprise procurement and integration platform used by 100+ vendors across Sheng Siong Group and CMM, handling purchase orders, pricing updates, rebates, invoices, and large-scale procurement data within a unified system.",
+        "Modernized an enterprise procurement platform for Sheng Siong Group and CMM, unifying purchase orders, pricing, rebates, and invoices across 100+ vendors into a single operational system.",
       meta: {
         role: "Full Stack Engineer",
         teamSize: "10-person team",
@@ -1221,78 +1144,120 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "The supplier portal supported procurement and financial operations across Sheng Siong Group and CMM for more than 100 vendors. As transaction volume grew into millions of records, duplicated business logic, inconsistent data handling across backend services, and heavy data ingestion workloads caused slower processing, inconsistencies across procurement and finance workflows, and reduced operational efficiency across teams. I analyzed production usage patterns and legacy workflows to redesign the system around actual operational behavior.",
+        "The portal supported procurement and financial operations for more than 100 vendors. As transaction volume grew into millions of records, heavy data ingestion workloads introduced bottlenecks and slower workflows across procurement and finance teams. The system needed a full redesign built around how teams actually operated in production.",
       pullQuote:
-        "Growing transaction volume exposed performance bottlenecks and inconsistent workflow behavior across procurement and finance systems.",
+        "Growing transaction volume exposed bottlenecks that needed a system rebuild, not a patch.",
     },
 
     whatIDid: {
       intro:
-        "Led the modernization of a legacy supplier portal by reverse-engineering operational workflows, migrating the platform to Next.js and Node.js services, and restructuring the system architecture to isolate transactional APIs from heavy data processing workloads.",
+        "Owned the full-stack implementation across database, backend services, and frontend, starting with researching the legacy system workflows through direct collaboration with operational stakeholders.",
 
       contributions: [
         {
-          icon: "Users",
-          title: "Standardized procurement workflows across vendors",
+          icon: "Layout",
+          title: "Unified procurement and finance workflows",
           detail:
-            "Unified fragmented procurement processes into standardized operational workflows covering purchase orders, pricing updates, rebates, and invoice lifecycle across procurement and finance users.",
+            "Replaced fragmented vendor processes with a single dashboard covering purchase orders, pricing updates, rebates, and invoices used daily by vendor, procurement, and finance teams.",
         },
         {
-          icon: "Shield",
-          title: "Implemented role-based access control (RBAC)",
+          icon: "Tag",
+          title: "Built vendor pricing update submission system",
           detail:
-            "Defined and enforced RBAC across Admin, Supplier Admin, Finance, and PO roles across API and UI layers to ensure controlled access to procurement and financial modules.",
+            "Collaborated with stakeholders to define price change rules and built three submission flows covering permanent price changes, promotions, and advertising campaigns, each with product selection and price change document upload.",
         },
         {
           icon: "Database",
-          title: "Built data ingestion services for structured files",
+          title: "Built procurement data ingestion pipeline",
           detail:
-            "Developed backend services to process CSV, Excel, and PDF procurement data with validation, transformation, database storage, and email notifications for processing results and data validation errors.",
+            "Designed and built a dedicated backend service that reads, validates, and transforms CSV, Excel, and PDF procurement files into structured database records, stores Excel and PDF files in AWS S3, and sends email notifications with processing results.",
         },
         {
           icon: "TrendingUp",
-          title: "Improved database performance by ~30%",
+          title:
+            "Designed database schema and optimized integration performance",
           detail:
-            "Optimized MySQL indexing and rewrote complex queries on large transaction datasets, reducing latency in reporting and dashboard queries.",
+            "Designed the full database schema to normalize procurement data across vendors, products, and transactions, optimized query performance to handle over 1M records, and reduced integration latency by 30%.",
         },
         {
-          icon: "Layout",
-          title: "Built centralized operational dashboard",
+          icon: "Shield",
+          title: "Redesigned permission model to match team responsibilities",
           detail:
-            "Built a unified operational dashboard consolidating purchase orders, pricing updates, rebates, incentives, and invoice information into a single interface, replacing disconnected views used by vendors and internal teams.",
+            "Designed and enforced a four-tier access model covering Admin, Supplier Admin, Finance, and PO roles to ensure each team only accessed procurement and financial data relevant to their responsibilities.",
         },
         {
-          icon: "GitBranch",
-          title: "Isolated data processing from API layer",
+          icon: "Users",
+          title: "Automated vendor account provisioning",
           detail:
-            "Separated data ingestion workloads into dedicated backend services to prevent heavy processing from impacting transactional API performance.",
+            "Built a vendor onboarding flow that detected new vendors from integrated procurement data, triggered signup emails, and guided them through account verification to access their orders and financial workflows.",
         },
         {
           icon: "Cloud",
-          title: "Deployed production system on AWS with Nginx",
+          title: "Led production deployment and technical handover",
           detail:
-            "Hosted applications on EC2 behind Nginx, used S3 for document storage, and RDS MySQL for transactional and reporting data across UAT and production environments.",
+            "Wrote deployment documentation for AWS EC2, S3, and RDS across UAT and production environments, then supported the client team through project setup, deployment, and production issue resolution during the handover process.",
         },
       ],
     },
 
-    visuals: [],
-
     technicalDecisions: [
       {
-        decision: "GraphQL for procurement data modeling",
+        decision: "GraphQL over REST for procurement data retrieval",
         rationale:
-          "Enabled efficient retrieval of related procurement entities such as orders, suppliers, and invoices while reducing over-fetching in API calls.",
+          "Procurement entities like orders, suppliers, and invoices are deeply related, so GraphQL let each view fetch exactly what it needed in one query, cutting the over-fetching that REST endpoints were producing.",
       },
       {
-        decision: "Dedicated data ingestion pipeline",
+        decision: "Dedicated ingestion pipeline separate from the API layer",
         rationale:
-          "Separated CSV, Excel, and PDF processing workloads from transactional APIs to maintain stable system responsiveness during heavy data processing.",
+          "Running data ingestion inside the transactional API slowed down responses for other users during heavy data integrations, so separating it into its own service kept both layers stable and independently scalable.",
       },
       {
-        decision: "MySQL optimization strategy",
+        decision: "Optimize queries before scaling infrastructure",
         rationale:
-          "Improved indexing and query design to support million-scale transaction datasets with reduced latency in reporting workflows.",
+          "Analyzing query patterns first and improving indexing achieved a 30% latency reduction without any additional infrastructure cost, which was more effective than scaling up the database instance.",
+      },
+    ],
+
+    visuals: [
+      {
+        src: "/projects/b2b/b2b-01.png",
+        caption:
+          "Supplier dashboard with pending orders, expiring POs, user counts, and system announcements",
+      },
+      {
+        src: "/projects/b2b/b2b-02.png",
+        caption:
+          "Purchase order list with outlet filtering, PO details, and direct invoice conversion",
+      },
+      {
+        src: "/projects/b2b/b2b-03.png",
+        caption:
+          "Purchase JIT setting with preferred delivery days and times per outlet",
+      },
+      {
+        src: "/projects/b2b/b2b-04.png",
+        caption:
+          "Invoice update for submitting invoice numbers and dates against purchase orders",
+      },
+      {
+        src: "/projects/b2b/b2b-05.png",
+        caption:
+          "E-payment voucher list with vendor payment records, amounts, and transaction details",
+      },
+      {
+        src: "/projects/b2b/b2b-06.png",
+        caption:
+          "E-pricing list with current item prices across CMM and SS and product selection",
+      },
+      {
+        src: "/projects/b2b/b2b-07.png",
+        caption:
+          "Price change submission with uploaded Excel showing current and proposed prices for review",
+      },
+      {
+        src: "/projects/b2b/b2b-08.png",
+        caption:
+          "Price change final review with submission date, promotion period, and full price comparison",
       },
     ],
 
@@ -1301,56 +1266,62 @@ export const projects: Project[] = [
         icon: "Users",
         value: "100+",
         label: "Active Vendors",
-        description: "Vendors actively using the procurement platform",
+        description:
+          "Vendors using the platform across procurement and finance workflows",
       },
       {
         icon: "Database",
-        value: "~1M+",
+        value: "1M+",
         label: "Transaction Records",
         description:
-          "Procurement records processed across purchase orders, invoices, pricing, and rebates",
+          "Records processed across purchase orders, invoices, pricing, and rebates",
       },
       {
         icon: "TrendingUp",
         value: "30%",
-        label: "Performance Improvement",
+        label: "Query Latency Reduced",
         description:
-          "Reduced query latency and improved responsiveness of reporting and dashboard views",
+          "Achieved through MySQL indexing redesign and query rewrites",
       },
       {
         icon: "CheckCircle",
         value: "100%",
         label: "Workflow Coverage",
         description:
-          "Consolidated procurement, pricing, rebate, and invoice workflows into a unified system",
+          "Procurement, pricing, rebate, and invoice workflows unified into one system",
       },
     ],
 
     whatILearned: [
       {
-        lead: "Real system usage differs from design assumptions",
+        lead: "Observe before system design",
         detail:
-          "Production workflows revealed differences between intended design and actual procurement, pricing, rebate, and invoice usage, requiring adjustments to align system behavior with real operations.",
+          "Researching legacy workflows with operational stakeholders before writing any code clarified real process dependencies and shaped the entire system architecture.",
       },
       {
-        lead: "System boundaries are critical for scalability",
+        lead: "Decouple ingestion from core services",
         detail:
-          "Separating transactional APIs from data processing workloads improved stability and prevented performance degradation under heavy processing loads.",
+          "Isolating data ingestion into its own service kept large procurement integrations from affecting the API performance that vendor and finance teams depended on daily.",
       },
       {
-        lead: "Performance directly affects operational efficiency",
+        lead: "Data modeling drives scalability",
         detail:
-          "Database and query optimization significantly improved usability for teams working with large procurement datasets and reporting workflows.",
+          "Designing the schema correctly from the start made handling millions of procurement records and maintaining query performance significantly more manageable as data volume grew.",
       },
       {
-        lead: "Access control reduces operational risk",
+        lead: "Align authorization with operational structure",
         detail:
-          "Implementing role-based access across procurement and finance users helped prevent unintended actions and ensured proper workflow boundaries.",
+          "Mapping role boundaries to how procurement and finance teams actually divided their work prevented teams from accessing data outside their responsibilities.",
+      },
+      {
+        lead: "End-to-end integration work builds deep operational knowledge",
+        detail:
+          "Building this platform gave me a clear understanding of how B2B businesses manage their day-to-day supplier workflows and why timely data updates are critical to keeping procurement and finance operations running accurately.",
       },
     ],
 
     sidebar: {
-      role: "Built enterprise procurement platform supporting vendor operations and transaction processing",
+      role: "Owned full-stack delivery of an enterprise procurement platform supporting vendor operations and high-volume transaction processing",
 
       technologyStack: [
         {
@@ -1368,10 +1339,10 @@ export const projects: Project[] = [
       ],
 
       constraints: [
-        "100+ vendors operating across procurement workflows",
-        "Millions of transaction records processed across systems",
-        "High-volume CSV, Excel, and PDF data ingestion workflows",
-        "Strict consistency requirements across procurement and finance data",
+        "100+ vendors across procurement workflows",
+        "Million-scale transaction records",
+        "High-volume CSV, Excel, and PDF ingestion",
+        "Strict data consistency across procurement and finance",
       ],
 
       collaborators:

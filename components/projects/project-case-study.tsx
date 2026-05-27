@@ -330,7 +330,7 @@ export function ProjectCaseStudy({ id }: { id: string }) {
                 return (
                   <div
                     key={i}
-                    className="rounded-lg border border-border bg-muted/20 p-3.5"
+                    className="rounded-xl border border-border bg-muted/20 p-3.5"
                   >
                     <div className="mb-1.5 flex items-center gap-1.5">
                       <Icon size={13} className="shrink-0 text-primary" />
@@ -547,7 +547,9 @@ export function ProjectCaseStudy({ id }: { id: string }) {
         index={lightboxIndex}
         plugins={[Captions, Counter, Fullscreen, Zoom]}
         captions={{ descriptionTextAlign: "center" }}
-        counter={{ container: { style: { left: "50%", transform: "translateX(-50%)" } } }}
+        counter={{
+          container: { style: { left: "50%", transform: "translateX(-50%)" } },
+        }}
         render={{
           iconClose: () => <XIcon size={20} />,
           iconPrev: () => <ArrowLeftIcon size={20} />,
