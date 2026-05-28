@@ -405,7 +405,7 @@ export function ProjectCaseStudy({ id }: { id: string }) {
                       {i + 1}
                     </span>
                     <p className="text-sm leading-relaxed">
-                      <span className="font-semibold">{item.lead}. </span>
+                      <span className="font-semibold">{item.lead} </span>
                       <span className="text-foreground/85">{item.detail}</span>
                     </p>
                   </li>

@@ -115,7 +115,7 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "Most SME owners tracked business finances through notebooks or spreadsheets with no clear visibility into cash flow, expenses, or debts, making it difficult to make informed business decisions. The engineering challenge was building a production-ready fintech app from scratch with a 5-person team, covering AI-assisted guidance and offline reliability in low-connectivity environments.",
+        "Most SME owners tracked business finances through notebooks or spreadsheets with no clear visibility into cash flow, expenses, or debts, making it difficult to make informed business decisions. The engineering challenge was building a production-ready fintech app with a 5-person team, covering AI-assisted guidance and offline reliability in low-connectivity environments.",
       pullQuote:
         "By the time most SME owners knew they were losing money, it was already too late to act.",
     },
@@ -184,7 +184,7 @@ export const projects: Project[] = [
       {
         decision: "Streaming-first rendering for AI responses",
         rationale:
-          "AI response latency made standard request-response patterns feel slow. Token streaming with structured rendering made the advisor feel responsive and readable from the first token.",
+          "AI response latency made standard request-response feel slow. Token streaming with structured rendering made the advisor feel responsive and readable from the first token.",
       },
       {
         decision: "NativeWind for a shared component system",
@@ -264,31 +264,35 @@ export const projects: Project[] = [
         icon: "Globe",
         value: "Multi-language",
         label: "Localized Experience",
-        description:
-          "Supported accessibility across multiple regions and languages",
+        description: "Supported across multiple regions and languages",
       },
     ],
 
     whatILearned: [
       {
-        lead: "Real production usage exposes problems that testing never catches.",
+        lead: "Frontend architecture drives how fast the team can deliver.",
         detail:
-          "Machine downtime, inventory gaps, and interrupted payments only appeared after launch, which reinforced the value of building error handling into the system from the beginning.",
+          "Early architectural decisions determine feature delivery speed and how sustainably the codebase scales as the product grows.",
       },
       {
-        lead: "Performance requirements need to be defined before building, not after.",
+        lead: "AI features require more than just connecting an API.",
         detail:
-          "Setting checkout speed as a goal from day one shaped how the entire ordering flow was designed and built.",
+          "Making the AI advisor feel trustworthy to users required handling slow responses, failed requests, and unstructured outputs before it was reliable enough to ship.",
       },
       {
-        lead: "A payment flow is only as reliable as its failure handling.",
+        lead: "Offline support needs to be planned from the beginning.",
         detail:
-          "Handling retries and interrupted sessions was what made Stripe integration trustworthy for users under real mobile network conditions.",
+          "For SME users operating in low-connectivity environments, offline reliability is what makes the app usable in their daily operations, not just a secondary concern.",
       },
       {
-        lead: "External system integration requires reliable synchronization.",
+        lead: "Talking directly to users changes how you build.",
         detail:
-          "Machine inventory and status were managed by an external backend system, making reliable synchronization essential to ensure orders were only placed against accurate and up-to-date machine data.",
+          "Working with SME users revealed workflow assumptions that changed how several core features were designed.",
+      },
+      {
+        lead: "Automating releases early removes friction on every sprint.",
+        detail:
+          "Setting up the build and release pipeline at the start meant the team could ship updates and fix issues without manual steps slowing things down.",
       },
     ],
 
@@ -315,7 +319,6 @@ export const projects: Project[] = [
             "RAG",
             "Vector Search",
             "Firebase",
-            "Supabase",
           ],
         },
         {
@@ -325,10 +328,10 @@ export const projects: Project[] = [
       ],
 
       constraints: [
-        "Built from scratch with a 5-person team",
         "Cross-platform iOS and Android delivery",
-        "LLM response latency requiring streaming and optimistic UI",
+        "LLM response latency requiring streaming and responsive feedback",
         "Offline reliability in low-connectivity environments",
+        "5-person team delivering a production fintech app",
       ],
 
       collaborators:
@@ -433,9 +436,10 @@ export const projects: Project[] = [
 
     technicalDecisions: [
       {
-        decision: "Live machine data fetched fresh, never cached",
+        decision:
+          "Machine state synced directly from the external backend system",
         rationale:
-          "Machine availability changed frequently and unpredictably. Always fetching live data prevented stale availability from causing failed orders or incorrect displays.",
+          "Machine availability was continuously updated via REST API calls to the machine's own backend, ensuring the ordering state always reflected real-world machine status.",
       },
       {
         decision: "Stripe with explicit retry and interrupted payment recovery",
@@ -519,24 +523,24 @@ export const projects: Project[] = [
 
     whatILearned: [
       {
-        lead: "Edge cases are where real systems get tested",
+        lead: "Real production usage exposes problems that testing never catches.",
         detail:
-          "Inventory discrepancies, machine downtime, and interrupted payments were regular occurrences in production. Designing for failure paths from the start made the system significantly more reliable.",
+          "Inventory discrepancies, machine downtime, and interrupted payments only appeared after launch, reinforcing the value of building error handling into the system from the beginning.",
       },
       {
-        lead: "Checkout speed is a product decision, not an afterthought",
+        lead: "Checkout speed is a product decision, not an afterthought.",
         detail:
-          "Treating speed as a core requirement from day one drove better API design, leaner state management, and a simpler ordering flow compared to optimizing at the end.",
+          "Treating speed as a core requirement from day one drove better API design, more efficient state management, and a simpler ordering flow compared to optimizing at the end.",
       },
       {
-        lead: "Payment reliability requires planning for failures, not just successes",
+        lead: "Payment reliability requires planning for failures, not just successes.",
         detail:
-          "Stripe works well for straightforward flows. The real engineering work was building retry logic and recovery handling that prevented duplicate charges and lost order state under real mobile network conditions.",
+          "The real engineering work was building retry logic and recovery handling that prevented duplicate charges and lost order state under real mobile network conditions.",
       },
       {
-        lead: "Live data must be verified, not assumed",
+        lead: "External system integration requires reliable synchronization.",
         detail:
-          "Always fetching fresh machine availability instead of relying on cached data prevented an entire class of bugs that would have caused customers to order from unavailable machines.",
+          "Machine inventory and status were managed by an external backend system, making reliable synchronization essential to ensure orders were only placed against accurate and up-to-date machine data.",
       },
     ],
 
@@ -664,7 +668,7 @@ export const projects: Project[] = [
           icon: "GitBranch",
           title: "Monorepo setup and engineering standards",
           detail:
-            "Introduced Lerna monorepo, automated testing with Jest and Cypress, and CI/CD pipelines via GitHub Actions across frontend, backend, and middleware services.",
+            "Introduced Lerna monorepo, automated testing with Jest and Cypress, and CI/CD pipelines via GitHub Actions across frontend, backend, and middleware services to improve code quality, reduce deployment risk, and keep engineering practices consistent across the team.",
         },
         {
           icon: "Server",
@@ -787,27 +791,27 @@ export const projects: Project[] = [
 
     whatILearned: [
       {
-        lead: "Clear service boundaries make systems easier to reason about",
+        lead: "Clear service boundaries make systems easier to reason about.",
         detail:
           "Separating frontend, backend, and middleware into distinct layers kept failures contained and made the system significantly easier to debug and scale as complexity grew.",
       },
       {
-        lead: "State consistency is a design requirement, not an afterthought",
+        lead: "State consistency is a design requirement, not an afterthought.",
         detail:
           "Working on real-time monitoring taught me to treat synchronization between camera status, alerts, and frontend state as a core architectural concern from the start.",
       },
       {
-        lead: "Offloading heavy processing early keeps critical workflows stable",
+        lead: "Offloading heavy processing early keeps critical workflows stable.",
         detail:
           "Moving video clip generation into background workers before it became a bottleneck meant live monitoring stayed unaffected even during the heaviest alert spikes in production.",
       },
       {
-        lead: "Government delivery sharpens your instinct for reliability",
+        lead: "Government delivery sharpens your instinct for reliability.",
         detail:
           "Operating in a mission-critical environment shifted my priorities toward deployment stability, fast production support, and recovery planning as core engineering responsibilities.",
       },
       {
-        lead: "Security and compliance are engineering constraints, not checklists",
+        lead: "Security and compliance are engineering constraints, not checklists.",
         detail:
           "Deploying on government infrastructure taught me to treat security hardening and GDPR compliance as first-class requirements built into the architecture, not steps added at the end.",
       },
@@ -1049,22 +1053,22 @@ export const projects: Project[] = [
 
     whatILearned: [
       {
-        lead: "Data correctness must be enforced at the entry point",
+        lead: "Data correctness must be enforced at the entry point.",
         detail:
           "Early validation prevented invalid inputs from propagating into financial models that advisors and clients rely on during live sessions.",
       },
       {
-        lead: "State consistency is foundational in multi-step workflows",
+        lead: "State consistency is foundational in multi-step workflows.",
         detail:
           "A shared state layer was the only reliable way to enforce step completion, track progression, and keep financial data accurate across a multi-step advisory session.",
       },
       {
-        lead: "Performance directly impacts trust in live advisory sessions",
+        lead: "Performance directly impacts trust in live advisory sessions.",
         detail:
           "Even small delays during client sessions disrupted workflow continuity, making responsiveness as important as correctness.",
       },
       {
-        lead: "Modular architecture makes teams faster",
+        lead: "Modular architecture makes teams faster.",
         detail:
           "Separating onboarding, advisory, and simulation into distinct modules reduced coordination overhead and enabled parallel development across the team.",
       },
@@ -1108,7 +1112,7 @@ export const projects: Project[] = [
     id: "b2b-portal",
     name: "B2B Supplier Portal",
     slug: "b2b-portal",
-    thumbnailImage: "/projects/b2b/b2b-01.png",
+    thumbnailImage: "/projects/b2b/b2b-00.png",
     targetPlatform: "Web",
     industrySectors: ["Enterprise", "Supply Chain"],
     externalLink: "https://shengsiong.com.sg/",
@@ -1294,27 +1298,27 @@ export const projects: Project[] = [
 
     whatILearned: [
       {
-        lead: "Observe before system design",
+        lead: "Observe before system design.",
         detail:
           "Researching legacy workflows with operational stakeholders before writing any code clarified real process dependencies and shaped the entire system architecture.",
       },
       {
-        lead: "Decouple ingestion from core services",
+        lead: "Decouple ingestion from core services.",
         detail:
           "Isolating data ingestion into its own service kept large procurement integrations from affecting the API performance that vendor and finance teams depended on daily.",
       },
       {
-        lead: "Data modeling drives scalability",
+        lead: "Data modeling drives scalability.",
         detail:
           "Designing the schema correctly from the start made handling millions of procurement records and maintaining query performance significantly more manageable as data volume grew.",
       },
       {
-        lead: "Align authorization with operational structure",
+        lead: "Align authorization with operational structure.",
         detail:
           "Mapping role boundaries to how procurement and finance teams actually divided their work prevented teams from accessing data outside their responsibilities.",
       },
       {
-        lead: "End-to-end integration work builds deep operational knowledge",
+        lead: "End-to-end integration work builds deep operational knowledge.",
         detail:
           "Building this platform gave me a clear understanding of how B2B businesses manage their day-to-day supplier workflows and why timely data updates are critical to keeping procurement and finance operations running accurately.",
       },
@@ -1359,7 +1363,7 @@ export const projects: Project[] = [
     id: "onenergy-mobile",
     name: "ONenergy Mobile",
     slug: "onenergy-mobile",
-    thumbnailImage: "/projects/onenergy-mobile/onenergy-00.png",
+    thumbnailImage: "/projects/onenergy-mobile/onenergy-01.png",
     targetPlatform: "Mobile",
     industrySectors: ["CleanTech", "IoT"],
     externalLink:
@@ -1511,17 +1515,17 @@ export const projects: Project[] = [
 
     whatILearned: [
       {
-        lead: "Early architecture decisions determine how the product scales",
+        lead: "Early architecture decisions determine how the product scales.",
         detail:
           "Defining structure early meant every new feature fit naturally into the existing codebase without revisiting core decisions as the product grew.",
       },
       {
-        lead: "Auth state is an architecture decision, not an afterthought",
+        lead: "Auth state is an architecture decision, not an afterthought.",
         detail:
           "Handling session management in one place kept individual screens focused on their own responsibilities without repeating authentication logic.",
       },
       {
-        lead: "Clarifying requirements early keeps the team building the right thing",
+        lead: "Clarifying requirements early keeps the team building the right thing.",
         detail:
           "Resolving client feedback with business analysts before development started prevented features from being built in the wrong direction.",
       },
@@ -1571,125 +1575,229 @@ export const projects: Project[] = [
     id: "onenergy-web",
     name: "ONenergy Web Platform",
     slug: "onenergy-web",
-    thumbnailImage: "/projects/onenergy-web/onenergy-00.png",
+    thumbnailImage: "/projects/onenergy-web/onenergy-web-00.png",
     targetPlatform: "Web",
     industrySectors: ["CleanTech", "IoT"],
     externalLink: "https://web.neahecs.com/",
-    isPrivate: false,
-    hasCaseStudy: false,
-    coreTechStack: [],
+    isPrivate: true,
+    hasCaseStudy: true,
+
+    coreTechStack: [
+      "Next.js",
+      "TypeScript",
+      "Zustand",
+      "Express.js",
+      "PostgreSQL",
+      "Docker",
+      "Nginx",
+      "GitHub Actions",
+    ],
+
     hero: {
       title: "ONenergy Web Platform",
       summary:
-        "Web platform that processes real-time IoT energy data and visualizes household electricity usage across appliances through a unified monitoring dashboard with continuous live updates.",
+        "Built and led the full-stack web platform for ONenergy, supporting household electricity monitoring, appliance management, and administrative workflows for managing connected households and IoT devices.",
       meta: {
-        role: "Full-stack Engineer",
-        teamSize: "6-person team",
-        duration: "7 mos",
-        period: "May 2024 – Nov 2024",
+        role: "Senior Full Stack Engineer",
+        teamSize: "5-person team",
+        duration: "8 mos",
+        period: "Mar 2024 – Nov 2024",
         platform: "Web",
       },
     },
 
     challenge: {
       prose:
-        "Facility managers and energy researchers needed aggregated visibility across all 600 monitored households — patterns and anomalies that weren't visible from a single homeowner's view. The system had to ingest sensor data at 2-second intervals across 119 appliances per household, serve it to a web dashboard and a mobile app simultaneously, and keep 30-day historical queries fast. I owned the full stack solo.",
+        "Administrators needed a centralized system to manage hundreds of connected households, track IoT device health, and monitor electricity consumption at appliance level. The platform had to support complex household and device management workflows while keeping consumption data accurate and up to date as sensor readings arrived continuously from the field.",
       pullQuote:
-        "Facility managers had no aggregated view — every household was an island with no cross-home patterns and no early anomaly signals.",
+        "Without a centralized platform, administrators had no reliable way to track device issues, manage households, or monitor consumption across hundreds of connected homes.",
     },
 
     whatIDid: {
       intro:
-        "A full-stack web platform that ingests real-time IoT energy data from 119 appliance-level sensors per household and visualizes consumption across 600 homes in admin and homeowner-facing dashboards. I owned the Node.js backend, GraphQL API, PostgreSQL schema design, and Next.js frontend — building and deploying the complete system.",
+        "Led the full-stack engineering effort across frontend, backend, infrastructure, and team standards, owning architecture decisions and delivery from initial development through production deployment.",
+
       contributions: [
         {
-          icon: "Database",
-          title: "Designed the PostgreSQL schema for high-frequency IoT data",
+          icon: "Layers",
+          title: "Designed full-stack web architecture",
           detail:
-            "Modeled time-series sensor data with date partitioning and BRIN indexes, keeping 30-day historical report queries under 100ms across 119 appliances per household.",
+            "Defined the application structure across Next.js frontend and Express.js backend, establishing component boundaries, API conventions, and data flow patterns that kept the system maintainable as features were added throughout the project.",
         },
         {
-          icon: "Code",
-          title: "Built the GraphQL API serving both web and mobile clients",
+          icon: "Database",
+          title: "Built household and appliance management system",
           detail:
-            "Implemented subscription resolvers that bridged the IoT MQTT pipeline to connected clients — one schema serving the Next.js dashboard and the React Native app, eliminating duplicated business logic.",
+            "Built the backend APIs and frontend workflows for managing households, tracking IoT device health, and maintaining appliance records including category, type, brand, model, and power consumption data across up to 119 appliances per household.",
+        },
+        {
+          icon: "BarChart2",
+          title: "Built electricity consumption monitoring and reporting",
+          detail:
+            "Developed household-level energy usage dashboards showing total consumption, cost, and appliance-level breakdown by percentage, with date range filtering and report generation for administrators and homeowners.",
+        },
+        {
+          icon: "Radio",
+          title: "Integrated appliance data synchronization",
+          detail:
+            "Built the data layer connecting frontend consumption views to backend services receiving IoT sensor data, keeping electricity usage figures accurate and up to date across all household dashboards.",
+        },
+        {
+          icon: "Shield",
+          title: "Designed API authentication and access control",
+          detail:
+            "Built authentication and role-based access control into the API layer from the start, ensuring homeowners and administrators each accessed only the data and actions relevant to their role.",
+        },
+        {
+          icon: "Server",
+          title: "Managed deployment and production infrastructure",
+          detail:
+            "Configured Docker and Nginx for frontend and backend services, set up GitHub Actions for automated deployments across staging and production environments, and resolved production issues to keep the system stable.",
+        },
+        {
+          icon: "Users",
+          title: "Led engineering standards and team practices",
+          detail:
+            "Established coding conventions, component patterns, and API design standards across the team, conducted code reviews, and worked with developers to improve code quality and consistency throughout the project.",
         },
       ],
     },
 
     technicalDecisions: [
       {
-        decision: "PostgreSQL over a purpose-built time-series database",
+        decision: "Next.js for the web frontend",
         rationale:
-          "The team already ran PostgreSQL and the write throughput was manageable with careful schema design. Adding InfluxDB or TimescaleDB would have introduced operational overhead that wasn't justified for the data volumes at this scale.",
+          "The platform needed fast initial page loads for data-heavy household and consumption dashboards. Next.js provided server-side rendering alongside a component model that kept frontend development consistent across the team.",
       },
       {
-        decision: "One GraphQL schema for web and mobile",
+        decision: "Zustand for frontend state management",
         rationale:
-          "Designing a single schema served both clients from day one, avoiding the drift and duplicated resolver logic that would have accumulated if the web and mobile APIs were built separately.",
+          "Multiple pages shared household selection, date filters, and appliance state. Zustand kept these concerns in one place without the overhead of a more complex state management setup for a team of this size.",
+      },
+      {
+        decision: "Express.js with PostgreSQL for backend services",
+        rationale:
+          "Household, appliance, and consumption data involved structured relationships that PostgreSQL handled reliably. Express.js kept the API layer straightforward and easy for the team to maintain.",
+      },
+      {
+        decision: "Docker and Nginx for deployment",
+        rationale:
+          "Containerizing frontend and backend services made deployments consistent across staging and production and simplified local development setup for the team.",
       },
     ],
 
-    visuals: [],
+    visuals: [
+      {
+        src: "/projects/onenergy-web/onenergy-web-01.png",
+        caption:
+          "Household list with device issue counts, owner details, installation status, and management actions",
+      },
+      {
+        src: "/projects/onenergy-web/onenergy-web-02.png",
+        caption:
+          "Household energy usage with total consumption, cost summary, and appliance-level breakdown by percentage",
+      },
+      {
+        src: "/projects/onenergy-web/onenergy-web-03.png",
+        caption:
+          "Edit household form covering installation dates, gateway configuration, and device setup across multiple steps",
+      },
+      {
+        src: "/projects/onenergy-web/onenergy-web-04.png",
+        caption:
+          "Appliance list showing 119 devices per household with category, type, brand, model, and power wattage",
+      },
+      {
+        src: "/projects/onenergy-web/onenergy-web-05.png",
+        caption:
+          "Add appliance form with category, appliance type, brand, model, and average power consumption",
+      },
+    ],
 
     results: [
       {
         icon: "Users",
-        value: "600",
-        label: "Households Monitored",
-        description: "Aggregated across facility managers and researchers",
-      },
-      {
-        icon: "Clock",
-        value: "2s",
-        label: "Live Update Interval",
-        description: "IoT data ingested and served across all households",
+        value: "600+",
+        label: "Households Managed",
+        description:
+          "Households with appliance-level consumption tracking on the platform",
       },
       {
         icon: "Zap",
         value: "119",
-        label: "Appliances Tracked",
-        description: "Data points per household via GraphQL pipeline",
+        label: "Appliances per Household",
+        description:
+          "IoT-connected devices monitored and managed per household",
+      },
+      {
+        icon: "Server",
+        value: "Full-stack",
+        label: "End-to-end Ownership",
+        description:
+          "Frontend, backend, infrastructure, and team standards owned and delivered",
+      },
+      {
+        icon: "Rocket",
+        value: "8 mos",
+        label: "End-to-end Delivery",
+        description:
+          "Full web platform delivered from planning to production release",
       },
     ],
 
     whatILearned: [
       {
-        lead: "Schema design can replace a purpose-built database.",
+        lead: "System design decisions affect every part of the product.",
         detail:
-          "The team already ran PostgreSQL. With date partitioning and BRIN indexes, 30-day historical queries stayed under 100ms. Adding InfluxDB or TimescaleDB would have introduced operational overhead that wasn't justified at this scale.",
+          "Defining API structure, component boundaries, and data flow at the start shaped how quickly the team could add features and how easy the system was to maintain as it grew.",
       },
       {
-        lead: "One schema serving two clients prevents long-term drift.",
+        lead: "Engineering standards reduce the cost of collaboration.",
         detail:
-          "Designing a single GraphQL schema for web and mobile from day one avoided the duplicated resolver logic that would have accumulated if the APIs were built separately.",
+          "Establishing consistent patterns for components, API design, and code structure early meant the team spent less time on alignment and more time building as new requirements came in.",
+      },
+      {
+        lead: "IoT data synchronization requires clear ownership boundaries.",
+        detail:
+          "Keeping the data layer between IoT sensors and the web client well-defined meant consumption data stayed accurate without the frontend needing to account for the complexity of the underlying sensor infrastructure.",
+      },
+      {
+        lead: "Documentation written during development is more reliable.",
+        detail:
+          "Writing API documentation and deployment guides as features were built produced more accurate references than writing them after the project was complete.",
       },
     ],
 
     sidebar: {
-      role: "Built full-stack real-time energy analytics platform for IoT data visualization and processing",
+      role: "Led full-stack engineering across frontend, backend, infrastructure, and team standards for a household electricity monitoring platform",
+
       technologyStack: [
         {
           groupLabel: "Frontend",
-          technologies: ["Next.js", "JavaScript", "Zustand"],
+          technologies: ["Next.js", "TypeScript", "Zustand"],
         },
         {
           groupLabel: "Backend",
-          technologies: ["Node.js", "Express.js", "GraphQL API", "PostgreSQL"],
+          technologies: ["Express.js", "PostgreSQL", "REST API"],
         },
         {
           groupLabel: "Infrastructure",
-          technologies: ["Docker", "GitHub Actions", "Vercel"],
+          technologies: ["Docker", "Nginx", "GitHub Actions"],
         },
       ],
+
       constraints: [
-        "Single GraphQL schema serving both web and mobile",
-        "High-frequency writes (2s intervals × 119 appliances × 600 households)",
-        "Solo full-stack delivery in 7 months",
+        "Continuous IoT data synchronization across hundreds of households",
+        "Role-based access control across homeowner and admin workflows",
+        "Stable production deployment with automated release management",
+        "Team-wide engineering standards across a 5-person team",
       ],
-      collaborators: "Mobile developer · IoT engineers · 1 PM",
+
+      collaborators:
+        "Frontend engineers · Backend engineers · UI/UX designer · Business analyst · Product manager",
+
       cta: {
-        label: "Live Demo",
+        label: "View Platform",
         url: "https://web.neahecs.com/",
       },
     },
