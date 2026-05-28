@@ -165,7 +165,7 @@ export function HeroSection() {
 
                   {/* ── LAYER 3: Stat cards ── */}
 
-                  {/* 4,000+ — top-left */}
+                  {/* 10,000+ — top-left */}
                   <motion.div
                     className="absolute top-[2%] -left-[18%] z-20 hidden w-[36%] rounded-lg border bg-background/95 p-3 shadow-sm backdrop-blur-sm md:block"
                     initial={{ opacity: 0, x: -12 }}
@@ -179,7 +179,7 @@ export function HeroSection() {
                       </span>
                     </div>
                     <p className="font-heading text-sm leading-tight font-bold">
-                      4,000+
+                      10,000+
                     </p>
                     <p className="mt-0.5 text-[10px] text-muted-foreground">
                       Across 3 gov agencies
@@ -273,7 +273,7 @@ export function HeroSection() {
                     Camera Streams
                   </span>
                 </div>
-                <p className="font-heading text-lg font-bold">4,000+</p>
+                <p className="font-heading text-lg font-bold">10,000+</p>
                 <p className="text-[10px] text-muted-foreground">
                   Across 3 gov agencies
                 </p>

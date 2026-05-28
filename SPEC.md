@@ -164,7 +164,7 @@ Two-column layout — left: text + CTA, right: avatar + metric cards.
 
 | Value   | Label                    | Sublabel                     |
 | ------- | ------------------------ | ---------------------------- |
-| 4,000+  | Real-Time Camera Streams | Across 3 government agencies |
+| 10,000+ | Real-Time Camera Streams | Across 3 government agencies |
 | 6,000+  | Insurance Agents Served  | Digital onboarding system    |
 | 800+    | SMEs Supported           | Fintech platform             |
 | ~40–50% | Performance Improvement  | —                            |

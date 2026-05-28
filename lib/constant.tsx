@@ -2099,7 +2099,7 @@ export const EXPERIENCE: ExperienceItemType[] = [
         },
         employmentType: "Full-time",
         description: [
-          "Architected a multi-tenant real-time surveillance platform for 3 government agencies using Next.js + NestJS, supporting 4,000+ concurrent cameras with OAuth/SSO and role-based access control",
+          "Architected a multi-tenant real-time surveillance platform for 3 government agencies using Next.js + NestJS, supporting 10,000+ concurrent cameras with OAuth/SSO and role-based access control",
           "Built a NestJS BFF service integrating NxWitness VMS to orchestrate live camera data and provide structured REST APIs for the frontend",
           "Implemented BullMQ-based background processing to handle CPU-intensive tasks such as generating alert video snippets from live video streams",
           "Engineered WebSocket-based alert and notification systems for real-time delivery of security incidents across agencies",

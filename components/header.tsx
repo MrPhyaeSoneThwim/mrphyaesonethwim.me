@@ -62,7 +62,7 @@ export function Header() {
     <header className="sticky top-0 z-50 flex w-full justify-center px-3 pt-4 pb-2">
       <nav
         className={cn(
-          "flex h-12 w-full max-w-5xl items-center justify-between gap-4 rounded-full border bg-background/80 px-2 backdrop-blur-xl transition-all duration-300 supports-[backdrop-filter]:bg-background/60",
+          "flex h-14 w-full max-w-5xl items-center justify-between gap-4 rounded-full border bg-background/80 px-2 backdrop-blur-xl transition-all duration-300 supports-[backdrop-filter]:bg-background/60",
           scrolled && !open ? "shadow-md" : "shadow-sm"
         )}
       >
@@ -80,7 +80,7 @@ export function Header() {
             <Link
               key={link.href}
               href={link.href}
-              className={buttonVariants({ variant: "ghost", size: "sm" })}
+              className={buttonVariants({ variant: "ghost" })}
             >
               {link.label}
             </Link>
@@ -112,7 +112,7 @@ export function Header() {
         <div className="fixed inset-0 top-20 z-40 md:hidden">
           <div
             data-slot={open ? "open" : "closed"}
-            className="mx-4 rounded-2xl border bg-background/95 p-4 shadow-lg backdrop-blur-xl ease-out data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 data-[slot=open]:animate-in data-[slot=open]:zoom-in-95"
+            className="mx-4 rounded-2xl border bg-background/95 p-2.5 shadow-lg backdrop-blur-xl ease-out data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 data-[slot=open]:animate-in data-[slot=open]:zoom-in-95"
           >
             <div className="grid gap-1">
               {mobileLinks.map((link) => (
@@ -122,7 +122,8 @@ export function Header() {
                   onClick={() => setOpen(false)}
                   className={buttonVariants({
                     variant: "ghost",
-                    className: "justify-start rounded-xl",
+                    className: "justify-start",
+                    size: "lg",
                   })}
                 >
                   {link.label}
