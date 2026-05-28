@@ -23,7 +23,7 @@ export function Footer() {
               Phyae Sone Thwim
             </p>
             <p className="mt-2 text-sm leading-relaxed text-muted-foreground">
-              Senior Full Stack Engineer building production-grade systems.
+              I'm a full-stack engineer, builder, and problem solver. Thanks for checking out my site!
             </p>
           </div>
 

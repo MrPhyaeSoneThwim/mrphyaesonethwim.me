@@ -20,8 +20,8 @@ export default function AboutPage() {
   return (
     <>
       <IntroSection />
-      <SkillsSection />
       <ExperienceSection />
+      <SkillsSection />
       <EducationSection />
     </>
   )

@@ -17,9 +17,9 @@ export default function Page() {
   return (
     <>
       <HeroSection />
+      <TechStackSection />
       <FeaturedWorkSection />
       <IntroSection />
-      <TechStackSection />
     </>
   )
 }

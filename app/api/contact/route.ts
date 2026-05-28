@@ -6,7 +6,7 @@ const contactSchema = z.object({
   name: z.string().optional(),
   email: z.string().trim().pipe(z.email()),
   subject: z.string().min(1),
-  message: z.string().min(1),
+  message: z.string().min(10),
 })
 
 const resend = new Resend(process.env.RESEND_API_KEY)
