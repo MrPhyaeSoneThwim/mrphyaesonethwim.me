@@ -2229,8 +2229,13 @@ export const EDUCATION: ExperienceItemType[] = [
     positions: [
       {
         id: "bsc-greenwich",
-        title: "Bachelor of Science (BSc)",
+        title: "Bachelor of Science (BSc) (Hons) — Computing",
         employmentPeriod: { start: "06.2024", end: "05.2025" },
+        description: [
+          "Covered mobile development, Human-Computer Interaction (HCI), and Enterprise Web Systems Development (EWSD) with a strong emphasis on user-centred design and systems thinking",
+          "Studied Requirement Management (RM) and applied Agile methodologies and SDLC practices to structure and deliver software projects iteratively",
+          "Completed a final year research project grounded in HCI, EWSD, Agile, SDLC, and Requirement Management",
+        ],
       },
     ],
   },
@@ -2241,8 +2246,13 @@ export const EDUCATION: ExperienceItemType[] = [
     positions: [
       {
         id: "be-yatanarpon",
-        title: "Bachelor of Engineering, Information Technology",
+        title:
+          "Bachelor of Engineering (BE) — Information Science and Technology",
         employmentPeriod: { start: "12.2014", end: "03.2019" },
+        description: [
+          "Studied core ICT engineering foundations including programming, data structures, algorithms, database management, networking, and operating systems",
+          "Gained practical exposure to software engineering principles, information systems design, and web development through lab-based coursework and workshops",
+        ],
       },
     ],
   },
