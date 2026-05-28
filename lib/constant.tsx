@@ -1359,21 +1359,31 @@ export const projects: Project[] = [
     id: "onenergy-mobile",
     name: "ONenergy Mobile",
     slug: "onenergy-mobile",
-    thumbnailImage: "/projects/onenergy-mobile/onenergy-mobile-00.png",
+    thumbnailImage: "/projects/onenergy-mobile/onenergy-00.png",
     targetPlatform: "Mobile",
     industrySectors: ["CleanTech", "IoT"],
     externalLink:
       "https://play.google.com/store/apps/details?id=com.singaporetestlab.on_energy.twa",
     isPrivate: false,
-    hasCaseStudy: false,
-    coreTechStack: [],
+    hasCaseStudy: true,
+
+    coreTechStack: [
+      "React Native",
+      "Expo",
+      "JavaScript",
+      "Zustand",
+      "REST API",
+      "EAS Build",
+      "GitHub Actions",
+    ],
+
     hero: {
       title: "ONenergy Mobile",
       summary:
-        "Mobile app that delivers real-time visibility of household electricity usage at appliance level, enabling continuous monitoring of energy consumption through live IoT updates.",
+        "Built and delivered a React Native mobile app that gives homeowners real-time visibility into household electricity consumption at individual appliance level, powered by IoT sensors with live updates.",
       meta: {
-        role: "Full-stack Engineer",
-        teamSize: "6-person team",
+        role: "Full Stack Engineer",
+        teamSize: "2-person team",
         duration: "7 mos",
         period: "May 2024 – Nov 2024",
         platform: "Mobile",
@@ -1382,107 +1392,174 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "Homeowners had no visibility into how individual appliances contributed to their electricity bill until the monthly statement arrived. The IoT hardware produced sensor readings every 2 seconds per appliance — 119 appliances per household — and the mobile client had to display this live without exhausting the battery or the network. I was the sole mobile developer with 7 months to deliver from scratch to Play Store.",
+        "Homeowners had no visibility into how individual appliances contributed to their electricity bill until the monthly statement arrived. The IoT hardware produced sensor readings every 2 seconds per appliance across up to 119 appliances per household, and the mobile client had to present this live data clearly without overwhelming the user or degrading device performance. I was responsible for delivering the full mobile application from initial planning through Play Store release.",
       pullQuote:
-        "Homeowners only discovered they'd overspent on electricity when the bill arrived at the end of the month.",
+        "Homeowners only discovered they had overspent on electricity when the bill arrived at the end of the month.",
     },
 
     whatIDid: {
       intro:
-        "ONenergy Mobile gives homeowners real-time visibility of electricity consumption at individual appliance level, with a 2-second live update cycle driven by IoT sensors. I was the sole mobile developer — building the full React Native client from architecture through Play Store deployment, implementing Apollo subscriptions for the live data feed.",
+        "Owned the full mobile development lifecycle as the primary React Native developer, from breaking down business requirements and system design through to production deployment and client handover.",
+
       contributions: [
         {
-          icon: "Radio",
-          title: "2-second live appliance updates via GraphQL subscriptions",
+          icon: "Layers",
+          title: "Designed full mobile architecture",
           detail:
-            "Implemented Apollo Client subscriptions against the IoT data pipeline with optimistic cache updates and automatic reconnection logic for intermittent connections — avoiding the ~60 requests/minute polling would have required.",
+            "Defined component boundaries, state management approach, and data flow using Expo, Zustand, and REST API integration to keep the codebase consistent and maintainable as the product grew.",
         },
         {
-          icon: "Globe",
-          title: "Sole delivery from scaffold to Play Store in 7 months",
+          icon: "Shield",
+          title: "Implemented secure authentication",
           detail:
-            "Owned the entire mobile development lifecycle: app architecture, component library, state management, data visualization layer, and EAS build pipeline for Android production releases.",
+            "Built the authentication layer using Expo Secure Store before any screens were developed, ensuring token storage and session handling worked consistently across the entire app.",
+        },
+        {
+          icon: "Radio",
+          title: "Integrated live IoT appliance data",
+          detail:
+            "Connected the app to REST API endpoints for live appliance consumption data, handling loading states, error recovery, and refresh timing to keep the UI accurate under varying network conditions.",
+        },
+        {
+          icon: "BarChart2",
+          title: "Built energy consumption visualization",
+          detail:
+            "Built interactive charts showing real-time and historical electricity consumption per appliance, balancing data accuracy with rendering performance.",
+        },
+        {
+          icon: "Zap",
+          title: "Resolved rendering performance under high-frequency updates",
+          detail:
+            "Diagnosed and fixed rendering bottlenecks from frequent sensor updates, optimizing how and when components re-rendered to keep the UI smooth and responsive.",
+        },
+        {
+          icon: "Users",
+          title: "Led cross-functional collaboration across design and product",
+          detail:
+            "Translated UI designs into production mobile interfaces and worked with business analysts and the product manager to break down client feedback into clear development tasks.",
+        },
+        {
+          icon: "GitBranch",
+          title: "Owned build pipeline, release, and client handover",
+          detail:
+            "Configured EAS Build for Android with automated signing and versioning, wrote deployment documentation, and supported the client team through setup and production issue resolution.",
         },
       ],
     },
 
     technicalDecisions: [
       {
-        decision: "Apollo subscriptions over REST polling for live sensor data",
+        decision: "Zustand for UI state alongside REST API data",
         rationale:
-          "With 2-second updates across 119 appliances, polling would have generated ~3,600 requests/hour per user. A single persistent WebSocket subscription reduced server load by ~95% while delivering lower latency updates.",
+          "Multiple screens shared appliance selection, time range filters, and chart settings. Zustand kept these UI concerns separate from server data in a way that was simple to maintain for a 2-person team.",
       },
       {
-        decision: "Zustand for UI state alongside Apollo cache",
+        decision: "Expo Secure Store for authentication tokens",
         rationale:
-          "Apollo owns server data (appliance readings, usage history). Zustand manages ephemeral UI state (selected appliance, time range, chart mode) without polluting the Apollo cache with client-only concerns.",
+          "Storing tokens in plain async storage would have exposed them on rooted devices. Secure Store encrypts credentials at the hardware level where supported, which is the right approach for an app handling household energy and billing data.",
+      },
+      {
+        decision: "EAS Build for Android production releases",
+        rationale:
+          "Managing Android signing and build environments manually was slow and error-prone. EAS Build automated the process, making releases faster and removing the risk of inconsistent builds between environments.",
       },
     ],
 
-    visuals: [],
+    visuals: [
+      {
+        src: "/projects/onenergy-mobile/onenergy-01.png",
+        caption:
+          "Home dashboard with total consumption, cost summary, and appliance-level breakdown by percentage",
+      },
+      {
+        src: "/projects/onenergy-mobile/onenergy-02.png",
+        caption:
+          "Appliances list showing energy usage and cost per connected device, filterable by date",
+      },
+    ],
 
     results: [
       {
         icon: "Users",
-        value: "600",
+        value: "600+",
         label: "Households Monitored",
-        description: "With real-time appliance-level monitoring at launch",
+        description:
+          "Active households with real-time appliance-level monitoring at launch",
       },
       {
         icon: "Clock",
         value: "2s",
         label: "Live Update Interval",
-        description: "IoT sensor refresh rate across all appliances",
+        description:
+          "IoT sensor readings refreshed per appliance across all households",
       },
       {
         icon: "Zap",
         value: "119",
         label: "Appliances Tracked",
-        description: "Per household via IoT sensors",
+        description:
+          "Per household via IoT sensors across the monitoring system",
+      },
+      {
+        icon: "Rocket",
+        value: "7 mos",
+        label: "End-to-end Delivery",
+        description:
+          "Full mobile app delivered from planning to Play Store release",
       },
     ],
 
     whatILearned: [
       {
-        lead: "A single WebSocket subscription beats polling at scale.",
+        lead: "Early architecture decisions determine how the product scales",
         detail:
-          "With 2-second updates across 119 appliances, polling would have generated ~3,600 requests/hour per user. A persistent Apollo subscription reduced server load by ~95% while delivering lower latency updates.",
+          "Defining structure early meant every new feature fit naturally into the existing codebase without revisiting core decisions as the product grew.",
       },
       {
-        lead: "Separate client state from server cache.",
+        lead: "Auth state is an architecture decision, not an afterthought",
         detail:
-          "Apollo owns server data (appliance readings, usage history). Keeping Zustand for ephemeral UI state (selected appliance, time range, chart mode) kept the Apollo cache clean and predictable.",
+          "Handling session management in one place kept individual screens focused on their own responsibilities without repeating authentication logic.",
+      },
+      {
+        lead: "Clarifying requirements early keeps the team building the right thing",
+        detail:
+          "Resolving client feedback with business analysts before development started prevented features from being built in the wrong direction.",
+      },
+      {
+        lead: "High-frequency data requires a deliberate rendering strategy.",
+        detail:
+          "How often and when the UI updates directly affects whether the app feels responsive or starts to slow down under frequent sensor updates.",
       },
     ],
 
     sidebar: {
-      role: "Built real-time mobile energy monitoring experience for household appliance-level tracking",
+      role: "Primary mobile developer responsible for the full React Native development lifecycle from planning to Play Store release",
+
       technologyStack: [
         {
           groupLabel: "Frontend",
-          technologies: [
-            "React Native",
-            "Expo",
-            "JavaScript",
-            "Zustand",
-            "Apollo Client",
-          ],
+          technologies: ["React Native", "Expo", "JavaScript", "Zustand"],
         },
         {
           groupLabel: "Backend",
-          technologies: ["GraphQL API"],
+          technologies: ["REST API"],
         },
         {
           groupLabel: "Infrastructure",
-          technologies: ["EAS"],
+          technologies: ["EAS Build", "GitHub Actions"],
         },
       ],
+
       constraints: [
-        "Solo delivery within 7 months",
-        "IoT sensor hardware dictated real-time contract",
-        "2-second update SLA across all connected appliances",
+        "End-to-end mobile delivery across a 7-month project",
+        "Live appliance data across up to 119 sensors per household",
+        "Frequent sensor updates requiring responsive UI handling",
+        "Production release to Google Play Store",
       ],
-      collaborators: "Backend team · IoT hardware engineers · 1 PM",
+
+      collaborators:
+        "Backend engineer · UI/UX designer · Business analyst · Product manager",
+
       cta: {
         label: "View on Google Play",
         url: "https://play.google.com/store/apps/details?id=com.singaporetestlab.on_energy.twa",
@@ -1494,7 +1571,7 @@ export const projects: Project[] = [
     id: "onenergy-web",
     name: "ONenergy Web Platform",
     slug: "onenergy-web",
-    thumbnailImage: "/projects/onenergy-web/onenergy-web-00.png",
+    thumbnailImage: "/projects/onenergy-web/onenergy-00.png",
     targetPlatform: "Web",
     industrySectors: ["CleanTech", "IoT"],
     externalLink: "https://web.neahecs.com/",
