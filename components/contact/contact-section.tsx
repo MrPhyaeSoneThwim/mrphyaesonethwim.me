@@ -147,7 +147,7 @@ export function ContactSection() {
                 className="h-auto gap-1.5 rounded-full py-1.5 text-xs"
               >
                 <MapPinIcon className="size-3.5" />
-                Chiang Mai, Thailand
+                Bangkok, Thailand
               </Badge>
               <Badge
                 variant="secondary"

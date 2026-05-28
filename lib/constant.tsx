@@ -282,7 +282,7 @@ export const projects: Project[] = [
       {
         lead: "Offline support needs to be planned from the beginning.",
         detail:
-          "For SME users operating in low-connectivity environments, offline reliability is what makes the app usable in their daily operations, not just a secondary concern.",
+          "For SME users operating in low-connectivity environments, offline reliability is what makes the app usable in their daily operations.",
       },
       {
         lead: "Talking directly to users changes how you build.",
@@ -1575,7 +1575,7 @@ export const projects: Project[] = [
     id: "onenergy-web",
     name: "ONenergy Web Platform",
     slug: "onenergy-web",
-    thumbnailImage: "/projects/onenergy-web/onenergy-web-00.png",
+    thumbnailImage: "/projects/onenergy-web/onenergy-01.png",
     targetPlatform: "Web",
     industrySectors: ["CleanTech", "IoT"],
     externalLink: "https://web.neahecs.com/",
@@ -1807,20 +1807,33 @@ export const projects: Project[] = [
     id: "smu-portal",
     name: "SMU Research Portal",
     slug: "smu-portal",
-    thumbnailImage: "/projects/smu/smu-00.png",
+    thumbnailImage: "/projects/smu/smu-01.png",
     targetPlatform: "Web",
-    industrySectors: ["Education", "Data"],
+    industrySectors: ["Education"],
     externalLink: "https://smu.oneberryhub.com/login",
     isPrivate: false,
-    hasCaseStudy: false,
-    coreTechStack: [],
+    hasCaseStudy: true,
+
+    coreTechStack: [
+      "Next.js",
+      "TypeScript",
+      "Zustand",
+      "GraphQL",
+      "Tailwind CSS",
+      "Strapi CMS",
+      "PostgreSQL",
+      "Docker",
+      "Nginx",
+      "GitHub Actions",
+    ],
+
     hero: {
       title: "SMU Research Portal",
       summary:
-        "Academic data platform that automates ingestion, validation, and synchronization of research publications and citations, keeping institutional records accurate and consistently up to date.",
+        "Built and delivered a full-stack platform for Singapore Management University to manage academic research publications and citation records, automating file validation and submission tracking across 8 schools and notifying administrators when documents are missing.",
       meta: {
-        role: "Full-stack Engineer",
-        teamSize: "4-person team",
+        role: "Full Stack Engineer",
+        teamSize: "2-person team",
         duration: "4 mos",
         period: "Jul 2024 – Nov 2024",
         platform: "Web",
@@ -1829,210 +1842,156 @@ export const projects: Project[] = [
 
     challenge: {
       prose:
-        "The SMU research office was manually updating 14,798 publication records from spreadsheets and database exports. Each sync cycle took weeks, introduced errors at scale, and required a researcher to own the process end-to-end. External academic APIs had inconsistent data quality — conflicting author names, missing DOIs, and duplicate records that had to be resolved without losing data. I built the entire system solo in 4 months.",
+        "SMU administrators were tracking document submissions manually across 8 schools and multiple academic sessions with no centralized system to validate files, identify gaps, or notify the right people when submissions were incomplete. As the volume of publication and citation records grew, the manual process became unreliable and difficult to scale across schools and stations.",
       pullQuote:
-        "The research office was manually updating 14,798 records from spreadsheets — a sync cycle that took weeks and introduced errors every time.",
+        "As publication records grew, administrators had no reliable way to know which files were missing without checking manually across every school and station.",
     },
 
     whatIDid: {
       intro:
-        "An automated data management portal for Singapore Management University that ingests, validates, and synchronizes 14,798 research publications and 363,613 citation records from external academic APIs. I built the complete system solo — data pipeline, validation engine, Strapi CMS backend, Next.js admin portal, and AWS deployment.",
+        "Led frontend implementation and backend development using Strapi CMS, covering content APIs, scheduled integration pipelines, document validation, automated notifications, and deployment across testing and production environments.",
+
       contributions: [
         {
-          icon: "Globe",
-          title: "Automated the full publication sync cycle end-to-end",
+          icon: "Layout",
+          title: "Built file management dashboard",
           detail:
-            "Built a scheduled pipeline that pulls from academic APIs, validates record integrity, resolves duplicates, and updates Strapi — eliminating the research office's manual process entirely from day one.",
+            "Built a file management dashboard using Next.js showing academic file submission data across schools and stations, with bulk ZIP download support for administrators to export multiple documents at once.",
         },
         {
-          icon: "CheckCircle",
-          title:
-            "Validated 363K+ citation records across multiple data sources",
+          icon: "Database",
+          title: "Built backend APIs and content management",
           detail:
-            "Implemented a citation matching algorithm cross-referencing author names, DOIs, and publication years across API sources, resolving ambiguous records that would have required manual review at scale.",
+            "Built and configured Strapi CMS as the backend layer, handling content APIs for publication records, file metadata, school and station data, and user management consumed by the frontend.",
+        },
+        {
+          icon: "RefreshCcw",
+          title: "Implemented scheduled integration pipelines",
+          detail:
+            "Implemented scheduled jobs in Strapi CMS that cross-referenced academic CSV records against PDF files in VM directories, uploaded documents to AWS S3, and detected missing records across ~14.8K publications and ~363K citation records.",
+        },
+        {
+          icon: "Mail",
+          title: "Built automated integration result notifications",
+          detail:
+            "Implemented email notification workflows that ran after each integration job, sending each administrator a report of whether their assigned schools and stations had missing files or completed integration successfully.",
+        },
+        {
+          icon: "Download",
+          title: "Resolved large document download reliability",
+          detail:
+            "Reworked the document export process using streaming to prevent browser timeouts and memory issues when downloading large PDF and ZIP files.",
+        },
+        {
+          icon: "Server",
+          title: "Owned deployment and operational setup",
+          detail:
+            "Configured Docker, Nginx, and GitHub Actions pipelines across testing and production environments on AWS EC2, and wrote technical documentation covering deployment steps and system configuration for the client team to maintain the platform after handover.",
         },
       ],
     },
 
     technicalDecisions: [
       {
-        decision: "Strapi CMS as the data and content layer",
+        decision: "Strapi CMS for backend workflows",
         rationale:
-          "The research office needed a non-technical interface to review and correct records without developer involvement. Strapi's admin panel provided this out of the box, while its GraphQL API served the public-facing portal — one tool handling both use cases.",
+          "The project required both an admin interface and backend services for managing publication records and uploaded documents. Strapi CMS handled both requirements in a single system.",
       },
       {
-        decision: "Batch processing with per-batch validation and rollback",
+        decision: "GraphQL for frontend data fetching",
         rationale:
-          "Processing 14,798 publications in a single transaction would have been opaque and risky to recover from. Configurable batch sizes with per-batch validation reports gave the research office visibility and a safe rollback path for each sync cycle.",
+          "The frontend needed data from multiple related records such as publications, files, users, and schools. GraphQL reduced the need for multiple API requests across pages.",
+      },
+      {
+        decision: "Streaming for file downloads",
+        rationale:
+          "Large document exports caused browser timeouts when files were loaded fully into memory. Streaming downloads improved reliability for large PDF and ZIP files.",
+      },
+      {
+        decision: "Self-hosted GitHub Actions runners",
+        rationale:
+          "The production servers were inside a private AWS environment. Self-hosted runners allowed deployment pipelines to connect securely without exposing servers publicly.",
       },
     ],
 
-    visuals: [],
+    visuals: [
+      {
+        src: "/projects/smu/smu-01.png",
+        caption:
+          "Dashboard showing publication counts, missing files, and upload status across schools",
+      },
+      {
+        src: "/projects/smu/smu-02.png",
+        caption:
+          "Station-level file management view showing uploaded documents and missing file checks",
+      },
+      {
+        src: "/projects/smu/smu-03.png",
+        caption:
+          "User management page with account roles, email addresses, and contact information",
+      },
+      {
+        src: "/projects/smu/smu-04.png",
+        caption: "User creation form with role assignment and account details",
+      },
+    ],
 
     results: [
+      {
+        icon: "BookOpen",
+        value: "~14.8K",
+        label: "Publications Managed",
+        description: "Publication records managed through the platform",
+      },
+      {
+        icon: "FileText",
+        value: "~363K",
+        label: "Citation Records",
+        description:
+          "Citation and document records processed through validation workflows",
+      },
+      {
+        icon: "School",
+        value: "8",
+        label: "Schools Supported",
+        description:
+          "Schools using the platform for publication and file management",
+      },
       {
         icon: "CheckCircle",
-        value: "14,798",
-        label: "Publications Managed",
-        description: "Under fully automated sync and management",
-      },
-      {
-        icon: "TrendingUp",
-        value: "363K+",
-        label: "Citations Processed",
-        description: "Validated from multiple external academic APIs",
-      },
-      {
-        icon: "Zap",
-        value: "0",
-        label: "Manual Maintenance",
-        description: "Fully automated pipeline, no manual steps needed",
+        value: "Automated",
+        label: "File Validation",
+        description:
+          "Missing file checks handled automatically through CSV validation workflows",
       },
     ],
 
     whatILearned: [
       {
-        lead: "A CMS can serve both technical and non-technical users from one tool.",
+        lead: "Automated notifications change how quickly problems get resolved.",
         detail:
-          "The research office needed a non-technical interface to review records without developer involvement. Strapi's admin panel provided this out of the box, while its GraphQL API served the public-facing portal — two use cases, one tool.",
+          "Sending email reports after each integration run meant administrators found and fixed missing files the same day rather than catching them weeks later during manual checks.",
       },
       {
-        lead: "Batch boundaries make large data migrations recoverable.",
+        lead: "Streaming should be planned early for large file downloads.",
         detail:
-          "Processing 14,798 publications in a single transaction would have been opaque and risky. Configurable batch sizes with per-batch validation reports gave the research office visibility and a safe rollback path for each sync cycle.",
+          "Loading large files into memory worked in development but caused timeouts in production, which showed that the download approach needs to be decided at the architecture stage.",
+      },
+      {
+        lead: "Centralizing the integration pipeline simplifies long-term ownership.",
+        detail:
+          "Keeping validation, file uploads, and notifications inside one system meant failures were easier to trace and the client team could take over without needing to understand multiple services.",
+      },
+      {
+        lead: "Designing for the user question, not the integration process.",
+        detail:
+          "Administrators needed to know what was missing and where, not how the integration worked, so building the dashboard around that single question made it more useful than a generic data view.",
       },
     ],
 
     sidebar: {
-      role: "Built automated academic data pipeline for publication and citation synchronization",
-      technologyStack: [
-        {
-          groupLabel: "Frontend",
-          technologies: ["Next.js", "JavaScript", "Zustand"],
-        },
-        {
-          groupLabel: "Backend",
-          technologies: ["Node.js", "Express.js", "Strapi CMS", "GraphQL API"],
-        },
-        {
-          groupLabel: "Infrastructure",
-          technologies: ["Docker", "AWS S3", "GitHub Actions"],
-        },
-      ],
-      constraints: [
-        "14,798 live records — zero loss tolerance",
-        "Non-technical research staff as primary end users",
-        "External academic APIs with inconsistent data quality",
-      ],
-      collaborators: "SMU research office · 1 PM · 1 QA",
-      cta: {
-        label: "Live Demo",
-        url: "https://smu.oneberryhub.com/login",
-      },
-    },
-  },
+      role: "Led frontend implementation, backend workflows in Strapi CMS, file validation logic, and deployment setup for a university publication management platform",
 
-  {
-    id: "collegedao",
-    name: "CollegeDAO Platform",
-    slug: "collegedao",
-    thumbnailImage: "/projects/collegedao/collegedao-00.png",
-    targetPlatform: "Web",
-    industrySectors: ["Web3", "Community"],
-    externalLink: "https://collegedao.io/",
-    isPrivate: false,
-    hasCaseStudy: false,
-    coreTechStack: [],
-    hero: {
-      title: "CollegeDAO Platform",
-      summary:
-        "Web3 platform enabling discovery, collaboration, and engagement across global university blockchain communities through a decentralized networking ecosystem.",
-      meta: {
-        role: "Full-stack Engineer",
-        teamSize: "4-person team",
-        duration: "6 mos",
-        period: "May 2023 – Nov 2023",
-        platform: "Web",
-      },
-    },
-
-    challenge: {
-      prose:
-        "University blockchain clubs at 100+ universities had no shared platform. Collaboration meant cold-messaging people on Twitter and Discord, with no way to discover what other clubs were working on, when events were happening, or how to join. The brief was to build a networking platform that felt polished enough to represent the community publicly — as the sole developer, in 6 months.",
-      pullQuote:
-        "Blockchain clubs at 100+ universities had no common platform. Collaboration meant cold-messaging people on Twitter and Discord.",
-    },
-
-    whatIDid: {
-      intro:
-        "CollegeDAO is a Web3 networking platform that connects university blockchain clubs worldwide — enabling community discovery, collaboration, and event participation across 100+ universities. I built the complete platform solo: Next.js frontend, Strapi CMS backend, GraphQL API, and Vercel deployment.",
-      contributions: [
-        {
-          icon: "Users",
-          title: "Scaled to 14.6K+ users with 80+ active communities",
-          detail:
-            "Designed and deployed the full platform architecture that handled growth from 0 to 14,600 users within the launch period, with no performance degradation under peak event traffic.",
-        },
-        {
-          icon: "Zap",
-          title: "Next.js SSG + ISR for near-instant community page loads",
-          detail:
-            "Community profile pages are read-heavy but update frequently. Static generation with ISR gave sub-second load times while keeping content fresh within minutes — critical for first impressions that drive membership decisions.",
-        },
-      ],
-    },
-
-    technicalDecisions: [
-      {
-        decision: "Strapi CMS for community content management",
-        rationale:
-          "Community profiles, events, and announcements change constantly. Strapi's admin panel let community managers update their own pages without engineering involvement, and the GraphQL API kept the Next.js frontend decoupled from the content schema.",
-      },
-      {
-        decision: "SSG with ISR over full SSR for community pages",
-        rationale:
-          "Community pages are visited far more often than they're updated. SSG served cached HTML with zero server compute per request, and ISR kept content current within minutes — a better fit than SSR's per-request cost at this traffic scale.",
-      },
-    ],
-
-    visuals: [],
-
-    results: [
-      {
-        icon: "Users",
-        value: "14.6K+",
-        label: "Users",
-        description: "Joined within the launch period globally",
-      },
-      {
-        icon: "TrendingUp",
-        value: "100+",
-        label: "Universities",
-        description: "Blockchain clubs discoverable on the platform",
-      },
-      {
-        icon: "Zap",
-        value: "80+",
-        label: "Communities",
-        description: "Active communities with events and memberships",
-      },
-    ],
-
-    whatILearned: [
-      {
-        lead: "A CMS with an admin panel removes you from the content loop.",
-        detail:
-          "Community profiles, events, and announcements change constantly. Strapi's admin panel let community managers update their own pages without engineering involvement — keeping the GraphQL API decoupled from the content schema.",
-      },
-      {
-        lead: "SSG + ISR is the right default for read-heavy, occasionally-updated pages.",
-        detail:
-          "Community pages are visited far more often than they're updated. SSG served cached HTML with zero server compute per request, and ISR kept content current within minutes — a better fit than SSR's per-request cost at this scale.",
-      },
-    ],
-
-    sidebar: {
-      role: "Built scalable Web3 platform connecting global university blockchain communities",
       technologyStack: [
         {
           groupLabel: "Frontend",
@@ -2040,28 +1999,40 @@ export const projects: Project[] = [
             "Next.js",
             "TypeScript",
             "Zustand",
-            "Framer Motion",
+            "GraphQL",
             "Tailwind CSS",
           ],
         },
         {
           groupLabel: "Backend",
-          technologies: ["GraphQL API", "Strapi CMS"],
+          technologies: ["Strapi CMS", "PostgreSQL"],
         },
         {
           groupLabel: "Infrastructure",
-          technologies: ["Vercel", "Docker", "GitHub Actions"],
+          technologies: [
+            "AWS EC2",
+            "AWS RDS",
+            "AWS S3",
+            "Docker",
+            "Nginx",
+            "GitHub Actions",
+          ],
         },
       ],
+
       constraints: [
-        "Solo delivery in 6 months",
-        "Community managers as non-technical content editors",
-        "Rapid scale from 0 to 14K+ users on launch",
+        "14,798 publications and 363,613 citation records across 8 schools",
+        "CSV and PDF files submitted by external services into VM directories",
+        "Automated email notifications per administrator for missing files",
+        "Private AWS environment requiring self-hosted deployment runners",
       ],
-      collaborators: "1 designer · 1 PM · community stakeholders",
+
+      collaborators:
+        "UI/UX designer · QA engineer · Product manager · SMU stakeholders",
+
       cta: {
         label: "Live Demo",
-        url: "https://collegedao.io/",
+        url: "https://smu.oneberryhub.com/login",
       },
     },
   },

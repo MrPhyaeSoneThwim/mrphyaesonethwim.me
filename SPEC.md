@@ -148,14 +148,14 @@ Two-column layout — left: text + CTA, right: avatar + metric cards.
 
 **Left column**
 
-| Element       | Content                                                                                                             |
-| ------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Label         | `Senior Full Stack Engineer`                                                                                        |
-| Heading       | `Hi, I'm Phyae Sone Thwim`                                                                                          |
-| Subheading    | `I build scalable systems with performance, clean architecture, and real-world impact.`                             |
-| Description   | `I design and deliver production-grade applications used by thousands — from real-time systems to fintech platforms.`|
-| Animated role | Cycles: Frontend Engineer → Backend Engineer → Full Stack Engineer → Mobile Engineer                                |
-| CTA           | `View Projects` (outline) · `Contact Me` (default)                                                                 |
+| Element       | Content                                                                                                               |
+| ------------- | --------------------------------------------------------------------------------------------------------------------- |
+| Label         | `Senior Full Stack Engineer`                                                                                          |
+| Heading       | `Hi, I'm Phyae Sone Thwim`                                                                                            |
+| Subheading    | `I build scalable systems with performance, clean architecture, and real-world impact.`                               |
+| Description   | `I design and deliver production-grade applications used by thousands — from real-time systems to fintech platforms.` |
+| Animated role | Cycles: Frontend Engineer → Backend Engineer → Full Stack Engineer → Mobile Engineer                                  |
+| CTA           | `View Projects` (outline) · `Contact Me` (default)                                                                    |
 
 **Right column**
 
@@ -263,7 +263,7 @@ Same bento grid layout and skill groups as §5.1 Tech Stack. Uses the same categ
 
 - Animated availability badge (green pulse dot): `"Open to Opportunities"`
 - Heading: `"Let's start a conversation"`
-- Location badge: `Chiang Mai, Thailand`
+- Location badge: `Bangkok, Thailand`
 - Timezone badge: `Flexible across time zones`
 - Contact links list (see table below)
 
@@ -275,12 +275,12 @@ Same bento grid layout and skill groups as §5.1 Tech Stack. Uses the same categ
 
 **Contact links**
 
-| Icon        | Label    | Display value                   | href                                        |
-| ----------- | -------- | ------------------------------- | ------------------------------------------- |
-| Envelope    | EMAIL    | mr.phyaesonethwim1998@gmail.com | `mailto:mr.phyaesonethwim1998@gmail.com`    |
-| Phone       | PHONE    | +66 65 963 0870                 | `tel:+66659630870`                          |
-| GitHub logo | GITHUB   | github.com/phyaesone            | `https://github.com/MrPhyaeSoneThwim`       |
-| LinkedIn    | LINKEDIN | phyaesonethwim                  | `https://www.linkedin.com/in/phyaesonethwim`|
+| Icon        | Label    | Display value                   | href                                         |
+| ----------- | -------- | ------------------------------- | -------------------------------------------- |
+| Envelope    | EMAIL    | mr.phyaesonethwim1998@gmail.com | `mailto:mr.phyaesonethwim1998@gmail.com`     |
+| Phone       | PHONE    | +66 65 963 0870                 | `tel:+66659630870`                           |
+| GitHub logo | GITHUB   | github.com/phyaesone            | `https://github.com/MrPhyaeSoneThwim`        |
+| LinkedIn    | LINKEDIN | phyaesonethwim                  | `https://www.linkedin.com/in/phyaesonethwim` |
 
 ---
 
@@ -309,16 +309,16 @@ type Project = {
 
 ### 6.2 Projects
 
-| Name                                    | Featured | Image                          |
-| --------------------------------------- | -------- | ------------------------------ |
-| DayTwo Mobile App                       | ✓        | `/projects/daytwo.png`         |
-| JAVIS Smart Bubble Tea Ordering App     | ✓        | `/projects/javis-mobile.png`   |
-| Surveillance Platform                   | ✓        | `/projects/surveillance.png`   |
-| Digital Advisor Platform                | —        | `/projects/digital-advisor.png`|
-| CollegeDAO Web Platform                 | —        | `/projects/collegedao.png`     |
-| ONenergy Monitoring Platform            | —        | `/projects/onenergy.png`       |
-| B2B Supplier Portal                     | —        | `/projects/b2b.png`            |
-| SMU Research Portal                     | —        | `/projects/smu.png`            |
+| Name                                | Featured | Image                           |
+| ----------------------------------- | -------- | ------------------------------- |
+| DayTwo Mobile App                   | ✓        | `/projects/daytwo.png`          |
+| JAVIS Smart Bubble Tea Ordering App | ✓        | `/projects/javis-mobile.png`    |
+| Surveillance Platform               | ✓        | `/projects/surveillance.png`    |
+| Digital Advisor Platform            | —        | `/projects/digital-advisor.png` |
+| CollegeDAO Web Platform             | —        | `/projects/collegedao.png`      |
+| ONenergy Monitoring Platform        | —        | `/projects/onenergy.png`        |
+| B2B Supplier Portal                 | —        | `/projects/b2b.png`             |
+| SMU Research Portal                 | —        | `/projects/smu.png`             |
 
 ### 6.3 Tech Skills
 
@@ -357,12 +357,12 @@ type ExperienceItemType = {
 
 ### 6.5 Work Experience
 
-| Company          | Period              | Role(s)                                             |
-| ---------------- | ------------------- | --------------------------------------------------- |
-| ONOW Ascent      | 07.2024 – 03.2026   | Senior Software Engineer                            |
-| Nexstack         | 02.2022 – 07.2024   | Full Stack Developer → Senior Full Stack Developer  |
-| Digital Central  | 06.2021 – 01.2022   | Full Stack Developer                                |
-| Pico Innovation  | 10.2019 – 03.2020   | Frontend Developer                                  |
+| Company         | Period            | Role(s)                                            |
+| --------------- | ----------------- | -------------------------------------------------- |
+| ONOW Ascent     | 07.2024 – 03.2026 | Senior Software Engineer                           |
+| Nexstack        | 02.2022 – 07.2024 | Full Stack Developer → Senior Full Stack Developer |
+| Digital Central | 06.2021 – 01.2022 | Full Stack Developer                               |
+| Pico Innovation | 10.2019 – 03.2020 | Frontend Developer                                 |
 
 ---
 
@@ -461,14 +461,14 @@ lib/
 
 All animations use `motion/react`. Scroll-triggered sections use `whileInView` with `viewport={{ once: true }}`.
 
-| Pattern                                    | Where used                                          |
-| ------------------------------------------ | --------------------------------------------------- |
-| `fadeUp` — `opacity 0→1, y 20→0, 0.5s`    | Section headings, hero text, contact form           |
-| `slideLeft` / `slideRight` — `x ±40→0, 0.6s` | Project card alternating image/text entrance     |
-| `staggerChildren: 0.08`                    | Badge lists, contact link items                     |
-| `staggerChildren: 0.04`                    | Tech skill badges inside bento cards                |
-| Hero role badge                            | Auto-cycles role text with smooth fade/slide        |
-| Contact link rows                          | Arrow icon reveals on `whileHover="hover"`          |
+| Pattern                                      | Where used                                   |
+| -------------------------------------------- | -------------------------------------------- |
+| `fadeUp` — `opacity 0→1, y 20→0, 0.5s`       | Section headings, hero text, contact form    |
+| `slideLeft` / `slideRight` — `x ±40→0, 0.6s` | Project card alternating image/text entrance |
+| `staggerChildren: 0.08`                      | Badge lists, contact link items              |
+| `staggerChildren: 0.04`                      | Tech skill badges inside bento cards         |
+| Hero role badge                              | Auto-cycles role text with smooth fade/slide |
+| Contact link rows                            | Arrow icon reveals on `whileHover="hover"`   |
 
 Easing: `[0.22, 1, 0.36, 1]` throughout.
 
