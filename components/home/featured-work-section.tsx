@@ -66,12 +66,12 @@ export function FeaturedWorkSection() {
 
         <div className="flex w-full items-center justify-between sm:w-auto sm:gap-8">
           <div className="text-center">
-            <p className="text-2xl font-bold">{projects.length}</p>
+            <p className="text-base font-bold md:text-2xl">{projects.length}</p>
             <p className="text-xs text-muted-foreground">Projects</p>
           </div>
           <div className="h-8 w-px bg-border" />
           <div className="text-center">
-            <p className="text-2xl font-bold">3+</p>
+            <p className="text-base font-bold md:text-2xl">3+</p>
             <p className="text-xs text-muted-foreground">Industries</p>
           </div>
           <div className="h-8 w-px bg-border" />

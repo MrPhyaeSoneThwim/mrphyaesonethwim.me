@@ -16,7 +16,7 @@ export async function generateMetadata({
   const project = PROJECT_META.find((p) => p.id === id)
   if (!project) return {}
   return {
-    title: `${project.name} — Case Study`,
+    title: `${project.name} - Case Study`,
     description: project.summary,
   }
 }

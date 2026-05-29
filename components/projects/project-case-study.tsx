@@ -47,6 +47,13 @@ import {
   RocketIcon,
   AppStoreLogoIcon,
   GooglePlayLogoIcon,
+  CloudIcon,
+  TagIcon,
+  EnvelopeIcon,
+  DownloadSimpleIcon,
+  GaugeIcon,
+  BookOpenIcon,
+  GraduationCapIcon,
 } from "@phosphor-icons/react"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
 import {
@@ -129,6 +136,13 @@ const ICON_MAP: Record<string, Icon> = {
   Workflow: ArrowsClockwiseIcon,
   RefreshCcw: ArrowsClockwiseIcon,
   Rocket: RocketIcon,
+  Cloud: CloudIcon,
+  Tag: TagIcon,
+  Mail: EnvelopeIcon,
+  Download: DownloadSimpleIcon,
+  Gauge: GaugeIcon,
+  BookOpen: BookOpenIcon,
+  School: GraduationCapIcon,
 }
 
 // ── Sub-components ────────────────────────────────────────────────────────────

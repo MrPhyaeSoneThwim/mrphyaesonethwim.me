@@ -230,13 +230,13 @@ export const projects: Project[] = [
       {
         icon: "Users",
         value: "800+",
-        label: "SMEs Onboarded",
+        label: "SME Users Onboarded",
         description: "Businesses actively using the platform after launch",
       },
       {
         icon: "Landmark",
         value: "$37K+",
-        label: "Revenue Generated",
+        label: "Total Revenue Generated",
         description: "Generated through lending and financial workflows",
       },
       {
@@ -468,14 +468,14 @@ export const projects: Project[] = [
       {
         icon: "Clock",
         value: "50%",
-        label: "Faster Checkout",
+        label: "Faster Checkout Time",
         description:
           "Reduced through API optimization, state handling, and simplified ordering flow",
       },
       {
         icon: "Users",
         value: "100+",
-        label: "Concurrent Users",
+        label: "Concurrent Active Users",
         description: "Handled simultaneous real-time ordering activity",
       },
       {
@@ -749,7 +749,7 @@ export const projects: Project[] = [
       {
         icon: "Video",
         value: "10,000+",
-        label: "CCTV Cameras",
+        label: "CCTV Cameras Monitored",
         description:
           "Supported across a single platform built for large-scale surveillance operations",
       },
@@ -1026,14 +1026,14 @@ export const projects: Project[] = [
       {
         icon: "Users",
         value: "6,000+",
-        label: "Active Advisors",
+        label: "Active Insurance Advisors",
         description:
           "Insurance advisors using the platform for live financial advisory sessions",
       },
       {
         icon: "CheckCircle",
         value: "7",
-        label: "Workflow Modules",
+        label: "Advisory Workflows",
         description: "End-to-end onboarding and advisory workflows delivered",
       },
       {
@@ -1112,7 +1112,7 @@ export const projects: Project[] = [
     id: "b2b-portal",
     name: "B2B Supplier Portal",
     slug: "b2b-portal",
-    thumbnailImage: "/projects/b2b/b2b-00.png",
+    thumbnailImage: "/projects/b2b/b2b-01.png",
     targetPlatform: "Web",
     industrySectors: ["Enterprise", "Supply Chain"],
     externalLink: "https://shengsiong.com.sg/",
@@ -1269,7 +1269,7 @@ export const projects: Project[] = [
       {
         icon: "Users",
         value: "100+",
-        label: "Active Vendors",
+        label: "Active Vendor Accounts",
         description:
           "Vendors using the platform across procurement and finance workflows",
       },
@@ -1505,11 +1505,11 @@ export const projects: Project[] = [
           "Per household via IoT sensors across the monitoring system",
       },
       {
-        icon: "Rocket",
-        value: "7 mos",
-        label: "End-to-end Delivery",
+        icon: "Gauge",
+        value: "Optimized",
+        label: "Rendering Performance",
         description:
-          "Full mobile app delivered from planning to Play Store release",
+          "Fixed rendering bottlenecks from high-frequency IoT sensor updates",
       },
     ],
 
@@ -1688,27 +1688,27 @@ export const projects: Project[] = [
 
     visuals: [
       {
-        src: "/projects/onenergy-web/onenergy-web-01.png",
+        src: "/projects/onenergy-web/onenergy-01.png",
         caption:
           "Household list with device issue counts, owner details, installation status, and management actions",
       },
       {
-        src: "/projects/onenergy-web/onenergy-web-02.png",
+        src: "/projects/onenergy-web/onenergy-02.png",
         caption:
           "Household energy usage with total consumption, cost summary, and appliance-level breakdown by percentage",
       },
       {
-        src: "/projects/onenergy-web/onenergy-web-03.png",
+        src: "/projects/onenergy-web/onenergy-03.png",
         caption:
           "Edit household form covering installation dates, gateway configuration, and device setup across multiple steps",
       },
       {
-        src: "/projects/onenergy-web/onenergy-web-04.png",
+        src: "/projects/onenergy-web/onenergy-04.png",
         caption:
           "Appliance list showing 119 devices per household with category, type, brand, model, and power wattage",
       },
       {
-        src: "/projects/onenergy-web/onenergy-web-05.png",
+        src: "/projects/onenergy-web/onenergy-05.png",
         caption:
           "Add appliance form with category, appliance type, brand, model, and average power consumption",
       },

@@ -17,12 +17,20 @@ import {
   ShoppingCartIcon,
   ClockIcon,
   LightningIcon,
-  VideoCameraSlashIcon,
+  VideoCameraIcon,
   ShieldCheckIcon,
+  ShieldIcon,
   CheckCircleIcon,
   BellIcon,
   AppStoreLogoIcon,
   GooglePlayLogoIcon,
+  ArrowsClockwiseIcon,
+  HardDriveIcon,
+  GaugeIcon,
+  RocketIcon,
+  BookOpenIcon,
+  FileTextIcon,
+  GraduationCapIcon,
 } from "@phosphor-icons/react"
 
 const RESULT_ICON_MAP: Record<string, Icon> = {
@@ -35,10 +43,19 @@ const RESULT_ICON_MAP: Record<string, Icon> = {
   ShoppingCart: ShoppingCartIcon,
   Clock: ClockIcon,
   Zap: LightningIcon,
-  Video: VideoCameraSlashIcon,
+  Video: VideoCameraIcon,
   ShieldCheck: ShieldCheckIcon,
+  Shield: ShieldIcon,
   CheckCircle: CheckCircleIcon,
   Bell: BellIcon,
+  Globe: GlobeIcon,
+  RefreshCcw: ArrowsClockwiseIcon,
+  Server: HardDriveIcon,
+  Gauge: GaugeIcon,
+  Rocket: RocketIcon,
+  BookOpen: BookOpenIcon,
+  FileText: FileTextIcon,
+  School: GraduationCapIcon,
 }
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
@@ -126,24 +143,24 @@ export function ProjectList({ projects }: { projects: Project[] }) {
                     </p>
 
                     {/* Metrics */}
-                    <div className="flex items-start">
+                    <div className="grid grid-cols-3 gap-1 md:flex md:items-start md:gap-2">
                       {project.results.slice(0, 3).map((r, i) => {
                         const Icon = RESULT_ICON_MAP[r.icon] ?? LightningIcon
                         return (
                           <React.Fragment key={r.label}>
                             {i > 0 && (
-                              <div className="mx-5 h-10 w-px shrink-0 bg-muted md:mx-6" />
+                              <div className="hidden h-10 w-px shrink-0 bg-muted md:mx-6 md:block" />
                             )}
-                            <div className="flex items-start gap-2">
+                            <div className="flex min-w-0 items-start gap-1.5 md:gap-2">
                               <Icon
                                 size={14}
                                 className="mt-0.5 shrink-0 text-primary/80"
                               />
-                              <div className="flex flex-col">
-                                <span className="text-[17px] leading-none font-bold tracking-tight md:text-[18px]">
+                              <div className="flex min-w-0 flex-col">
+                                <span className="text-[15px] leading-none font-bold tracking-tight md:text-[17px] lg:text-[18px]">
                                   {r.value}
                                 </span>
-                                <span className="mt-0.5 text-[10px] leading-snug text-muted-foreground">
+                                <span className="mt-0.5 text-[9px] leading-snug text-muted-foreground md:text-[10px]">
                                   {r.label}
                                 </span>
                               </div>
