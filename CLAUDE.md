@@ -35,32 +35,45 @@ This is a Next.js (App Router) portfolio site with:
 - `react-hook-form` + `@hookform/resolvers` + `zod` — contact form validation
 - `resend` — transactional email from `app/api/contact/route.ts`
 - `sonner` — toast notifications for form success/failure
-- `@phosphor-icons/react` + `lucide-react` — icons
+- `@phosphor-icons/react` — primary icon library used throughout
+- `lucide-react` — secondary icons (some UI primitives)
+- `yet-another-react-lightbox` — image lightbox on case study visuals
 - Devicon (CDN, loaded in `app/layout.tsx`) — tech stack icons
 
 ### Project Structure
 
 ```
-app/                        # Next.js App Router pages
-├── page.tsx                # Home
-├── projects/page.tsx
+app/                          # Next.js App Router pages
+├── page.tsx                  # Home
+├── projects/
+│   ├── page.tsx              # All projects list
+│   └── [id]/page.tsx         # Individual case study
 ├── about/page.tsx
 ├── contact/page.tsx
-├── api/contact/route.ts    # Email sending endpoint
-└── layout.tsx              # Global layout: Header + Footer + Toaster
+├── api/contact/route.ts      # Email sending endpoint
+└── layout.tsx                # Global layout: Header + Footer + Toaster
 
 components/
-├── ui/                     # Shadcn/ui primitives
-├── home/                   # Hero, TechStack, FeaturedWork, Intro sections
-├── projects/               # ProjectList (shared with home featured work)
-├── about/                  # Intro, Experience, Skills sections
-├── contact/                # ContactSection with form
-├── header.tsx
+├── ui/                       # Shadcn/ui primitives
+├── home/                     # Hero, TechStack, FeaturedWork, Intro sections
+├── projects/
+│   ├── project-list.tsx      # Shared card list (home featured + projects page)
+│   ├── project-case-study.tsx# Full case study layout with lightbox
+│   ├── projects-header.tsx   # Projects page section header
+│   └── project-filter.tsx    # Project filtering UI
+├── about/                    # Intro, Experience, Education, Skills sections
+├── contact/                  # ContactSection with form
+├── header.tsx                # Sticky pill nav; mobile menu via createPortal
+├── nav-bar.tsx
 └── footer.tsx
 
 lib/
-└── constant.tsx            # All static content: projects[], EXPERIENCE[]
+└── constant.tsx              # All static content: projects[], EXPERIENCE[], EDUCATION[]
 ```
 
+### Notable Implementation Details
+
+- **Mobile nav**: `createPortal` into `document.body`; panel positioned via `getBoundingClientRect()` for pixel-perfect width match with the nav pill
+- **Horizontal overflow**: `overflow-x: clip` on `body` prevents layout shift from animation initial offsets and hero stat card bleed
 - `@/*` path alias maps to the project root
 - All static content lives in `lib/constant.tsx` — edit there, not in components

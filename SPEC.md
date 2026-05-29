@@ -57,9 +57,11 @@ A personal portfolio website for a Senior Full Stack Engineer. Showcases experie
 ### 3.1 Navigation
 
 - Sticky header, floating pill shape, backdrop blur
-- Desktop: brand left · nav center (Home, Projects, About) · theme toggle + "Let's contact" CTA right
+- Desktop: brand left · nav center (Home, Projects, About, Contact) · theme toggle right
 - Mobile: theme toggle + hamburger right; tapping hamburger opens a dropdown with all four links
+- Mobile menu rendered via `createPortal` into `document.body`; panel positioned by measuring the nav's `getBoundingClientRect()` for exact width match
 - Scroll shadow appears after 10px scroll
+- `overflow-x: clip` on `body` prevents horizontal layout shift from animation offsets
 
 ### 3.2 Home Page
 
@@ -73,8 +75,16 @@ Sections render in this exact order:
 ### 3.3 Projects Page
 
 - Renders all projects from `lib/constant.tsx` using `<ProjectList />`
-- Same alternating card layout as Featured Work
-- Each card: name, description, achievements list, tech badges, "View Case Study" link button
+- Same card layout as Featured Work; metrics responsive: `grid-cols-3` mobile → `flex` on `md+`
+- Each card: index · name · sector badges · role meta · summary · 3 key metrics · tech stack · CTAs
+
+### 3.3a Case Study Page (`/projects/[id]`)
+
+- Full write-up per project: Challenge → What I Did → Results → Visuals → What I Learned
+- Sidebar: role, collaborators, constraints, full tech stack, demo/store links
+- Results: `grid-cols-1 sm:grid-cols-2`
+- Visuals: 2-column grid with lightbox (`yet-another-react-lightbox`)
+- Prev/Next navigation between projects
 
 ### 3.4 About Page
 
@@ -82,7 +92,8 @@ Sections render in this order:
 
 1. Intro (photo + bio text)
 2. Experience (work timeline)
-3. Skills (bento grid — same layout as Tech Stack on Home)
+3. Education
+4. Skills (bento grid — same layout as Tech Stack on Home)
 
 ### 3.5 Contact Page
 
@@ -289,23 +300,51 @@ Same bento grid layout and skill groups as §5.1 Tech Stack. Uses the same categ
 ### 6.1 Project Type
 
 ```typescript
-type TechItem = {
-  label: string
-  type?: "icon" | "image"
-  icon?: string   // devicon class name
-  image?: string  // path under /public/
-}
-
 type Project = {
+  id: string
   name: string
-  description: string
-  achievements: string[]
-  technologies: TechItem[]
-  featured: boolean  // true = shown in Home Featured Work
-  image: string      // path under /public/projects/
-  link: string       // external URL
+  slug: string
+  thumbnailImage: string
+  targetPlatform: "Web" | "Mobile"
+  industrySectors: string[]        // "Featured" = shown in Home Featured Work
+  externalLink?: string
+  demoLinks?: { web?: string; ios?: string; android?: string }
+  isPrivate: boolean
+  hasCaseStudy: boolean
+  coreTechStack: string[]
+
+  hero: {
+    title: string
+    summary: string
+    meta: { role: string; teamSize: string; duration: string; period: string; platform: "Web" | "Mobile" }
+  }
+
+  challenge: { prose: string; pullQuote?: string }
+
+  whatIDid: {
+    intro: string
+    contributions: { icon: string; title: string; detail: string }[]
+  }
+
+  technicalDecisions: { decision: string; rationale: string }[]
+
+  visuals: { src: string; caption: string }[]
+
+  results: { icon: string; value: string; label: string; description: string }[]
+
+  whatILearned: { lead: string; detail: string }[]
+
+  sidebar: {
+    role: string
+    technologyStack: { groupLabel: "Frontend" | "Backend" | "Infrastructure"; technologies: string[] }[]
+    constraints?: string[]
+    collaborators?: string
+    cta?: { label: string; url: string }
+  }
 }
 ```
+
+Icon keys in `results` and `contributions` map to `@phosphor-icons/react` via `RESULT_ICON_MAP` / `ICON_MAP` in the consuming components.
 
 ### 6.2 Projects
 
@@ -419,7 +458,9 @@ z.object({
 ```
 app/
 ├── page.tsx                     # Home
-├── projects/page.tsx
+├── projects/
+│   ├── page.tsx                 # All projects list
+│   └── [id]/page.tsx            # Individual case study
 ├── about/page.tsx
 ├── contact/page.tsx
 ├── api/contact/route.ts         # Email sending API
@@ -433,19 +474,23 @@ components/
 │   ├── featured-work-section.tsx
 │   └── intro-section.tsx
 ├── projects/
-│   └── project-list.tsx         # Shared by Home (featured) and Projects page (all)
+│   ├── project-list.tsx         # Shared by Home (featured) and Projects page (all)
+│   ├── project-case-study.tsx   # Full case study with lightbox
+│   ├── projects-header.tsx      # Projects page header
+│   └── project-filter.tsx       # Project filtering UI
 ├── about/
 │   ├── intro-section.tsx
 │   ├── experience-section.tsx
+│   ├── education-section.tsx
 │   └── skills-section.tsx
 ├── contact/
 │   └── contact-section.tsx
 ├── header.tsx
-├── nav.tsx
+├── nav-bar.tsx
 └── footer.tsx
 
 lib/
-└── constant.tsx                 # All static data: projects[], EXPERIENCE[]
+└── constant.tsx                 # All static data: projects[], EXPERIENCE[], EDUCATION[]
 ```
 
 **Rules**
