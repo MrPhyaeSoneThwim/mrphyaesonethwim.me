@@ -1730,18 +1730,18 @@ export const projects: Project[] = [
           "IoT-connected devices monitored and managed per household",
       },
       {
-        icon: "Server",
-        value: "Full-stack",
-        label: "End-to-end Ownership",
+        icon: "RefreshCcw",
+        value: "Real-time",
+        label: "IoT Data Synchronization",
         description:
-          "Frontend, backend, infrastructure, and team standards owned and delivered",
+          "Continuous appliance data synchronized from IoT sensors across all households",
       },
       {
-        icon: "Rocket",
-        value: "8 mos",
-        label: "End-to-end Delivery",
+        icon: "BarChart2",
+        value: "Per Household",
+        label: "Consumption Reports",
         description:
-          "Full web platform delivered from planning to production release",
+          "Energy usage reports with appliance-level breakdown and date range filtering",
       },
     ],
 

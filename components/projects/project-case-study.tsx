@@ -56,22 +56,8 @@ import {
   GraduationCapIcon,
 } from "@phosphor-icons/react"
 import { AspectRatio } from "@/components/ui/aspect-ratio"
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion"
 import { Badge } from "@/components/ui/badge"
 import { Button } from "@/components/ui/button"
-import { Card } from "@/components/ui/card"
-import {
-  Carousel,
-  CarouselContent,
-  CarouselItem,
-  CarouselPrevious,
-  CarouselNext,
-} from "@/components/ui/carousel"
 import Lightbox from "yet-another-react-lightbox"
 import Captions from "yet-another-react-lightbox/plugins/captions"
 import Counter from "yet-another-react-lightbox/plugins/counter"
@@ -338,7 +324,7 @@ export function ProjectCaseStudy({ id }: { id: string }) {
           {/* 3. Results */}
           <section>
             <SectionLabel>Results</SectionLabel>
-            <div className="grid grid-cols-2 gap-2.5">
+            <div className="grid grid-cols-1 gap-2.5 sm:grid-cols-2">
               {project.results.map((r, i) => {
                 const Icon = ICON_MAP[r.icon] ?? LightningIcon
                 return (
@@ -368,43 +354,34 @@ export function ProjectCaseStudy({ id }: { id: string }) {
           {project.visuals.length > 0 && (
             <section>
               <SectionLabel>Visuals</SectionLabel>
-              <Accordion type="single" collapsible defaultValue="visuals">
-                <AccordionItem value="visuals">
-                  <AccordionTrigger className="text-sm">
-                    Screenshots &amp; Visuals ({project.visuals.length})
-                  </AccordionTrigger>
-                  <AccordionContent>
-                    <div className="grid grid-cols-2 gap-3 pt-1">
-                      {project.visuals.map((visual, i) => (
-                        <button
-                          key={i}
-                          className="flex flex-col gap-2 text-left"
-                          onClick={() => {
-                            setLightboxIndex(i)
-                            setLightboxOpen(true)
-                          }}
-                        >
-                          <AspectRatio
-                            ratio={3 / 2}
-                            className="overflow-hidden rounded-lg border border-border transition-opacity hover:opacity-80"
-                          >
-                            <Image
-                              src={visual.src}
-                              alt={visual.caption}
-                              fill
-                              sizes="(min-width: 1024px) 20vw, 45vw"
-                              className="object-cover object-center"
-                            />
-                          </AspectRatio>
-                          <p className="text-xs leading-snug font-medium text-foreground/80">
-                            {visual.caption}
-                          </p>
-                        </button>
-                      ))}
-                    </div>
-                  </AccordionContent>
-                </AccordionItem>
-              </Accordion>
+              <div className="grid grid-cols-2 gap-2">
+                {project.visuals.map((visual, i) => (
+                  <button
+                    key={i}
+                    className="flex flex-col gap-1.5 text-left"
+                    onClick={() => {
+                      setLightboxIndex(i)
+                      setLightboxOpen(true)
+                    }}
+                  >
+                    <AspectRatio
+                      ratio={3 / 2}
+                      className="overflow-hidden rounded-lg border border-border transition-opacity hover:opacity-80"
+                    >
+                      <Image
+                        src={visual.src}
+                        alt={visual.caption}
+                        fill
+                        sizes="(min-width: 1024px) 20vw, 45vw"
+                        className="object-cover object-center"
+                      />
+                    </AspectRatio>
+                    <p className="text-xs leading-snug text-foreground/70">
+                      {visual.caption}
+                    </p>
+                  </button>
+                ))}
+              </div>
             </section>
           )}
 
