@@ -9,14 +9,7 @@ import { MenuToggleIcon } from "@/components/ui/menu-toggle-icon"
 import { useScroll } from "@/hooks/use-scroll"
 import { cn } from "@/lib/utils"
 
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
-]
-
-const mobileLinks = [
+const NAV_LINKS = [
   { label: "Home", href: "/" },
   { label: "Projects", href: "/projects" },
   { label: "About", href: "/about" },
@@ -51,9 +44,19 @@ function ThemeToggle() {
 export function Header() {
   const [open, setOpen] = React.useState(false)
   const [mounted, setMounted] = React.useState(false)
+  const navRef = React.useRef<HTMLElement>(null)
+  const [panelStyle, setPanelStyle] = React.useState<React.CSSProperties>({})
   const scrolled = useScroll(10)
 
   React.useEffect(() => setMounted(true), [])
+
+  // Measure the nav's exact rendered rect when menu opens so the panel aligns perfectly
+  React.useEffect(() => {
+    if (open && navRef.current) {
+      const { left, width, bottom } = navRef.current.getBoundingClientRect()
+      setPanelStyle({ left, width, top: bottom + 6 })
+    }
+  }, [open])
 
   React.useEffect(() => {
     document.body.style.overflow = open ? "hidden" : ""
@@ -66,6 +69,7 @@ export function Header() {
     <>
       <header className="sticky top-0 z-50 flex w-full justify-center px-3 pt-4 pb-2">
         <nav
+          ref={navRef}
           className={cn(
             "flex h-14 w-full max-w-5xl items-center justify-between gap-4 rounded-full border bg-background/80 px-2 backdrop-blur-xl transition-all duration-300 supports-[backdrop-filter]:bg-background/60",
             scrolled && !open ? "shadow-md" : "shadow-sm"
@@ -75,13 +79,14 @@ export function Header() {
           <Link
             href="/"
             className="shrink-0 pl-3 font-heading text-xs font-semibold tracking-tight md:text-sm"
+            onClick={() => setOpen(false)}
           >
             Phyae Sone Thwim
           </Link>
 
           {/* Center: Nav links (desktop) */}
           <div className="hidden flex-1 items-center justify-center gap-1 md:flex">
-            {navLinks.map((link) => (
+            {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -103,7 +108,7 @@ export function Header() {
             <Button
               size="icon"
               variant="ghost"
-              onClick={() => setOpen(!open)}
+              onClick={() => setOpen((v) => !v)}
               aria-label="Toggle menu"
               className="rounded-full"
             >
@@ -113,39 +118,37 @@ export function Header() {
         </nav>
       </header>
 
-      {/* Mobile menu — rendered into body via portal to avoid header stacking context */}
+      {/* Portal — renders outside header to avoid stacking-context issues */}
       {mounted &&
         open &&
         createPortal(
           <>
-            {/* Backdrop */}
+            {/* Full-screen backdrop */}
             <div
-              className="fixed inset-0 top-20 z-40 bg-background/60 backdrop-blur-sm md:hidden"
+              className="fixed inset-0 z-40 md:hidden"
               onClick={() => setOpen(false)}
             />
-            {/* Panel — same horizontal layout as the header nav pill */}
-            <div className="fixed inset-x-0 top-20 z-50 px-3 pt-1 md:hidden">
-              <div className="mx-auto w-full max-w-5xl">
-                <div
-                  data-slot={open ? "open" : "closed"}
-                  className="rounded-2xl border bg-background p-2.5 shadow-xl ease-out data-[slot=closed]:animate-out data-[slot=closed]:zoom-out-95 data-[slot=open]:animate-in data-[slot=open]:zoom-in-95"
-                >
-                  <div className="grid gap-1">
-                    {mobileLinks.map((link) => (
-                      <Link
-                        key={link.href}
-                        href={link.href}
-                        onClick={() => setOpen(false)}
-                        className={buttonVariants({
-                          variant: "ghost",
-                          className: "justify-start",
-                          size: "lg",
-                        })}
-                      >
-                        {link.label}
-                      </Link>
-                    ))}
-                  </div>
+            {/* Panel — positioned by measuring the nav's actual rendered rect */}
+            <div
+              className="fixed z-50 md:hidden"
+              style={panelStyle}
+            >
+              <div className="rounded-2xl border bg-background p-2.5 shadow-xl animate-in zoom-in-95 duration-200">
+                <div className="grid gap-0.5">
+                  {NAV_LINKS.map((link) => (
+                    <Link
+                      key={link.href}
+                      href={link.href}
+                      onClick={() => setOpen(false)}
+                      className={buttonVariants({
+                        variant: "ghost",
+                        className: "justify-start",
+                        size: "lg",
+                      })}
+                    >
+                      {link.label}
+                    </Link>
+                  ))}
                 </div>
               </div>
             </div>
