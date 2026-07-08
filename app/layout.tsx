@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     template: "%s - Phyae Sone Thwim",
   },
   description:
-    "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 10,000+ live cameras.",
+    "Senior Full Stack Engineer with 5+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 10,000+ live cameras.",
   keywords: [
     // identity
     "Phyae Sone Thwim",
@@ -99,7 +99,7 @@ export const metadata: Metadata = {
     siteName: "Phyae Sone Thwim",
     title: "Phyae Sone Thwim - Senior Full Stack Engineer",
     description:
-      "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 10,000+ live cameras.",
+      "Senior Full Stack Engineer with 5+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 10,000+ live cameras.",
     images: [
       {
         url: "/og-image.png",
@@ -113,7 +113,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Phyae Sone Thwim - Senior Full Stack Engineer",
     description:
-      "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 10,000+ live cameras.",
+      "Senior Full Stack Engineer with 5+ years building production-grade web and mobile applications across fintech, enterprise, and government. Shipped platforms serving 800+ SMEs, 6,000+ insurance agents, and real-time systems supporting 10,000+ live cameras.",
     images: ["/og-image.png"],
   },
   robots: {

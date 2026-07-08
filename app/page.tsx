@@ -7,7 +7,7 @@ import { IntroSection } from "@/components/home/intro-section"
 export const metadata: Metadata = {
   title: "Phyae Sone Thwim - Senior Full Stack Engineer",
   description:
-    "Senior Full Stack Engineer with 6+ years building production-grade web and mobile applications across fintech, enterprise, and government. Based in Bangkok, Thailand.",
+    "Senior Full Stack Engineer with 5+ years building production-grade web and mobile applications across fintech, enterprise, and government. Based in Bangkok, Thailand.",
   alternates: {
     canonical: "https://phyaesonethwimdev.vercel.app",
   },

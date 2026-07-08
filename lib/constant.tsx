@@ -2058,7 +2058,7 @@ export const EXPERIENCE: ExperienceItemType[] = [
           "Owned frontend state and data layer using Zustand and React Query with caching and request deduplication, reducing redundant API calls by ~40%",
           "Built and maintained a reusable design system and component library (Shadcn, Atomic Design) ensuring UI consistency across all product features",
           "Implemented Firebase real-time push notifications for time-critical financial alerts throughout lending workflows",
-          "Owned Android release pipeline using EAS and GitHub Actions, automating build and deployment for reliable production releases",
+          "Owned Android and iOS release pipelines using Expo Application Services (EAS) and GitHub Actions, automating build, testing, and deployment workflows to ensure reliable production releases",
         ],
         skills: [
           "React",
