@@ -65,7 +65,7 @@ export function HeroSection() {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="max-w-md text-sm leading-relaxed text-muted-foreground"
           >
-            5+ years building production-grade web and mobile applications
+            6+ years building production-grade web and mobile applications
             across fintech, enterprise, and government platforms.
           </motion.p>
 
