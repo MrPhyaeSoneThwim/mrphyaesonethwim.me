@@ -2230,7 +2230,7 @@ export const EDUCATION: ExperienceItemType[] = [
       {
         id: "bsc-greenwich",
         title: "Bachelor of Science (BSc) (Hons) — Computing",
-        employmentPeriod: { start: "06.2024", end: "05.2025" },
+        employmentPeriod: { start: "07.2024", end: "07.2025" },
         description: [
           "Covered mobile development, Human-Computer Interaction (HCI), and Enterprise Web Systems Development (EWSD) with a strong emphasis on user-centred design and systems thinking",
           "Studied Requirement Management (RM) and applied Agile methodologies and SDLC practices to structure and deliver software projects iteratively",
