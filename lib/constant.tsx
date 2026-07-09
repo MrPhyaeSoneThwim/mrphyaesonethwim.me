@@ -2239,4 +2239,20 @@ export const EDUCATION: ExperienceItemType[] = [
       },
     ],
   },
+  {
+    id: "university-of-technology-yatanarpon",
+    companyName: "University of Technology (Yatanarpon Cyber City)",
+    companyLogo: "/universities/utycc.jpg",
+    positions: [
+      {
+        id: "be-yatanarpon",
+        title: "Computer Science Studies — Information Science and Technology",
+        employmentPeriod: { start: "12.2014", end: "08.2020" },
+        description: [
+          "Studied core ICT engineering foundations including programming, data structures, algorithms, database management, networking, and operating systems",
+          "Gained practical exposure to software engineering principles, information systems design, and web development through lab-based coursework and workshops",
+        ],
+      },
+    ],
+  },
 ]
