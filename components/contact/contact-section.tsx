@@ -52,9 +52,9 @@ const contactLinks = [
   },
   {
     icon: PhoneIcon,
-    label: "PHONE",
-    value: "+66 65 963 0870",
-    href: "tel:+66659630870",
+    label: "WHATSAPP",
+    value: "+95 9 779 441 938",
+    href: "https://wa.me/959779441938",
   },
   {
     icon: GithubLogoIcon,
@@ -147,7 +147,7 @@ export function ContactSection() {
                 className="h-auto gap-1.5 rounded-full py-1.5 text-xs"
               >
                 <MapPinIcon className="size-3.5" />
-                Chiang Mai, Thailand
+                Myanmar
               </Badge>
               <Badge
                 variant="secondary"

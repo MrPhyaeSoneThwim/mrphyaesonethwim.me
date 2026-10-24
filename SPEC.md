@@ -274,7 +274,7 @@ Same bento grid layout and skill groups as §5.1 Tech Stack. Uses the same categ
 
 - Animated availability badge (green pulse dot): `"Open to Opportunities"`
 - Heading: `"Let's start a conversation"`
-- Location badge: `Chiang Mai, Thailand`
+- Location badge: `Myanmar`
 - Timezone badge: `Flexible across time zones`
 - Contact links list (see table below)
 
